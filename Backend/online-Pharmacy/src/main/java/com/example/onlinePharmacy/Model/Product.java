@@ -5,38 +5,30 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
 public class Product {
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
-    @Getter
-    @Setter
     private String name;
     @Column
-    @Getter
-    @Setter
-    private String type;
+    private String category;
     @Column
-    @Getter
-    @Setter
     private String description;
     @Column
-    @Getter
-    @Setter
     private String image;
     @Column
-    @Getter
-    @Setter
     private boolean permission;
     @Column
-    @Getter
-    @Setter
     private double price;
     @Column
-    @Getter
-    @Setter
     private double rate;
+    @Column
+    private int numOfRates;
+
 
 
 }

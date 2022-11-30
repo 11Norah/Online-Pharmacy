@@ -3,6 +3,8 @@ package com.example.onlinePharmacy.Repositries;
 import com.example.onlinePharmacy.Model.Product;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ProductRepo extends CrudRepository<Product, Integer> {
+import java.util.List;
 
+public interface ProductRepo extends CrudRepository<Product, Long> {
+    public List<Product> findAllByCategory(String category);
 }
