@@ -3,8 +3,9 @@
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <nav>
-    <a href="#" #profile id="Profile" routerLink="/profile" routerLinkActive="activebutton"(click)="submit()"> PROFILE</a>
-    <a href="#" #sent  id="sentEmails" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit()">CATEGORIES</a> 
+    <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit()">Categories</a> 
+    <a href="#" #profile id="Profile" routerLink="/profile" routerLinkActive="activebutton"(click)="submit()"> Consultation</a>
+
     </nav>
   </div>
   <router-outlet></router-outlet>
