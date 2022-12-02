@@ -1,26 +1,22 @@
 package com.example.onlinePharmacy.Model;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-import lombok.*;
-
 @Entity
-@Table(name = "Product")
-@Getter
 @Setter
-@EqualsAndHashCode
-@ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class Product {
-
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
     private String name;
     @Column
-    private String type;
+    private String category;
     @Column
     private String description;
     @Column
@@ -31,10 +27,9 @@ public class Product {
     private double price;
     @Column
     private double rate;
+    @Column
+    private int numOfRates;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "productId", nullable = false)
-    private Consultation diagnosis;
 
 
 }
