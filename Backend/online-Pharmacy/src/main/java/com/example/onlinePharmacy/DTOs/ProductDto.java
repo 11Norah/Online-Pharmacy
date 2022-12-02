@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 
-public class ProductDto {
+public class ProductDTO {
     private Long id ;
     private String name;
     private String type;
