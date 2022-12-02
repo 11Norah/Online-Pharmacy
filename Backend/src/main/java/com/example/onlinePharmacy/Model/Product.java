@@ -1,22 +1,28 @@
 package com.example.onlinePharmacy.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Table(name = "Products")
 public class Product {
     @Id
-
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long product_id;
     @Column
     private String name;
     @Column
-    private String category;
+    private String type;
     @Column
     private String description;
     @Column
@@ -30,6 +36,8 @@ public class Product {
     @Column
     private int numOfRates;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Collection<Consultation> diagnosis;
 
 
 }

@@ -1,13 +1,14 @@
 package com.example.onlinePharmacy.Model;
 
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Userr")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User implements Serializable{
     @Id
     @SequenceGenerator(
@@ -47,4 +48,5 @@ public class User implements Serializable{
     private boolean pDrug;
     @Transient
     private Integer age;
+
 }
