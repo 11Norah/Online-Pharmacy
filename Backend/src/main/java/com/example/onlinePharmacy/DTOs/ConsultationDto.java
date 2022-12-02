@@ -1,6 +1,9 @@
 package com.example.onlinePharmacy.DTOs;
 
+import com.example.onlinePharmacy.Model.Product;
 import lombok.*;
+
+import java.util.List;
 
 @Setter
 @Getter
@@ -9,10 +12,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-
 public class ConsultationDto {
 
-    private String category ;
-    private String productName ;
+    private String diagnosis ;
+    private List<Product> products;
 
 }

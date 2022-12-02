@@ -37,7 +37,7 @@ public class Product {
     private int numOfRates;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Collection<Consultation> diagnosis;
+    private List<Consultation> diagnosis;
 
 
 }

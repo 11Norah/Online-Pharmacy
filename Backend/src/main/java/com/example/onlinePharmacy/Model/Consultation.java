@@ -1,7 +1,6 @@
 package com.example.onlinePharmacy.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
@@ -13,6 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "Consultationss")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Consultation {
     @Id
@@ -21,6 +23,6 @@ public class Consultation {
 
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "diagnosis")
-    private Collection<Product> product_id;
+    private List<Product> products;
 
 }

@@ -29,6 +29,5 @@ public class ProductService {
         productDto.setNumOfRates(productDto.getNumOfRates() + 1);
         productDto.setRate((productDto.getRate() + rate) / productDto.getNumOfRates());
         productRepo.save(ProductMapper.mapDtoToProduct(productDto));
-
     }
 }
