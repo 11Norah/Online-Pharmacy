@@ -10,7 +10,7 @@ public class ProductMapper {
                 .name(p.getName())
                 .price(p.getPrice())
                 .description(p.getDescription())
-                .type(p.getType())
+                .type(p.getCategory())
                 .image(p.getImage())
                 .permission(p.isPermission())
                 .rate(p.getRate())
