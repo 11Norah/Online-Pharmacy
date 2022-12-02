@@ -1,13 +1,18 @@
 package com.example.onlinePharmacy.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Product")
 @Setter
 @Getter
+@EqualsAndHashCode
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
 
