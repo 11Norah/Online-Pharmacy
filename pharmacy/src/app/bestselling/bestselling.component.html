@@ -1,0 +1,13 @@
+
+<p class="bestseller">Best Selling Products</p>
+<form class="shape">
+    <input class="text" type="text" disabled="true">
+    </form>
+    <p class="decoration">_________________________________________</p>
+    <div>
+        <a *ngFor="let product of bestsellerproducts">
+        <button class="products"><div class="decor" ><img height="200"  class=" img" src={{product[0]}}>    <p class="info">{{product[1]}}<br>{{product[2]}}</p>
+        </div><button  class="cart">Add to Cart</button>
+        </button>
+        </a>
+</div>
