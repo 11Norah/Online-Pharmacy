@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { ProfileComponent } from './profile/profile.component';
 import { ServerService } from './server.service';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
