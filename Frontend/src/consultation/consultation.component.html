@@ -1,0 +1,136 @@
+  
+  <input type="hidden" #route>
+  <!-- Toolbar 
+  <div class="toolbar" role="banner">
+    <img
+      width="80"
+      alt="Pharmacy Logo"
+      src="https://media.istockphoto.com/id/1220042059/vector/caduceus-medical-symbol-for-healthcare-and-medicine-pharmacy-apps-on-a-transparent-background.jpg?s=1024x1024&w=is&k=20&c=buxAw2ErUE6wRRh6PcCh0qSfySfj7JsjAJp0thTNZIM=" />
+    <h1>Welcome to our Online Pharmacy</h1>
+      <div class="spacer"></div>
+      <svg width="30" height="30" viewBox="0 0 24 24">
+        <path d="M3 10v11h6v-7h6v7h6v-11L12,3z"/>
+      </svg>
+      <a  route.value="profile" aria-label="User profile" target="_blank" rel="noopener" href="https://youtube.com/angular" title="Profile">
+        <svg  id="profile-logo" width="24" height="24" viewBox="0 0 24 24" stroke="#212b36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+         <circle cx="12" cy="8" r="5" />
+          <path d="M3,21 h18 C 21,12 3,12 3,21"/>
+        </svg>
+      </a>
+  </div>
+  -->
+  <div class="content" role="main">
+  
+    
+    <br>
+    <br>
+    <br>
+    <!-- Resources -->
+    <h1>Consultation</h1>
+    <p>Here are some diagnosis to help you describe:</p>
+   <!--
+    <div class="card-container">
+      <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+        <span>Learn Angular</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+  -->
+        
+    <input type="hidden" id="selection" #ro>
+  
+    <div class="card-container">
+      <button class="card card-small" (click)="click(0)" tabindex="0">
+       <span>Common Cold & Influenza</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      
+      </button>
+  
+      <button class="card card-small" (click)="click(1)" tabindex="0">
+        <span>Dry Cough</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    
+      </button>
+  
+      <button class="card card-small" (click)="click(2)" tabindex="0">
+        <span>Productive Cough</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(3)" tabindex="0">
+        <span>Acute Bronchitis</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(4)"  tabindex="0">
+        <span>Constipation</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(5) " tabindex="0">
+        <span>Irritable Colon</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(6) " tabindex="0">
+        <span>Hyperacidity</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(7) " tabindex="0">
+        <span>Gastritis</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(8) " tabindex="0">
+        <span>Ear Wax & Pain</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(9) " tabindex="0">
+        <span>Mouth Ulcers</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+      <button class="card card-small" (click)="click(10) " tabindex="0">
+        <span>Toothache</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+  
+      <button class="card card-small" (click)="click(11) " tabindex="0">
+        <span>Eye Congestion</span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+    </div>
+  
+    <!-- Terminal -->
+    <div class="terminal " [ngSwitch]="selection">
+  
+        <pre *ngSwitchDefault>Here is our recommendation for your diagnosis.</pre>
+        <pre *ngSwitchCase=0>{{this.treatment}}</pre>
+        <pre *ngSwitchCase=1>{{this.treatment}}</pre>
+        <pre *ngSwitchCase=2>ng add _____</pre>
+        <pre *ngSwitchCase=3>{{route.value}}</pre>
+        <pre *ngSwitchCase=4>ng build</pre>
+    </div>
+  
+  
+    <!-- Footer -->
+    <footer>
+        <br>Is our recommendation helpful?&nbsp;
+        <br>&nbsp;
+        
+          <div class="github-star-badge">
+              <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Rate
+          </div>
+        
+    </footer>
+  
+    <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
+      <title>Gray Clouds Background</title>
+      <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
+    </svg>
+  
+  </div>
+  
+  <router-outlet></router-outlet>
+  
