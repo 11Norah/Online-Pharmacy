@@ -16,8 +16,8 @@ public class SignUpInController {
         return service.recordNewUser(user);
     }
 
-    @GetMapping("/signin")
-    public boolean signIn(SignInDto signInDto) {
+    @PostMapping("/signin")
+    public boolean signIn(@RequestBody SignInDto signInDto) {
         return service.authenticate(signInDto);
     }
 }
