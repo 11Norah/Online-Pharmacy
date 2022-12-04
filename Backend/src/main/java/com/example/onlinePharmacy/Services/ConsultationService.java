@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @Component
@@ -26,9 +27,13 @@ public class ConsultationService {
         return ConsultationMapper.mapConsultationToDTO(consultation);
     }
 
-    public List<Product> diagnose(String diagnosis) {
+    public List<ProductDto> diagnose(String diagnosis) {
         ConsultationDto consultationDto = getConsultationDTO(getConsultation(diagnosis));
-        return consultationDto.getProducts();
+        List<ProductDto> treatments = new ArrayList<>();
+        for(Product p : consultationDto.getProducts()) {
+            treatments.add(ProductMapper.mapProductToDto(p));
+        }
+        return treatments;
     }
 
 }
