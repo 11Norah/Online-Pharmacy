@@ -8,14 +8,18 @@ body{
     text-align: center;
     position: relative;
     margin:auto;
+
     top:100px;
+
     bottom:0;
     left:0;
     right:0;
     padding:0px;
 }
 table td{
+
     padding:10px;
+
 }
 
 .div1{
@@ -24,7 +28,9 @@ table td{
     background-color: rgb(156, 155, 155);
     padding:0;
     border-radius: 15px;
+
     box-shadow: 0px 0px 15px 2px rgb(249, 208, 24);
+
     transition: 0.5s;
 }
 .div1:hover{
@@ -63,9 +69,11 @@ table td{
   .header{
       text-align: left;
       font-size:55px;
+
       color:rgb(249, 208, 24);
       font-family:Sans-serif;
       position: relative;
       right:70px;;
+
   }
 

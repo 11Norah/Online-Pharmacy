@@ -1,7 +1,9 @@
+
 import { Router } from '@angular/router';
 import { ServerService } from './server.service';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewConta
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })  
   container!: ViewContainerRef;
@@ -25,5 +28,4 @@ export class AppComponent {
     document.getElementById("mySidenav")!.style.width="0";
 
   }
-}
 
