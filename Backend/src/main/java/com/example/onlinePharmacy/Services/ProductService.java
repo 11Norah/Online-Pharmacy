@@ -30,4 +30,8 @@ public class ProductService {
         productDto.setRate((productDto.getRate() + rate) / productDto.getNumOfRates());
         productRepo.save(ProductMapper.mapDtoToProduct(productDto));
     }
+
+    public void deleteProducts(){
+        productRepo.deleteAll();
+    }
 }

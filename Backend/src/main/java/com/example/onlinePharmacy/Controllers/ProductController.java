@@ -50,4 +50,11 @@ public class ProductController {
             return "id notFound";
         }
     }
+
+    @PostMapping(path = "/deleteProducts")
+    public @ResponseBody String deleteProducts() {
+        productService.deleteProducts();
+        return "deletesSuccessfully";
+
+    }
 }
