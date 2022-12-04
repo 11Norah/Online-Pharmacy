@@ -1,6 +1,6 @@
 
-
 import { Router } from '@angular/router';
+import { ServerService } from './server.service';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
 
@@ -29,4 +29,3 @@ export class AppComponent {
 
   }
 
-}

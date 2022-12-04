@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./consultation.component.css']
 })
 export class ConsultationComponent {
+
 route:any;
   title = 'pharmacy';
   selection :number=-1
@@ -18,4 +19,5 @@ click(diagnosis : number){
   else if(diagnosis==1){this.treatment="Farcolin tab \n 1 tablet 3 times daily"}
   console.log(this.selection)// 👉️ "Initial value"
 }
+
 }

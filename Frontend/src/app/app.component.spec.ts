@@ -21,10 +21,10 @@ describe('AppComponent', () => {
   });
 
 
-  it(`should have as title 'pharmacy'`, () => {
+  it(`should have as title 'OnlinePharmacy'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('pharmacy');
+    expect(app.title).toEqual('OnlinePharmacy');
 
   });
 
@@ -33,7 +33,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelector('.content span')?.textContent).toContain('pharmacy app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('OnlinePharmacy app is running!');
 
   });
 });
