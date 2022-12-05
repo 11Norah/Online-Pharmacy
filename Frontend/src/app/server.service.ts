@@ -7,12 +7,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   providedIn: 'root'
 })
 export class ServerService {
-  product={id:0,img:"",name:"",price:"",rate:0,category:"",description:""}
+  product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){
 }
-RecieveSelectedProduct(id:number,img:string,name:string,price:string,rate:number,category:string,description:string){
+RecieveSelectedProduct(id:number,img:string,name:string,price:number,rate:number,category:string,description:string){
   this.product.id=id;
   this.product.img=img;
   this.product.name=name;
@@ -20,11 +20,6 @@ RecieveSelectedProduct(id:number,img:string,name:string,price:string,rate:number
   this.product.rate=rate;
   this.product.category=category;
   this.product.description=description;
-
-
-
-
-
 }
 
 SendSelectedProduct(){
