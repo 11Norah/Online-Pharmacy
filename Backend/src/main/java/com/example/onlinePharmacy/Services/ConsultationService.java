@@ -29,11 +29,7 @@ public class ConsultationService {
 
     public List<ProductDto> diagnose(String diagnosis) {
         ConsultationDto consultationDto = getConsultationDTO(getConsultation(diagnosis));
-        List<ProductDto> treatments = new ArrayList<>();
-        for(Product p : consultationDto.getProducts()) {
-            treatments.add(ProductMapper.mapProductToDto(p));
-        }
-        return treatments;
+        return consultationDto.getProducts();
     }
 
 }

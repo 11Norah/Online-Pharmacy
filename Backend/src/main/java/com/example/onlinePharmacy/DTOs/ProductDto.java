@@ -2,6 +2,8 @@ package com.example.onlinePharmacy.DTOs;
 
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @ToString
