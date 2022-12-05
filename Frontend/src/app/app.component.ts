@@ -28,4 +28,4 @@ export class AppComponent {
     document.getElementById("mySidenav")!.style.width="0";
 
   }
-
+}
