@@ -1,5 +1,6 @@
 body{
     background:linear-gradient(to bottom,rgb(76, 75, 75) 10%, #fff 50%);
+    width:100%;
     color:teal;
     padding:20px 150px 20px 150px;
 }
@@ -23,8 +24,8 @@ table td{
 }
 
 .div1{
-    width:130px;
-    height:90px;
+    width:300px;
+    height:200px;
     background-color: rgb(156, 155, 155);
     padding:0;
     border-radius: 15px;
@@ -39,27 +40,14 @@ table td{
     transition: 0.3s;
 }
 .btn{
-    padding:5px 15px 5px 15px;
-    border-radius: 20px 4px 20px 4px;
+    padding:5px 50px 5px 50px;
+    border-radius: 40px 5px 40px 5px;
+    font-size: large;
     border:none;
     color:white;
+    background-color:#010101;
 }
-.btn1{
-   background-color:#010101;
-}
-.btn2{
-    background-color:#a2b119;
- }
- .btn3{
-    background-color:#00b050;
- }
- .btn4{
-    background-color:#7030a0;
- }
- p{
-     font-size:15px;
-     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
- }
+
  .footer{
      font-weight:lighter;
      font-size:20px;
@@ -69,11 +57,19 @@ table td{
   .header{
       text-align: left;
       font-size:55px;
+      text-shadow: 0 0 3px #b5eb12, 0 0 5px #c4f925;
 
-      color:rgb(249, 208, 24);
+
+      color:rgb(58, 56, 48);
       font-family:Sans-serif;
       position: relative;
-      right:70px;;
+      right:100px;;
 
   }
+  .img {
+    object-fit: cover;
+    border-radius: 15px;
 
+    width:300px;
+    height:200px;
+ }

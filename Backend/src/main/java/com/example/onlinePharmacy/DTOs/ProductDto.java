@@ -11,7 +11,7 @@ import lombok.*;
 @EqualsAndHashCode
 
 public class ProductDto {
-    private Long id ;
+    private Long product_id ;
     private String name;
     private String type;
     private String description;
@@ -19,4 +19,6 @@ public class ProductDto {
     private boolean permission;
     private double price;
     private double rate;
+    private int numOfRates;
+
 }

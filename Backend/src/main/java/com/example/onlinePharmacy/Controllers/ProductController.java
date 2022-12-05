@@ -4,6 +4,7 @@ import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +18,14 @@ public class ProductController {
 
     @PostMapping(path = "/addProduct") // Map ONLY POST Requests
     public @ResponseBody String addNewProduct(@RequestParam String name
-            , @RequestParam String description, @RequestParam String image, @RequestParam boolean permission, @RequestParam double price, @RequestParam String category) {
+            , @RequestParam String description, @RequestParam String image, @RequestParam boolean permission, @RequestParam double price, @RequestParam String type) {
         Product product = new Product();
         product.setName(name);
         product.setDescription(description);
         product.setImage(image);
         product.setPermission(permission);
         product.setPrice(price);
-        product.setCategory(category);
+        product.setType(type);
         product.setNumOfRates(0);
         productRepo.save(product);
         return "added";
@@ -35,9 +36,9 @@ public class ProductController {
         return productRepo.findAll();
     }
 
-    @GetMapping(path = "/getByCategory")
-    public @ResponseBody Iterable<Product> getProductsByCategory(@RequestParam String category) {
-        return productRepo.findAllByCategory(category);
+    @GetMapping(path = "/getByType")
+    public @ResponseBody Iterable<Product> getProductsByCategory(@RequestParam String type) {
+        return productRepo.findAllByType(type);
     }
 
     @PostMapping(path = "/changeRate")
@@ -48,5 +49,12 @@ public class ProductController {
         } catch (Exception e) {
             return "id notFound";
         }
+    }
+
+    @PostMapping(path = "/deleteProducts")
+    public @ResponseBody String deleteProducts() {
+        productService.deleteProducts();
+        return "deletesSuccessfully";
+
     }
 }

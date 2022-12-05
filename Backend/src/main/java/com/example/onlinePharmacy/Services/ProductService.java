@@ -1,5 +1,7 @@
 package com.example.onlinePharmacy.Services;
 
+import com.example.onlinePharmacy.DTOs.ProductDto;
+import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +16,22 @@ public class ProductService {
     @Autowired
     public ProductRepo productRepo;
 
-    public void changeProductRate(Long id, int rate) throws Exception {
-        Optional<Product> findProduct = productRepo.findById(id);
-        if (findProduct.isPresent()) {
-            Product product = findProduct.get();
-            product.setNumOfRates(product.getNumOfRates() + 1);
-            product.setRate((product.getRate() + rate) / product.getNumOfRates());
-            productRepo.save(product);
+    public ProductDto getProduct(Optional<Product> product) throws Exception {
+        if (product.isPresent()) {
+            return ProductMapper.mapProductToDto(product.get());
         } else {
             throw new Exception();
         }
+    }
+
+    public void changeProductRate(Long id, int rate) throws Exception {
+        ProductDto productDto = getProduct(productRepo.findById(id));
+        productDto.setNumOfRates(productDto.getNumOfRates() + 1);
+        productDto.setRate((productDto.getRate() + rate) / productDto.getNumOfRates());
+        productRepo.save(ProductMapper.mapDtoToProduct(productDto));
+    }
+
+    public void deleteProducts(){
+        productRepo.deleteAll();
     }
 }

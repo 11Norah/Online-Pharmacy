@@ -1,11 +1,14 @@
 package com.example.onlinePharmacy.Model;
 
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "Orderss")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -13,12 +16,12 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Orders {
     @EmbeddedId
     private orderKey id ;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+   @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("userId")
     @JoinColumn(name = "userId")
     private User user ;
@@ -36,5 +39,6 @@ public class Orders {
 
     @Column(name = "oDate", nullable = false)
     private LocalDate orderDate;
+
 
 }
