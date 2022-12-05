@@ -10,7 +10,7 @@ export class AboutProductComponent implements OnInit{
   ngOnInit(): void {
       
   }
-  SelectedProduct:{id:number,img:string,name:string,price:string,rate:number,category:string,description:string}=this.Server.product;
+  SelectedProduct:{id:number,img:string,name:string,price:number,rate:number,category:string,description:string}=this.Server.product;
   getStars(rating:any) {
 
     // Round to nearest half

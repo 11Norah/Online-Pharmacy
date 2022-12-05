@@ -1,5 +1,3 @@
-
-
 <div  class="page">
     <p class="bestseller">Best Seller Products</p>
     <form class="shape">
@@ -10,7 +8,7 @@
     <div>
         <a *ngFor="let product of bestsellerproducts">    
              <a #rate id="{{product.id}}" class="rate">{{show(rate.id)}}</a>
-<button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutproduct" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.img,product.name,product.price,product.rate,product.category,product.description)" ><img height="200" width="200" class=" img" src={{product.img}}><p class="info" >{{product.name}}<br>{{product.price}}</p>
+<button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutproduct" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.img,product.name,product.price,product.rate,product.category,product.description)" ><img height="200" width="200" class=" img" src={{product.img}}><p class="info" >{{product.name}}<br>{{product.price}} LE</p>
         </div><button  class="cart">Add to Cart</button>
         
     </button>
