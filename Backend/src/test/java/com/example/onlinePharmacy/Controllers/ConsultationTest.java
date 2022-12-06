@@ -25,7 +25,7 @@ public class ConsultationTest {
     private ConsultationRepo consultationRepo ;
     @Test
     public void getColdProducts(){
-        List<ProductDto> productDtoList = consultationController.getTreatments("Common Cold & Influenza");
+        List<ProductDto> productDtoList = consultationController.getTreatments("Common Cold and Influenza");
         assertNotEquals(0,productDtoList.size());
     }
     @Test
@@ -70,7 +70,7 @@ public class ConsultationTest {
     }
     @Test
     public void getEarWaxAndPainProducts(){
-        List<ProductDto> productDtoList = consultationController.getTreatments("Ear Wax & Pain");
+        List<ProductDto> productDtoList = consultationController.getTreatments("Ear Wax and Pain");
         assertNotEquals(0,productDtoList.size());
     }
     @Test
