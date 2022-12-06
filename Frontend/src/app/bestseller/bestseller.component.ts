@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerService } from '../server.service';
+import { ProductService } from 'src/services/product.service';
+import { Product } from 'src/models/product.model';
 @Component({
   selector: 'app-bestseller',
   templateUrl: './bestseller.component.html',
   styleUrls: ['./bestseller.component.css']
 })
 export class BestsellerComponent implements OnInit {
-  constructor(private Server:ServerService){}
+  bestsellerproducts: Product[] = [];
+  constructor(private Server:ProductService){}
   ngOnInit(): void {
       this.Server.getTopRated().subscribe(response => this.bestsellerproducts = response);
   }
