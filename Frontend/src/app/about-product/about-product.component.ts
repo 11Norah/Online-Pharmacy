@@ -11,6 +11,7 @@ export class AboutProductComponent implements OnInit{
       
   }
   SelectedProduct:{id:number,img:string,name:string,price:number,rate:number,category:string,description:string}=this.Server.product;
+  //rating of product
   getStars(rating:any) {
 
     // Round to nearest half
@@ -35,41 +36,11 @@ export class AboutProductComponent implements OnInit{
 
     document.getElementById("stars")!.innerHTML=this.getStars(this.SelectedProduct.rate)
   }
-  rate(){
-  
-    if((<HTMLInputElement>document.getElementById("star5")).checked){
-      return 5;
-    }
-    else if((<HTMLInputElement>document.getElementById("star4half")).checked){
-      return 4.5;
-    }
-    else if((<HTMLInputElement>document.getElementById("star4")).checked){
-      return 4;
-    }
-    else if((<HTMLInputElement>document.getElementById("star3half")).checked){
-      return 3.5;
-    }
-    else if((<HTMLInputElement>document.getElementById("star3")).checked){
-      return 3;
-    }
-    else if((<HTMLInputElement>document.getElementById("star2half")).checked){
-      return 2.5
-    }
-    else if((<HTMLInputElement>document.getElementById("star2")).checked){
-      return 2
-    }
-    else if((<HTMLInputElement>document.getElementById("star1half")).checked){
-      return 1.5
-    }
-    else if((<HTMLInputElement>document.getElementById("star1")).checked){
-      return 1
-    }
-    else if((<HTMLInputElement>document.getElementById("starhalf")).checked){
-      return .5
-    }
-    else {
-      return 0
-    }
+  //to submit rating of product
+  submit_rate(value:string){
+    let rate:number=+value
+    //call backend
+    console.log(rate)
   }
-  
+
 }
