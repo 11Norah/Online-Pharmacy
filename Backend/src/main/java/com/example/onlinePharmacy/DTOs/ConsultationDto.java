@@ -15,6 +15,6 @@ import java.util.List;
 public class ConsultationDto {
 
     private String diagnosis ;
-    private List<Product> products;
+    private List<ProductDto> products;
 
 }

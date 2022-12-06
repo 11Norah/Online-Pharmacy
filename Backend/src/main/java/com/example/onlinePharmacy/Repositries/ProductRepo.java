@@ -12,4 +12,5 @@ import java.util.List;
 @Qualifier("products")
 public interface ProductRepo extends CrudRepository<Product, Long> {
     List<Product> findAllByType(String type);
+    List<Product> findTop10ByOrderByRateDesc();
 }

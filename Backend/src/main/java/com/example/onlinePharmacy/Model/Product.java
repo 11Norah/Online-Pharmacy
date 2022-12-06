@@ -36,7 +36,7 @@ public class Product {
     @Column
     private int numOfRates;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Consultation> diagnosis;
 
 

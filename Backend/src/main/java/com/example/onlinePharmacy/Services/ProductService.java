@@ -5,9 +5,15 @@ import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,15 +29,22 @@ public class ProductService {
             throw new Exception();
         }
     }
-
-    public void changeProductRate(Long id, int rate) throws Exception {
+    public List<ProductDto> getProductsByID(List<Long> iDs) throws Exception {
+        List<ProductDto> productDtoList = new ArrayList<>();
+        for(Long id : iDs){
+            productDtoList.add(getProduct(productRepo.findById(id)));
+        }
+        return productDtoList;
+    }
+    public double changeProductRate(Long id, int rate) throws Exception {
+        int numOfRates;
         ProductDto productDto = getProduct(productRepo.findById(id));
-        productDto.setNumOfRates(productDto.getNumOfRates() + 1);
-        productDto.setRate((productDto.getRate() + rate) / productDto.getNumOfRates());
+        numOfRates = productDto.getNumOfRates();
+        productDto.setNumOfRates(numOfRates + 1);
+        double newRate = ((productDto.getRate() * numOfRates) + rate) / productDto.getNumOfRates();
+        productDto.setRate(newRate);
         productRepo.save(ProductMapper.mapDtoToProduct(productDto));
+        return newRate;
     }
 
-    public void deleteProducts(){
-        productRepo.deleteAll();
-    }
 }
