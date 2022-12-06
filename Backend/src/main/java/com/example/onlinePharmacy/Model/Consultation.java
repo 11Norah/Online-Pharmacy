@@ -22,7 +22,7 @@ public class Consultation {
     private String diagnosis;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "diagnosis")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "diagnosis")
     private List<Product> products;
 
 }

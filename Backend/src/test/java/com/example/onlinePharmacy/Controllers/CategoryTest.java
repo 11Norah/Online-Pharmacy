@@ -40,8 +40,8 @@ public class CategoryTest {
     }
     @Test
     public void getSMedicationProducts(){
-        List<ProductDto> productDtoList = (List<ProductDto>) productController.getProductsByCategory("Medication");
-        assertEquals(20,productDtoList.size());
+        List<ProductDto> productDtoList = (List<ProductDto>) productController.getProductsByCategory("Medications");
+        assertEquals(19,productDtoList.size());
     }
     @Test
     public void getOralCareProducts(){

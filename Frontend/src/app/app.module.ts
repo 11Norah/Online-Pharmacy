@@ -11,7 +11,7 @@ import { BestsellerComponent } from './bestseller/bestseller.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { AboutProductComponent } from './about-product/about-product.component';
-import { ServerService } from './server.service';
+import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
 

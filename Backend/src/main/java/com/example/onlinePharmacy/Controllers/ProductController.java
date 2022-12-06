@@ -1,5 +1,7 @@
 package com.example.onlinePharmacy.Controllers;
 
+import com.example.onlinePharmacy.DTOs.ProductDto;
+import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
 import com.example.onlinePharmacy.Services.ProductService;
@@ -8,53 +10,59 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller // This means that this class is a Controller
-@RequestMapping(path = "/products") // This means URL's start with /demo (after Application path)
+import java.util.List;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
     @Autowired
     private ProductRepo productRepo;
     @Autowired
     private ProductService productService;
 
-    @PostMapping(path = "/addProduct") // Map ONLY POST Requests
-    public @ResponseBody String addNewProduct(@RequestParam String name
-            , @RequestParam String description, @RequestParam String image, @RequestParam boolean permission, @RequestParam double price, @RequestParam String type) {
-        Product product = new Product();
-        product.setName(name);
-        product.setDescription(description);
-        product.setImage(image);
-        product.setPermission(permission);
-        product.setPrice(price);
-        product.setType(type);
-        product.setNumOfRates(0);
-        productRepo.save(product);
-        return "added";
-    }
-
     @GetMapping(path = "/getAllProducts")
-    public @ResponseBody Iterable<Product> getAllUsers() {
-        return productRepo.findAll();
+    public @ResponseBody List<ProductDto> getAllProducts() {
+        List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto((List<Product>) productRepo.findAll());
+        return productDtos;
+    }
+    @GetMapping(path = "/getTopProducts")
+    public @ResponseBody List<ProductDto> getTop10Products() {
+        List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto(productRepo.findTop10ByOrderByRateDesc());
+        return productDtos;
     }
 
-    @GetMapping(path = "/getByType")
-    public @ResponseBody Iterable<Product> getProductsByCategory(@RequestParam String type) {
-        return productRepo.findAllByType(type);
-    }
-
-    @PostMapping(path = "/changeRate")
-    public @ResponseBody String changeProductRate(@RequestParam Long id, @RequestParam int rate) {
+    @GetMapping(path = "/getProductsById")
+    public @ResponseBody List<ProductDto> getProductsById(List<Long> iDs) {
         try {
-            productService.changeProductRate(id, rate);
-            return "Changed";
+            return productService.getProductsByID(iDs);
         } catch (Exception e) {
-            return "id notFound";
+            return null;
         }
     }
 
-    @PostMapping(path = "/deleteProducts")
-    public @ResponseBody String deleteProducts() {
-        productService.deleteProducts();
-        return "deletesSuccessfully";
-
+    @GetMapping(path = "/getByType")
+    public @ResponseBody Iterable<ProductDto> getProductsByCategory(@RequestParam String type) {
+        return ProductMapper.bulkMappingFromProductToDto(productRepo.findAllByType(type));
     }
+
+    @GetMapping(path = "/getById")
+    public @ResponseBody ProductDto getProductById(@RequestParam Long id) {
+        try {
+            return productService.getProduct(productRepo.findById(id));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @PostMapping(path = "/changeRate")
+    public @ResponseBody double changeProductRate(@RequestParam Long id, @RequestParam int rate) {
+        double newRate = -1;
+        try {
+            newRate = productService.changeProductRate(id, rate);
+            return newRate;
+        } catch (Exception e) {
+            return newRate;
+        }
+    }
+
 }
