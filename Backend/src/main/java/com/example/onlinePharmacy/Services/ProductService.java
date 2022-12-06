@@ -36,7 +36,7 @@ public class ProductService {
         }
         return productDtoList;
     }
-    public double changeProductRate(Long id, int rate) throws Exception {
+    public double changeProductRate(Long id, double rate) throws Exception {
         int numOfRates;
         ProductDto productDto = getProduct(productRepo.findById(id));
         numOfRates = productDto.getNumOfRates();

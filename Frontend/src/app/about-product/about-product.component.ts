@@ -42,6 +42,11 @@ export class AboutProductComponent implements OnInit{
     let rate:number=+value
     //call backend
     console.log(rate)
+    this.Server.changeRate(this.SelectedProduct.id, rate).subscribe(response => {
+      console.log("response = " + response);
+      this.SelectedProduct.rate = response;
+      document.getElementById("stars")!.innerHTML = this.getStars(this.SelectedProduct.rate);
+    })
 
   }
 
