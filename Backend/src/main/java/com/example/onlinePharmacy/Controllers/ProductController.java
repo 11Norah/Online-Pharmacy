@@ -4,6 +4,7 @@ import com.example.onlinePharmacy.DTOs.ProductDto;
 import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
+import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -55,10 +56,10 @@ public class ProductController {
     }
 
     @PostMapping(path = "/changeRate")
-    public @ResponseBody double changeProductRate(@RequestParam Long id, @RequestParam int rate) {
+    public @ResponseBody double changeProductRate(@RequestBody ChangeRateReqBody body) {
         double newRate = -1;
         try {
-            newRate = productService.changeProductRate(id, rate);
+            newRate = productService.changeProductRate(body.id, body.rate);
             return newRate;
         } catch (Exception e) {
             return newRate;

@@ -1,9 +1,9 @@
 package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.ProductDto;
+import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -67,7 +67,8 @@ class ProductControllerTest {
     void changeRate() {
         ProductDto productDto = productController.getProductById(0L);
         double prevRate = productDto.getRate();
-        productController.changeProductRate(0L, 5);
+        ChangeRateReqBody body = new ChangeRateReqBody(0L, 5);
+        productController.changeProductRate(body);
         assertNotEquals(productController.getProductById(0L).getRate(), prevRate);
     }
 }

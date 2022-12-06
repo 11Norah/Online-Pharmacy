@@ -28,6 +28,10 @@ public getTopRated(): Observable<Product[]> {
   return this.http.get<Product[]>("http://localhost:8080/getTopProducts");
 }
 
+public changeRate(id: number, rate: number): Observable<number> {
+  return this.http.post<number>("http://localhost:8080/changeRate", {id, rate});
+}
+
 SendSelectedProduct(){
 }
 }
