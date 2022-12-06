@@ -1,8 +1,11 @@
 body{
     background:linear-gradient(to bottom,rgb(76, 75, 75) 10%, #fff 50%);
-    width:100%;
+    width:81.5%;
     color:teal;
     padding:20px 150px 20px 150px;
+    position: relative;
+    left: -20px;
+    top: 122px;
 }
 #table{
     width:100%;
@@ -57,7 +60,7 @@ table td{
   .header{
       text-align: left;
       font-size:55px;
-      text-shadow: 0 0 3px #b5eb12, 0 0 5px #c4f925;
+      text-shadow: 0 0 3px rgb(249, 208, 24), 0 0 5px rgb(249, 208, 24);
 
 
       color:rgb(58, 56, 48);
