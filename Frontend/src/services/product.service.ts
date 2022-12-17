@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NONE_TYPE } from '@angular/compiler';
 import { AppComponent } from "../app/app.component"
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/models/product.model';
 @Injectable({
   providedIn: 'root'
@@ -28,13 +28,17 @@ RecieveSelectedCategoryName(CategoryName:string){
   this.SelectedCategoryName=CategoryName;
 }
 
-
+port = 8080;
 public getTopRated(): Observable<Product[]> {
-  return this.http.get<Product[]>("http://localhost:8080/getTopProducts");
+  return this.http.get<Product[]>(`http://localhost:${this.port}/getTopProducts`);
 }
 
 public changeRate(id: number, rate: number): Observable<number> {
-  return this.http.post<number>("http://localhost:8080/changeRate", {id, rate});
+  return this.http.post<number>(`http://localhost:${this.port}/changeRate`, {id, rate});
+}
+
+public getByCategory(category: string): Observable<Product[]> {
+  return this.http.get<Product[]>(`http://localhost:${this.port}/getByType?type=${category}`);
 }
 
 SendSelectedProduct(){
