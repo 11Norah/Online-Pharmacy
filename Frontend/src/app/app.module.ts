@@ -16,6 +16,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
 //import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RegistrationComponent } from './registration/registration.component';
+//import { OoohComponent } from './oooh/oooh.component';
+//import { RegistrationPageComponent } from './registration-page/registration-page.component';
 //import { LoginPageComponent } from './login-page/login-page.component';
 
 
@@ -25,13 +27,11 @@ import { RegistrationComponent } from './registration/registration.component';
   declarations: [
     AppComponent,
     CategoriesComponent,
-
     BestsellerComponent,
     CategoriesPageComponent,
     ShoppingcartComponent,
     ConsultationComponent,
     AboutProductComponent,
-    
     RegistrationComponent
 
 
