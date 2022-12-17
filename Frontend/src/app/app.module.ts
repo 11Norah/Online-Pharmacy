@@ -14,6 +14,10 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyordersComponent } from './myorders/myorders.component';
+import { MyinfoComponent } from './myinfo/myinfo.component';
+
 
 
 
@@ -27,7 +31,11 @@ import { ConsultationComponent } from './consultation/consultation.component';
     CategoriesPageComponent,
     ShoppingcartComponent,
     ConsultationComponent,
-    AboutProductComponent
+    AboutProductComponent,
+    ProfileComponent,
+    MyordersComponent,
+    MyinfoComponent
+   
 
 
   ],
@@ -37,7 +45,7 @@ import { ConsultationComponent } from './consultation/consultation.component';
 
     HttpClientModule,
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}])
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"profile",component:ProfileComponent},{path:"profile/myinfo",component:ProfileComponent}])
 
   ],
   providers: [],
