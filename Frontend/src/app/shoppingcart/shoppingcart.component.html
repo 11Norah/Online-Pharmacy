@@ -1,1 +1,40 @@
-<p>shoppingcart works!</p>
+<html>
+<head>
+    <link rel="stylesheet" href="shoppingcart.component.css" type="text/css" />
+</head>
+
+<body>
+    
+    <table id="table">
+        <tr>
+            <td >
+                <p class="header">Product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubTotal</p>
+                <p class="line">________________________________________</p>
+            </td>
+        </tr>
+        <div *ngFor="let product of bestsellerproducts">
+        <tr class="table">
+            <td>
+                <img class="productimg" width="80" height="70" src={{product.img}}>
+                <p class="productname">{{product.name}} </p>
+                <p class="productprice">{{product.price}}.0&nbsp;LE</p>
+                <div  class="value-button" id="decrease" (click)="decreaseValue(product.id)" value="Decrease Value">-</div>
+                <input class="input"   id={{product.id}} value="1" readonly />
+                <div  class="value-button" id="increase" (click)="increaseValue(product.id)" value="Increase Value">+</div>
+                <div id="sub{{product.id}}" class="subtotal"  >{{product.price}}</div>
+                  
+                <p class="seprator">______________________________________________________________________________</p>
+            </td>
+        </tr>
+    </div>   
+       
+        
+    </table>
+    <div>
+    <div class="vl"></div>
+    <div class="cartTotal">Cart Total</div>
+    </div>
+</body>
+
+</html>

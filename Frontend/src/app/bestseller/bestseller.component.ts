@@ -63,6 +63,4 @@ show(id:any){
 console.log(count)
   document.getElementById(ids)!.innerHTML=this.getStars(this.bestsellerproducts[i].rate)
 }
-
-
 }

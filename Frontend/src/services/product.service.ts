@@ -10,6 +10,7 @@ import { Product } from 'src/models/product.model';
 })
 export class ProductService {
   product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
+  SelectedCategoryName=""
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){
@@ -23,6 +24,10 @@ RecieveSelectedProduct(id:number,img:string,name:string,price:number,rate:number
   this.product.category=category;
   this.product.description=description;
 }
+RecieveSelectedCategoryName(CategoryName:string){
+  this.SelectedCategoryName=CategoryName;
+}
+
 
 public getTopRated(): Observable<Product[]> {
   return this.http.get<Product[]>("http://localhost:8080/getTopProducts");

@@ -14,6 +14,8 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
+import { SelectedCategoryComponent } from './selected-category/selected-category.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -21,13 +23,15 @@ import { ConsultationComponent } from './consultation/consultation.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent,
-
     BestsellerComponent,
+
+    CategoriesComponent,
     CategoriesPageComponent,
     ShoppingcartComponent,
     ConsultationComponent,
-    AboutProductComponent
+    AboutProductComponent,
+    SelectedCategoryComponent,
+    SearchComponent
 
 
   ],
@@ -37,7 +41,7 @@ import { ConsultationComponent } from './consultation/consultation.component';
 
     HttpClientModule,
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}])
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"SelectedCategory",component:SelectedCategoryComponent}])
 
   ],
   providers: [],
