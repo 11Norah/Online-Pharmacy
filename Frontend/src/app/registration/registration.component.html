@@ -1,0 +1,87 @@
+
+<div class="login-wrap">
+	<div class="login-html">
+		<img  class="logo" height="100"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png" />
+         <span class="Pharmacyname">AHMENA PHARMACY</span><br>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">
+                        <span ><i for="user" class="fa fa-user-circle"></i>
+                        </span> Username</label><br>
+                        <input id="userSignIn" type="text" class="input">
+					
+				</div>
+				<div class="group">
+					<label for="pass" class="label" >
+                         <span ><i for="user" class="fa fa-key"></i></span>
+                        Password</label><br>
+                      <input id="passSignIn" type="password" class="input" minlength="9" oninvalid="alert('Weak password');" data-type="password">
+							<i (click)="toggle()" id="togglePassword" class="fa fa-eye"  style="margin-left: 1600px;  cursor: pointer; color: rgb(245, 235, 235);" type="button" ></i>
+        
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" (click )="ValidateRequest()" value="Sign In">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</div>
+
+			
+			<div class="sign-up-htm">
+				<h1 style="color:blanchedalmond"> Fill in this form ,To create an account</h1><br>
+				<div class="group">
+					<label for="user" class="label"><span ><i for="user" class="fa fa-user-circle"></i>
+					</span>Username</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label"><span ><i for="user" class="fa fa-key"></i>
+					</span>Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label"><span ><i for="pass" class="fa fa-key"></i>
+					</span>Repeat Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label"><span ><i for="mail" class="fa fa-envelope"></i>
+					</span> Email Address</label>
+					<input id="mail" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="phone" class="label"><span ><i for="phone" class="fa fa-phone-square"></i>
+					</span> Phone Mobile</label>
+					<input id="phone" type="tel" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label"><span ><i for="user" class="fa fa-id-card-o "></i>
+					</span> Age</label>
+					<input id="pass" type="number" min="12" class="input">
+				</div>
+				<div class="group">
+					<label for="address" class="label"><span ><i for="user" class="fa fa-address-book-o"></i>
+					</span> Address</label>
+					<input id="address" type="text" class="input">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign Up">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Already Member?</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
