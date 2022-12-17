@@ -15,7 +15,6 @@ public class ProfileDto {
 
     private String name;
     private String email;
-    private String birth_date;
     private String phoneNumber;
     private String address;
     private Integer age;

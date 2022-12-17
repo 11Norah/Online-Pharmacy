@@ -9,7 +9,6 @@ public class ProfileMapper {
                 .name(user.getFirstName() + " " + user.getLastName())
                 .email(user.getEmail())
                 .address(user.getAddress())
-                .birth_date(user.getBirth_date().toString())
                 .age(user.getAge())
                 .build();
     }
