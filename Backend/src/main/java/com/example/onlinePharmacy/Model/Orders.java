@@ -21,7 +21,7 @@ public class Orders {
     @EmbeddedId
     private orderKey id ;
 
-   @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("userId")
     @JoinColumn(name = "userId")
     private User user ;
