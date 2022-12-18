@@ -3,15 +3,20 @@
 	
 		<img  class="logo" height="100"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png" />
          <span class="Pharmacyname">AHMENA PHARMACY</span><br>
-         <H1 style="position:relative; margin-left: 600px; font-size: 40px; color: beige;">
+         <H1 style="position:relative; margin-left: 500px; font-size: 40px; color: beige;">
             Your account has been created! <br></H1>
-        <H1 style="position:relative; margin-left: 400px; font-size: 40px; color: beige;">   
+        <H1 style="position:relative; margin-left: 300px; font-size: 40px; color: beige;">   
           To activate your account ,We have sent code to your Email<br></H1>
-          <H1 style="position:relative; margin-left: 350px; font-size: 40px; color: beige;">
+          <H1 style="position:relative; margin-left: 250px; font-size: 40px; color: beige;">
             Check your mail And fill the below field with the received code.</H1>
          
          <form > 
-            <input type="text" class="input" maxlength="4"  id="pin" pattern="\d{4}" required/>
-            <button class="button" style="background-color:rgba(255, 255, 0, 0.781);" (click)="confirmation()"> Submit</button></form>
-    </div>
+            <input type="text" class="input" maxlength="4"  id="pin" pattern="\d{4}" />
+            <button class="button" style="background-color:rgb(249, 208, 24);" (click)="confirmation()"> Submit</button>
+         
+            <p id="demo">  Time left: </p>
+            <button class="button" style="background-color:rgb(249, 208, 24);font-size:large; margin-left: 700px;" (click)="resend"> Resend code</button>
+         </form>
+
+         </div>
 </div>
