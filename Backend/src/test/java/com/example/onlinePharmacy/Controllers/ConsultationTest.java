@@ -11,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -83,4 +82,6 @@ public class ConsultationTest {
         List<ProductDto> productDtoList = consultationController.getTreatments("Eye Congestion");
         assertNotEquals(0,productDtoList.size());
     }
+
+
 }

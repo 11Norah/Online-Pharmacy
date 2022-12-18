@@ -46,7 +46,9 @@ class ProductControllerTest {
     }
 
     @Test
-    void getProductsByCategory() {
+    void getProductsByWrongId() {
+        ProductDto productDto = productController.getProductById((long) -1);
+        assertNull(productDto);
     }
 
     @Test
@@ -61,6 +63,7 @@ class ProductControllerTest {
             assertEquals(productDtoList.get(i).getProduct_id(), iDs.get(i));
         }
     }
+
 
     @Test
     @Transactional
