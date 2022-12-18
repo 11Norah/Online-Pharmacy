@@ -20,6 +20,7 @@ public class UserMapper {
                 .age(u.getAge())
                 .build();
     }
+
     public static User DtoToUser(UserDto u){
         LocalDate bd = LocalDate.parse(u.getBirth_date());
         return User.builder()

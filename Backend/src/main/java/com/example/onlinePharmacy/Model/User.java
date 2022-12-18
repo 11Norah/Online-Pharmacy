@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+
 public class User implements Serializable{
     @Id
     @SequenceGenerator(
@@ -46,6 +47,7 @@ public class User implements Serializable{
     private String address;
     @Column(name = "periodicDrug", nullable = false)
     private boolean pDrug;
+
     @Transient
     private Integer age;
 
