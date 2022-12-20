@@ -2,6 +2,9 @@ package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.SignInDto;
 import com.example.onlinePharmacy.DTOs.UserDto;
+import com.example.onlinePharmacy.RequestBodies.TokenObject;
+import com.example.onlinePharmacy.Services.SignInService;
+import com.example.onlinePharmacy.Services.SignUpService;
 import com.example.onlinePharmacy.Mappers.UserMapper;
 import com.example.onlinePharmacy.Model.User;
 import com.example.onlinePharmacy.Repositries.UserRepo;
@@ -17,19 +20,28 @@ public class SignUpInController {
     @Autowired
     UserRepo userRepo;
 
+    SignUpService signUpService;
+
+    @Autowired
+    SignInService signInService;
 
     @PostMapping("/signup")
     public boolean signUp(@RequestBody UserDto user) {
-        return service.recordNewUser(user);
-    }
-     @PostMapping("/signin")
-    public boolean signIn(@RequestBody SignInDto signInDto) {
-        return service.authenticate(signInDto);
+        return signUpService.recordNewUser(user);
     }
 
-    @GetMapping(path = "/getAllUsers")
-    public @ResponseBody List<UserDto> getAllProducts() {
-        List<UserDto> userDtos = UserMapper.bulkMappingFromUserToDto((List<User>) userRepo.findAll());
-        return userDtos;
+    @PostMapping("/signin")
+    public int signIn(@RequestBody SignInDto signInDto) {
+        return signInService.authenticate(signInDto);
+    }
+
+    @PostMapping("/activate-account")
+    public int activateAccount(@RequestBody TokenObject tokenObject) {
+        return signUpService.activateAccount(tokenObject);
+    }
+
+    @GetMapping("/get-activation-code")
+    public boolean sendToken(@RequestParam String email) {
+        return signUpService.sendActivationToken(email);
     }
 }
