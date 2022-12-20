@@ -27,7 +27,6 @@ public class User implements Serializable{
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-
     @Column(name = "userId")
     private Long id;
     @Column(name = "fName", nullable = false)
@@ -48,5 +47,7 @@ public class User implements Serializable{
     private boolean pDrug;
     @Transient
     private Integer age;
+    @Column(name = "enabled", nullable = false, columnDefinition = "boolean default false")
+    private boolean enabled = false;
 
 }

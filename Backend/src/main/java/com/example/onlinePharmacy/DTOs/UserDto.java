@@ -21,5 +21,4 @@ public class UserDto {
     private boolean pDrug ;
     private String address;
     private Integer age;
-
 }

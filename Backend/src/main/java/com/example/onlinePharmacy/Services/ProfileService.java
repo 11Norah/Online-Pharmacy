@@ -8,17 +8,16 @@ import com.example.onlinePharmacy.Repositries.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class ProfileService {
     @Autowired
     private UserRepo userRepo ;
     public ProfileDto getUserData(String email){
-        Optional<User> user = userRepo.findUserByEmail(email) ;
+        User user = userRepo.findUserByEmail(email) ;
         ProfileDto profileDto = null;
-        if (user.isPresent()){
-            profileDto = ProfileMapper.UserToProfileDto(user.get()) ;
+        if (user != null ){
+            profileDto = ProfileMapper.UserToProfileDto(user) ;
         }
         return profileDto ;
     }
