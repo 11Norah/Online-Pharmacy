@@ -1,5 +1,21 @@
+<html>
+    
+<body>
+
+  <ul class="topnav" >
+    <li><a class="text"  routerLink="myinfo" routerLinkActive="activebutton">My Info</a></li>
+    <li><a class="text"  routerLink="myorders"routerLinkActive="activebutton">My orders</a></li>
+    <li><a class="text"  routerLink="editdata"routerLinkActive="activebutton">Update data</a></li>
+    
+  </ul>
+  
+
+ 
+
+<router-outlet></router-outlet> 
+
 <div class="main">
-    <h2 class="text">User Info</h2>
+    <h2 class="text">My Info</h2>
   <div class="card">
     <div class="card-body">
         <i class="fa fa-pen fa-xs edit"></i>
@@ -10,27 +26,27 @@
                     <td>:</td> 
                     
                     
-                    <td class="rcorners2">MAriam</td>
+                    <td class="rcorners2">{{userdata.name}}</td>
                 </tr>
                 <tr>
                     <td class="parameters">Email</td>
                     <td>:</td>
-                    <td class="rcorners2">mariam@gmail.com</td>
+                    <td class="rcorners2">{{userdata.email}}</td>
                 </tr>
                 <tr>
-                    <td class="parameters">birthday date</td>
+                    <td class="parameters">Age</td>
                     <td>:</td>
-                    <td class="rcorners2">15-11-2001</td>
+                    <td class="rcorners2">{{userdata.age}}</td>
                 </tr>
                 <tr>
                     <td class="parameters">Address</td>
                     <td>:</td>
-                    <td class="rcorners2">22 miami</td>
+                    <td class="rcorners2">{{userdata.address}}</td>
                 </tr>
                 <tr>
                     <td class="parameters">phone number</td>
                     <td>:</td>
-                    <td class="rcorners2">0123456789</td>
+                    <td class="rcorners2">{{userdata.phone}}</td>
                 </tr>
             
             </tbody>

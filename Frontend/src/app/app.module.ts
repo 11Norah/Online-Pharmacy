@@ -45,7 +45,7 @@ import { MyinfoComponent } from './myinfo/myinfo.component';
 
     HttpClientModule,
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"profile",component:ProfileComponent},{path:"profile/myinfo",component:ProfileComponent}])
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"profile",redirectTo:'profile/myinfo',pathMatch:'full'},{path:"profile/myinfo",component:MyinfoComponent}])
 
   ],
   providers: [],
