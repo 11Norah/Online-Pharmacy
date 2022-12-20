@@ -179,5 +179,14 @@ background-color: rgb(236, 5, 5);
 border: none;
 color: #f1f1f1;
 }
+.navbar{
+  position: relative;
+  background:transparent;
+  color:rgb(249, 208, 24) ;
+  border:none;
+ right: 700px;
+ top: 50px;
+ font-size: larger;
+}
  
   
