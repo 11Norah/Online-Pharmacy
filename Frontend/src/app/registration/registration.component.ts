@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +15,7 @@ export class RegistrationComponent {
 
   UserSignUp: any;
 
-  constructor(private router: Router ) {}
+  constructor(private router: Router, private userService: UserService) {}
   
  
   ValidateRequest(){
@@ -26,18 +28,27 @@ export class RegistrationComponent {
       
     }
     else{
-      //back request
+      this.userService.login(usermail.value, password.value).subscribe(response => {
+        if(response == 0) { //Sign up required
+          alert("Email not found!");
+        }
+        else if(response == 1) { 
+          alert("You entered an incorrect password!");
+        }
+        else if(response == 2) {
+          localStorage.setItem('Email', usermail.value);
+          confirm("You haven't activated your account!");
+          this.router.navigate(['/confirm']);
+        }
+        else if(response == 3) {
+          usermail.value=""; password.value="";
+          localStorage.setItem('Email', usermail.value);
+        //show logout button
+        //direct to main page
+        this.router.navigate(['/bestseller']);
+        }
+      })
       console.log("Entered info : "+ usermail.value ,password.value);
-      if(true){
-      usermail.value=""; password.value="";
-      //show logout button
-      //direct to main page
-      this.router.navigate(['/bestseller']);
-      
-    }
-      else{
-            alert("Invalid Email !Try again.")
-      }
     }
   }
   register(){
@@ -62,12 +73,21 @@ export class RegistrationComponent {
       alert("Passwords aren't identical ,Try Again!");
     }
     else{
+      let status;
+      const user: User = new User(First.value, Last.value, mail.value, pass1.value, date.value, userphone.value, false, address.value);
+      this.userService.register(user).subscribe(response => {
+        status = response;
+        if(status) {
+          localStorage.setItem("Email", mail.value);
+          this.router.navigate(['/confirm']);
+          First.value=""; Last.value="";
+          pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
+        }
+        else {
+          alert("You have signed up before!");
+        }
+      })
 
-      //back request
-
-        this.router.navigate(['/confirm']);
-      First.value=""; Last.value="";
-      pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
 
       
     }

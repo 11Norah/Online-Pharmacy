@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent {
-  constructor(private router:Router){}
+  constructor(private router:Router, private userService: UserService){}
   ngOnInit(){
     var u=document.getElementById("demo") as HTMLElement;
     u.innerHTML="Time Left: ";
@@ -32,12 +33,31 @@ var x = setInterval(function() {
   }
 });
   }
- confirmation(){
+ confirmation(e: Event){
+  e.preventDefault();
   var x=document.getElementById("pin") as HTMLInputElement;
   console.log(x);
-  //this.router.navigate(['/bestseller']);
+  let email = localStorage.getItem('Email');
+  console.log(email);
+  if(email == null) email = "";
+  this.userService.activate(email, x.value).subscribe(response => {
+    if(response == 1) {
+      alert("The entered token is incorrect! Check your email for the correct code.");
+    }
+    else if(response == 2) {
+      alert("The enetered token is Expired! Click Resend Button.")
+    }
+    else if(response == 3) {
+      this.router.navigate(['/bestseller']);
+    }
+  })
+  
  }
- resend(){
-
+ resend(e: Event){
+  e.preventDefault();
+  let email = localStorage.getItem('Email');
+  console.log("EMAIL: " + email);
+  if(email == null) email = "";
+    this.userService.resendCode(email).subscribe(response => alert("Code is successfully sent!"));
  }
 }

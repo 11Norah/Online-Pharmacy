@@ -11,11 +11,11 @@
             Check your mail And fill the below field with the received code.</H1>
          
          <form > 
-            <input type="text" class="input" maxlength="4"  id="pin" pattern="\d{4}" />
-            <button class="button" style="background-color:rgb(249, 208, 24);" (click)="confirmation()"> Submit</button>
+            <input type="text" class="input" id="pin" />
+            <button class="button" style="background-color:rgb(249, 208, 24);" (click)="confirmation($event)"> Submit</button>
          
             <p id="demo">  Time left: </p>
-            <button class="button" style="background-color:rgb(249, 208, 24);font-size:large; margin-left: 700px;" (click)="resend"> Resend code</button>
+            <button class="button" style="background-color:rgb(249, 208, 24);font-size:large; margin-left: 700px;" (click)="resend($event)"> Resend code</button>
          </form>
 
          </div>
