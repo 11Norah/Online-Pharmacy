@@ -12,6 +12,7 @@ export class SelectedCategoryComponent implements OnInit {
   bestsellerproducts: Product[] = [];
   name: string=this.Server.SelectedCategoryName;
   ngOnInit(): void {
+  
     const item = localStorage.getItem('Category');
     if(this.name == "") this.name = item == null? "" : item;
     localStorage.setItem('Category', this.name);
