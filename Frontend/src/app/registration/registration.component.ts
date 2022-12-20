@@ -36,16 +36,17 @@ export class RegistrationComponent {
     }
   }
   register(){
-    var username=document.getElementById("userSignUp") as HTMLInputElement;
+    var First=document.getElementById("FirstName") as HTMLInputElement;
+    var Last=document.getElementById("LastName") as HTMLInputElement;
     var pass1=document.getElementById("passSignUp") as HTMLInputElement;
     var pass2=document.getElementById("passSignUp2") as HTMLInputElement;
     var mail=document.getElementById("mail") as HTMLInputElement;
     var userphone=document.getElementById("phone") as HTMLInputElement;
-    var age=document.getElementById("age") as HTMLInputElement;
+    var date=document.getElementById("birthdate") as HTMLInputElement;
     var address=document.getElementById("address") as HTMLInputElement;
-    console.log("Registeration info :"+ username.value ,pass1.value ,pass2.value ,mail.value,userphone.value,age.value,address.value)
+    console.log("Registeration info :"+ First.value ,Last.value,pass1.value ,pass2.value ,mail.value,userphone.value,date.value,address.value)
     
-     if(username.value=="" || pass1.value=="" || pass2.value=="" ||mail.value==""||userphone.value==""||age.value==""||address.value==""){
+     if(First.value=="" || Last.value==""||pass1.value=="" || pass2.value=="" ||mail.value==""||userphone.value==""||date.value==""||address.value==""){
       alert("All fields should be filled out");
     }
     else if(pass1.value != pass2.value){
@@ -55,8 +56,8 @@ export class RegistrationComponent {
 
       //back request
         this.router.navigate(['/confirm']);
-      username.value=""; 
-      pass1.value=""; pass2.value=""; mail.value="";userphone.value="";age.value="";address.value="";
+      First.value=""; Last.value="";
+      pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
       
     }
   
