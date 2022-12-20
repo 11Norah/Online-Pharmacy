@@ -1,9 +1,13 @@
 package com.example.onlinePharmacy.Mappers;
 
+import com.example.onlinePharmacy.DTOs.ProductDto;
 import com.example.onlinePharmacy.DTOs.UserDto;
+import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Model.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
     public static UserDto userToDto(User u){
@@ -34,5 +38,12 @@ public class UserMapper {
                 .pDrug(u.isPDrug())
                 .age(u.getAge())
                 .build();
+    }
+    public static ArrayList<UserDto> bulkMappingFromUserToDto(List<User> users) {
+        ArrayList<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(userToDto(user));
+        }
+        return userDtos;
     }
 }
