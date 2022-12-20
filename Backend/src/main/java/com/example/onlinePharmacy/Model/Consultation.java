@@ -21,7 +21,6 @@ public class Consultation {
     @Column(name = "diagnosisName", nullable = false)
     private String diagnosis;
 
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "diagnosis")
     private List<Product> products;
 
