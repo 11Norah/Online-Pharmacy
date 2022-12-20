@@ -14,15 +14,19 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
+
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+
 import { SelectedCategoryComponent } from './selected-category/selected-category.component';
 
+
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
-
     BestsellerComponent,
         SelectedCategoryComponent,
 
@@ -31,14 +35,22 @@ import { SelectedCategoryComponent } from './selected-category/selected-category
     ConsultationComponent,
     AboutProductComponent,
 
+    ConfirmationComponent,
+          RegistrationComponent
+
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
- RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"SelectedCategory",component:SelectedCategoryComponent}])
+
+    RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}
+,{path:"SelectedCategory",component:SelectedCategoryComponent},
+    ,{path:"registration",component:RegistrationComponent} , {path:"confirm",component:ConfirmationComponent}])
+
 
   ],
   providers: [],
