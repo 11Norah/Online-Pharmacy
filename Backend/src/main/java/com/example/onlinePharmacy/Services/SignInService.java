@@ -6,6 +6,7 @@ import com.example.onlinePharmacy.Model.User;
 import com.example.onlinePharmacy.Repositries.UserRepo;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class SignInService {
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public static final int NOT_REGISTERED = 0;
     public static final int WRONG_PASSWORD = 1;
@@ -33,8 +37,8 @@ public class SignInService {
     }
 
     private boolean isAuthenticated(@NotNull User user, @NotNull String password) {
-        String truePassword = user.getPassword();
-        return password.equals(truePassword);
+        String encrypted = user.getPassword();
+        return passwordEncoder.matches(password,encrypted);
     }
 
     private boolean isActivated(@NotNull User user) {

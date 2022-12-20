@@ -8,6 +8,7 @@ import com.example.onlinePharmacy.RequestBodies.TokenObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -22,6 +23,9 @@ public class SignUpService {
     @Autowired
     TokenService tokenService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private static final int NOT_REGISTERED = 0;
     private static final int INVALID = 1;
     private static final int EXPIRED = 2;
@@ -35,6 +39,7 @@ public class SignUpService {
     public boolean recordNewUser(UserDto user) {
         if(isEmailFound(user.getEmail())) return false;
         User newUser = UserMapper.DtoToUser(user);
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(newUser);
         sendActivationToken(user.getEmail());
         return true;

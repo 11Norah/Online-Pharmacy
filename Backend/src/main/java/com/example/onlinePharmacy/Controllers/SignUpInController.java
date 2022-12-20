@@ -5,18 +5,14 @@ import com.example.onlinePharmacy.DTOs.UserDto;
 import com.example.onlinePharmacy.RequestBodies.TokenObject;
 import com.example.onlinePharmacy.Services.SignInService;
 import com.example.onlinePharmacy.Services.SignUpService;
-import com.example.onlinePharmacy.Mappers.UserMapper;
-import com.example.onlinePharmacy.Model.User;
 import com.example.onlinePharmacy.Repositries.UserRepo;
-import com.example.onlinePharmacy.Services.SignUpInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 public class SignUpInController {
-    @Autowired
-    SignUpInService service;
+
     @Autowired
     UserRepo userRepo;
 
