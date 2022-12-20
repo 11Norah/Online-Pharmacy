@@ -14,7 +14,7 @@
         
         <tr>
             <td>
-                <div class="div1">
+                <div #skincare id="Skin Care" routerLink="/SelectedCategory" routerLinkActive="activebutton"(click)="SendSelectedCategory(skincare.id)"class="div1" >
                     <img src="assets/Skin1.jpg" class="img" />
                     
                     <button class="btn btn1">Skin Care</button>
@@ -23,27 +23,27 @@
                 </div>
             </td>
             <td>
-                <div class="div1">
-                <img src="assets/vitamins.jpg"class="img" />
+                <div #vitamins routerLink="/SelectedCategory" routerLinkActive="activebutton" id="Vitamins" (click)="SendSelectedCategory(vitamins.id)"class="div1">
+                <img  src="assets/vitamins.jpg"class="img" />
                
-                <button class="btn btn2">Vitamins</button>
+                <button   class="btn btn2">Vitamins</button>
                 <br /><br />
                 
                 </div>
             </td>
             <td>
-                <div class="div1">
-                <img src="assets\hair.jpg" class="img"/>
+                <div #haircare routerLink="/SelectedCategory" routerLinkActive="activebutton" id="Hair Care" (click)="SendSelectedCategory(haircare.id)"class="div1">
+                <img  src="assets\hair.jpg" class="img"/>
                 
-                <button class="btn ">Hair Care</button>
+                <button  class="btn ">Hair Care</button>
                 <br /><br />
                 </div>
             </td>
             <td>
-                <div class="div1">
-                <img src="assets\medication.jpg" class="img" />
+                <div #medication routerLink="/SelectedCategory" routerLinkActive="activebutton"id="Medication" (click)="SendSelectedCategory(medication.id)" class="div1">
+                <img  src="assets\medication.jpg" class="img" />
                 
-                <button class="btn ">Medication</button>
+                <button  class="btn ">Medication</button>
                 <br /><br />
                 </div>
             </td>
@@ -55,36 +55,36 @@
 
         <tr>
             <td>
-                <div class="div1">
-                    <img src="assets\oral.jpg" class="img"/>
+                <div #Oralcare routerLink="/SelectedCategory" routerLinkActive="activebutton" id="Oral Care"(click)="SendSelectedCategory(Oralcare.id)"class="div1">
+                    <img  src="assets\oral.jpg" class="img"/>
                 
                  
                     
-                    <button class="btn ">Oral Care</button>
+                    <button  class="btn ">Oral Care</button>
                     <br /><br />
                 </div>
             </td>
             <td>
-                <div class="div1">
+                <div #ColdAndCough routerLink="/SelectedCategory" routerLinkActive="activebutton"id="Cold and Cough" (click)="SendSelectedCategory(ColdAndCough.id)" class="div1">
                     <img src="assets\cold.jpg" class="img"/>
                 
                  
                     
-                    <button class="btn ">Cold and Cough</button>
+                    <button   class="btn ">Cold and Cough</button>
                 <br /><br />
                 </div>
             </td>
             <td>
-                <div class="div1">
+                <div #headache routerLink="/SelectedCategory" routerLinkActive="activebutton" id="Headache" (click)="SendSelectedCategory(headache.id)"class="div1">
                 <img src="assets\head.jpg" class="img" />
                 
-                <button class="btn ">Headache</button>
+                <button  class="btn ">Headache</button>
                 <br /><br />
                 </div>
             </td>
             <td>
-                <div class="div1">
-                <img src="assets\weight.jpg" class="img" />
+                <div #weightLoss routerLink="/SelectedCategory" routerLinkActive="activebutton" id="Weight Loss" (click)="SendSelectedCategory(weightLoss.id)" class="div1">
+                <img  src="assets\weight.jpg" class="img" />
                 
                 <button class="btn ">Weight Loss</button>
                 <br /><br />

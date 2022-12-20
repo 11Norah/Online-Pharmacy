@@ -14,7 +14,7 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
-
+import { SelectedCategoryComponent } from './selected-category/selected-category.component';
 
 
 
@@ -24,20 +24,21 @@ import { ConsultationComponent } from './consultation/consultation.component';
     CategoriesComponent,
 
     BestsellerComponent,
+        SelectedCategoryComponent,
+
     CategoriesPageComponent,
     ShoppingcartComponent,
     ConsultationComponent,
-    AboutProductComponent
+    AboutProductComponent,
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     HttpClientModule,
-    RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}])
+ RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},{path:"SelectedCategory",component:SelectedCategoryComponent}])
 
   ],
   providers: [],
