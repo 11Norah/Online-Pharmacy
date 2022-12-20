@@ -14,13 +14,10 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
-//import { RegistrationPageComponent } from './registration-page/registration-page.component';
+
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+
 import { RegistrationComponent } from './registration/registration.component';
-//import { OoohComponent } from './oooh/oooh.component';
-//import { RegistrationPageComponent } from './registration-page/registration-page.component';
-//import { LoginPageComponent } from './login-page/login-page.component';
-
-
 
 
 @NgModule({
@@ -32,7 +29,9 @@ import { RegistrationComponent } from './registration/registration.component';
     ShoppingcartComponent,
     ConsultationComponent,
     AboutProductComponent,
-    RegistrationComponent
+
+    ConfirmationComponent,
+          RegistrationComponent
 
 
   ],
@@ -43,7 +42,9 @@ import { RegistrationComponent } from './registration/registration.component';
     HttpClientModule,
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
     ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}
-     ,{path:"registration",component:RegistrationComponent}])
+
+    ,{path:"registration",component:RegistrationComponent} , {path:"confirm",component:ConfirmationComponent}])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
