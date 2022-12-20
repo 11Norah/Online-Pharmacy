@@ -44,9 +44,9 @@ public class User implements Serializable{
     private String phoneNumber;
     @Column(name = "address", nullable = false)
     private String address;
-    @Transient
-    private Integer age;
     @Column(name = "periodicDrug", nullable = false)
     private boolean pDrug;
+    @Transient
+    private Integer age;
 
 }

@@ -2,22 +2,32 @@ package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.SignInDto;
 import com.example.onlinePharmacy.DTOs.UserDto;
-import com.example.onlinePharmacy.Services.SignUpInService;
+import com.example.onlinePharmacy.RequestBodies.TokenObject;
+import com.example.onlinePharmacy.Services.SignInService;
+import com.example.onlinePharmacy.Services.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SignUpInController {
     @Autowired
-    SignUpInService service;
+    SignUpService signUpService;
+
+    @Autowired
+    SignInService signInService;
 
     @PostMapping("/signup")
     public boolean signUp(@RequestBody UserDto user) {
-        return service.recordNewUser(user);
+        return signUpService.recordNewUser(user);
     }
 
     @PostMapping("/signin")
-    public boolean signIn(@RequestBody SignInDto signInDto) {
-        return service.authenticate(signInDto);
+    public int signIn(@RequestBody SignInDto signInDto) {
+        return signInService.authenticate(signInDto);
+    }
+
+    @PostMapping("/activate-account")
+    public int activateAccount(@RequestBody TokenObject tokenObject) {
+        return signUpService.activateAccount(tokenObject);
     }
 }
