@@ -1,6 +1,5 @@
 package com.example.onlinePharmacy.DTOs;
 
-import com.example.onlinePharmacy.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -13,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 public class VerificationTokenDto {
-    private static final int EXPIRATION = 5; //token expires after 5 minutes of creation.
+    private static final int EXPIRATION = 10; //token expires after 10 minutes of creation.
 
     private Long id;
     private String token;
@@ -25,7 +24,7 @@ public class VerificationTokenDto {
         this.userDto = userDto;
         expiryDate = calculateExpiryDate();
     }
-    private Date calculateExpiryDate() {
+    public static Date calculateExpiryDate() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, EXPIRATION);

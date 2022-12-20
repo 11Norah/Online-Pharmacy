@@ -30,4 +30,9 @@ public class SignUpInController {
     public int activateAccount(@RequestBody TokenObject tokenObject) {
         return signUpService.activateAccount(tokenObject);
     }
+
+    @GetMapping("/get-activation-code")
+    public boolean sendToken(@RequestParam String email) {
+        return signUpService.sendActivationToken(email);
+    }
 }
