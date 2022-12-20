@@ -1,6 +1,7 @@
 
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { user } from 'src/models/user.model';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
 
@@ -27,5 +28,7 @@ export class AppComponent {
   submit(){
     document.getElementById("mySidenav")!.style.width="0";
 
-  }
+  } 
+
+
 }
