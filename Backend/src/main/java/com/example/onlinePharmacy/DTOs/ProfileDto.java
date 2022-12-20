@@ -2,6 +2,7 @@ package com.example.onlinePharmacy.DTOs;
 
 import lombok.*;
 
+
 @Setter
 @Getter
 @ToString
@@ -10,15 +11,12 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 
-public class UserDto {
-    private long userId;
-    private String firstName;
-    private String lastName;
+public class ProfileDto {
+
+    private String name;
     private String email;
-    private String password;
-    private String birth_date;
     private String phoneNumber;
-    private boolean pDrug ;
     private String address;
     private Integer age;
+
 }

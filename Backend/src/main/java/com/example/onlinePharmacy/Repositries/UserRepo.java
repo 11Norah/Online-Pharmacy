@@ -12,5 +12,7 @@ import java.util.Optional;
 @Qualifier("users")
 public interface UserRepo extends JpaRepository<User,Long> {
 
-    Optional<User> findUserByEmail(String email) ;
+    User findUserByEmail(String email) ;
+
+
 }
