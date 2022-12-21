@@ -26,8 +26,9 @@ export class AppComponent {
     this.UserloggedIn=RegistrationComponent.loggedIn;
     console.log("in apppp"+this.UserloggedIn);
     if(this.UserloggedIn=="true"){
-      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello "+RegistrationComponent.UserName;
-      (document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
+      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello";
+      //(document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
+      //this.UserloggedIn="true";
   }
   else{
     (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
@@ -35,16 +36,18 @@ export class AppComponent {
   }
     
   }
-  Route(){
+  /**Route(){
+    console.log("on route"+ this.UserloggedIn);
     if(this.UserloggedIn=="true"){
     this.router.navigate(['/profile']);}
     else{
       this.router.navigate(['/registration']);
     }
-  }
+  }**/
   logout(e:Event){
     e.preventDefault();
     localStorage.clear;
+    (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
   }
   openNav() {
     
