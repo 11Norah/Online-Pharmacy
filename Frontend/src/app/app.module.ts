@@ -19,8 +19,8 @@ import { MyordersComponent } from './myorders/myorders.component';
 import { MyinfoComponent } from './myinfo/myinfo.component';
 
 
-import { ConfirmationComponent } from './confirmation/confirmation.component';
 
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { SelectedCategoryComponent } from './selected-category/selected-category.component';
 
 
@@ -39,6 +39,7 @@ import { RegistrationComponent } from './registration/registration.component';
     ConsultationComponent,
     AboutProductComponent,
 
+
     ProfileComponent,
     MyordersComponent,
     MyinfoComponent,
@@ -48,9 +49,6 @@ import { RegistrationComponent } from './registration/registration.component';
     ConfirmationComponent,
           RegistrationComponent
 
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -59,8 +57,10 @@ import { RegistrationComponent } from './registration/registration.component';
 
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
 
+
     ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},,{path:"profile",redirectTo:'profile/myinfo',pathMatch:'full'},{path:"profile/myinfo",component:MyinfoComponent},
     ,{path:"registration",component:RegistrationComponent} , {path:"SelectedCategory",component:SelectedCategoryComponent},{path:"confirm",component:ConfirmationComponent}])
+
 
 
 
