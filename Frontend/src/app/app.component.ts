@@ -5,6 +5,7 @@ import { Profile } from 'src/models/profile.model';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
 import { RegistrationComponent } from './registration/registration.component';
+import { BestsellerComponent } from './bestseller/bestseller.component';
 
 
 @Component({
@@ -27,8 +28,8 @@ export class AppComponent {
     console.log("in apppp"+this.UserloggedIn);
     if(this.UserloggedIn=="true"){
       (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello";
-      //(document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
-      //this.UserloggedIn="true";
+      (document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
+      this.UserloggedIn="true";
   }
   else{
     (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
@@ -36,18 +37,21 @@ export class AppComponent {
   }
     
   }
-  /**Route(){
-    console.log("on route"+ this.UserloggedIn);
-    if(this.UserloggedIn=="true"){
+  Route(e:Event){
+    e.preventDefault();
+    console.log("on route"+ BestsellerComponent.yeslogged);
+    if(BestsellerComponent.yeslogged=="true"){
     this.router.navigate(['/profile']);}
     else{
       this.router.navigate(['/registration']);
     }
-  }**/
+  }
   logout(e:Event){
     e.preventDefault();
-    localStorage.clear;
+    localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
+    RegistrationComponent.loggedIn="false";
+    BestsellerComponent.yeslogged="false";
   }
   openNav() {
     
