@@ -54,8 +54,9 @@ export class AppComponent {
     e.preventDefault();
     localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
-    RegistrationComponent.loggedIn="false";
-    BestsellerComponent.yeslogged="false";
+  this.userService.UserLoggedIn=0;
+  this.userService.UserMail="";
+  this.userService.UserName="";
   }
   openNav() {
     

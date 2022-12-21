@@ -47,7 +47,7 @@ form.shape button {
   position:relative;
   left: 0px;
   font-size: 17px;
-  max-width: 400px;
+  max-width: 50%;
   color: rgb(99, 101, 102);
 }
 .products{
