@@ -14,6 +14,10 @@ import { AboutProductComponent } from './about-product/about-product.component';
 import { ProductService } from '../services/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConsultationComponent } from './consultation/consultation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyordersComponent } from './myorders/myorders.component';
+import { MyinfoComponent } from './myinfo/myinfo.component';
+
 
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
@@ -35,8 +39,15 @@ import { RegistrationComponent } from './registration/registration.component';
     ConsultationComponent,
     AboutProductComponent,
 
+    ProfileComponent,
+    MyordersComponent,
+    MyinfoComponent,
+   
+
+
     ConfirmationComponent,
           RegistrationComponent
+
 
 
 
@@ -47,8 +58,10 @@ import { RegistrationComponent } from './registration/registration.component';
     HttpClientModule,
 
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
-    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}
+
+    ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent},,{path:"profile",redirectTo:'profile/myinfo',pathMatch:'full'},{path:"profile/myinfo",component:MyinfoComponent},
     ,{path:"registration",component:RegistrationComponent} , {path:"SelectedCategory",component:SelectedCategoryComponent},{path:"confirm",component:ConfirmationComponent}])
+
 
 
   ],
