@@ -35,25 +35,6 @@ public class SignInServicesTest {
         return signInDto;
     }
 
-    @Transactional
-    @Rollback(value = true)
-    SignInDto getNotActivatedSignInDTO() {
-        UserDto userDto = new UserDto();
-        userDto.setEmail("aliaa12@gmail.com");
-        userDto.setPassword("qaz");
-        userDto.setBirth_date("2021-11-11");
-        userDto.setPhoneNumber("123400");
-        userDto.setAddress("Address");
-        userDto.setPDrug(false);
-        userDto.setFirstName("Aliaa");
-        userDto.setLastName("Ibrahem");
-        signUpService.recordNewUser(userDto);
-        SignInDto signInDto = new SignInDto();
-        signInDto.setEmail("aliaa12@gmail.com");
-        signInDto.setPassword("qaz");
-        return signInDto;
-    }
-
     private SignInDto getWrongPasswordSignInDTO() {
         SignInDto signInDto = new SignInDto();
         signInDto.setEmail("sleemnorah@yahoo.com");
@@ -78,7 +59,20 @@ public class SignInServicesTest {
     @Transactional
     @Rollback(value = true)
     void authenticateNotActivatedUser() {
-        int res = signInService.authenticate(getNotActivatedSignInDTO());
+        UserDto userDto = new UserDto();
+        userDto.setEmail("aliaa12@gmail.com");
+        userDto.setPassword("qaz");
+        userDto.setBirth_date("2021-11-11");
+        userDto.setPhoneNumber("123400");
+        userDto.setAddress("Address");
+        userDto.setPDrug(false);
+        userDto.setFirstName("Aliaa");
+        userDto.setLastName("Ibrahem");
+        signUpService.recordNewUser(userDto);
+        SignInDto signInDto = new SignInDto();
+        signInDto.setEmail("aliaa12@gmail.com");
+        signInDto.setPassword("qaz");
+        int res = signInService.authenticate(signInDto);
         assertEquals(2, res);
     }
 
