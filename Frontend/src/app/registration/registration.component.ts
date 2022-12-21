@@ -37,12 +37,14 @@ export class RegistrationComponent {
         }
         else if(response == 2) {
           localStorage.setItem('Email', usermail.value);
+          localStorage.setItem('UserLoggedin',"true");
           confirm("You haven't activated your account!");
           this.router.navigate(['/confirm']);
         }
         else if(response == 3) {
           usermail.value=""; password.value="";
           localStorage.setItem('Email', usermail.value);
+          localStorage.setItem('UserLoggedin',"true");
         //show logout button
         //direct to main page
         this.router.navigate(['/bestseller']);
@@ -79,6 +81,7 @@ export class RegistrationComponent {
         status = response;
         if(status) {
           localStorage.setItem("Email", mail.value);
+          localStorage.setItem("Username",First.value+" "+Last.value);
           this.router.navigate(['/confirm']);
           First.value=""; Last.value="";
           pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
