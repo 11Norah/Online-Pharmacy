@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/models/profile.model';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-myinfo',
@@ -9,8 +10,8 @@ import { Profile } from 'src/models/profile.model';
 })
 export class MyinfoComponent implements OnInit {
 
-  constructor(){
-    this.userdata={name:"Mariam",email:"mariamtarek51@gmail.com",phone:"0123456789",address:"22 Miami",age:17};
+  constructor(private userService: UserService){
+    //this.userdata={name:"Mariam",email:"mariamtarek51@gmail.com",phone:"0123456789",address:"22 Miami",age:17};
 
 
 
@@ -20,16 +21,16 @@ export class MyinfoComponent implements OnInit {
 
   }
 
-  userdata:Profile={
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    age: 0
-  }
+  userdata: Profile = new Profile("", "", "", "", 0);
 
   ngOnInit(): void {
-
+    let email = localStorage.getItem("Email");
+    if(email == null) email = "";
+    this.userService.getProfile("sleemnorah@yahoo.com").subscribe(response => {
+      console.log(response);
+      
+      this.userdata = response
+    });
   }
 
 

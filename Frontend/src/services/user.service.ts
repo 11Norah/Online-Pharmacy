@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Profile } from 'src/models/profile.model';
 import { User } from 'src/models/user.model';
 
 @Injectable({
@@ -25,5 +26,9 @@ export class UserService {
 
   public resendCode(email: string): Observable<boolean> {
     return this.http.get<boolean>(`http://localhost:${this.port}/get-activation-code?email=${email}`);
+  }
+
+  public getProfile(email: string): Observable<Profile> {
+    return this.http.get<Profile>(`http://localhost:${this.port}/getProfileData?email=${email}`);
   }
 }
