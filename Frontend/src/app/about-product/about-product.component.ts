@@ -10,6 +10,7 @@ export class AboutProductComponent implements OnInit{
   ngOnInit(): void {
 
   }
+  loggedin=this.Server.UserLoggedIn;
   SelectedProduct:{id:number,img:string,name:string,price:number,rate:number,category:string,description:string}=this.Server.product;
   //rating of product
   getStars(rating:any) {

@@ -1,4 +1,5 @@
 
+
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
@@ -179,4 +180,5 @@ input:valid {
 .foot-lnk{
 	text-align:center;
     font-weight: bold;
+
     font-size: larger;}
