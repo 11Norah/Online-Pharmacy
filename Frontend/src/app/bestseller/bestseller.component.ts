@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
 import { Product } from 'src/models/product.model';
+import { RegistrationComponent } from '../registration/registration.component';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-bestseller',
   templateUrl: './bestseller.component.html',
@@ -8,9 +10,12 @@ import { Product } from 'src/models/product.model';
 })
 export class BestsellerComponent implements OnInit {
   bestsellerproducts: Product[] = [];
+ 
   constructor(private Server:ProductService){}
   ngOnInit(): void {
       this.Server.getTopRated().subscribe(response => this.bestsellerproducts = response);
+      console.log("in bestseller"+ RegistrationComponent.loggedIn);
+      
   }
 
  numval=this.AddToCart;

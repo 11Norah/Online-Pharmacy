@@ -27,6 +27,7 @@ import { SelectedCategoryComponent } from './selected-category/selected-category
 import { RegistrationComponent } from './registration/registration.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,6 @@ import { RegistrationComponent } from './registration/registration.component';
 
     ConfirmationComponent,
           RegistrationComponent
-
   ],
   imports: [
     BrowserModule,

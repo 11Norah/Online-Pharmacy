@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-registration',
@@ -13,9 +14,10 @@ import { UserService } from 'src/services/user.service';
 })
 export class RegistrationComponent {
 
-  UserSignUp: any;
+  public static loggedIn=localStorage.getItem("UserLoggedin");
+  public static UserName=localStorage.getItem("Username");
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService ) {}
 
 
   ValidateRequest(){
@@ -47,6 +49,8 @@ export class RegistrationComponent {
           localStorage.setItem('UserLoggedin',"true");
         //show logout button
         //direct to main page
+        this.router.navigate(['/app']);
+        console.log("username is"+localStorage.getItem("UserLoggedin"));
         this.router.navigate(['/bestseller']);
         }
       })
@@ -75,6 +79,7 @@ export class RegistrationComponent {
       alert("Passwords aren't identical ,Try Again!");
     }
     else{
+      
       let status;
       const user: User = new User(First.value, Last.value, mail.value, pass1.value, date.value, userphone.value, false, address.value);
       this.userService.register(user).subscribe(response => {
