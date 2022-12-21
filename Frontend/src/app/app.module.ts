@@ -58,9 +58,9 @@ import { RegistrationComponent } from './registration/registration.component';
     RouterModule.forRoot([{path:'',redirectTo:'bestseller',pathMatch:'full'},{path:"bestseller",component:BestsellerComponent},{path:"app",component:AppComponent},{path:"consultation",component:ConsultationComponent},{path:"categories",component:CategoriesPageComponent}
 
     ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}
-    ,{path:"registration",component:RegistrationComponent} , {path:"SelectedCategory",component:SelectedCategoryComponent},{path:"confirm",component:ConfirmationComponent}])
+    ,{path:"registration",component:RegistrationComponent} , {path:"SelectedCategory",component:SelectedCategoryComponent},{path:"confirm",component:ConfirmationComponent}
 
-
+   , {path:"profile",redirectTo:'profile/myinfo',pathMatch:'full'},{path:"profile/myinfo",component:MyinfoComponent}])
   ],
   providers: [],
   bootstrap: [AppComponent]
