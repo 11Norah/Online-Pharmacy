@@ -4,11 +4,11 @@
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <nav>
-    <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit()">Categories</a>
+    <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
 
-    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit()"> Consultation <i class="fa fa-user-md"></i>
+    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit($event)"> Consultation <i class="fa fa-user-md"></i>
     </a>
-    <a href="#" #consultation id="consultation" routerLink="/profile" routerLinkActive="activebutton"(click)="submit()"> Profile &#8478; </a>
+    <a href="#" #consultation id="consultation" routerLink="/profile" routerLinkActive="activebutton"(click)="submit($event)"> Profile &#8478; </a>
 
 
 
@@ -34,7 +34,8 @@
         
     </p>
     <button id="logoutButton" class="button" (click)="logout($event)" hidden="false"> Logout</button>
-  </form>
+  
+    </form>
 
   <button #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</button>
 

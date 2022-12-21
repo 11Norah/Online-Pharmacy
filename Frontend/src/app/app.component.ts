@@ -13,7 +13,7 @@ import { BestsellerComponent } from './bestseller/bestseller.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   public static WelcomeUser=document.getElementById("WelcomeUser") as HTMLElement;
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })
@@ -22,26 +22,30 @@ export class AppComponent implements OnInit{
   UserName=localStorage.getItem("Username");
   
   container!: ViewContainerRef;
-  constructor(private router:Router){}
-  ngOnInit():void{
-    this.UserloggedIn=RegistrationComponent.loggedIn;
-    console.log("in apppp"+this.UserloggedIn);
-    if(this.UserloggedIn=="true"){
-      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello";
+  constructor(private router:Router,private userService:ProductService){
+   
+    this.router.routeReuseStrategy.shouldReuseRoute=function(){
+      
+      console.log("in apppp :::::"+userService.UserLoggedIn );
+    if(userService.UserLoggedIn==1){
+      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello "+userService.UserName;
       (document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
-      this.UserloggedIn="true";
+      RegistrationComponent.loggedIn="true";
   }
   else{
     (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
     
+  }return false;
   }
-    
-  }
+} 
+ 
   Route(e:Event){
     e.preventDefault();
+    console.log("in routin of appcomponent :"+this.userService.UserLoggedIn);
     console.log("on route"+ BestsellerComponent.yeslogged);
-    if(BestsellerComponent.yeslogged=="true"){
-    this.router.navigate(['/profile']);}
+    console.log("in app usermail::"+this.userService.UserMail);
+    if(this.userService.UserLoggedIn==1){
+        this.router.navigate(['/profile']);}
     else{
       this.router.navigate(['/registration']);
     }
@@ -60,10 +64,15 @@ export class AppComponent implements OnInit{
   closeNav() {
     document.getElementById("mySidenav")!.style.width="0";
   }
-  submit(){
+  submit(e:Event){
+    e.preventDefault();
     document.getElementById("mySidenav")!.style.width="0";
 
   }
 
-
+  
 }
+let userService:ProductService;
+window.addEventListener("load",(event)=>{
+  userService.UserLoggedIn=1;
+})
