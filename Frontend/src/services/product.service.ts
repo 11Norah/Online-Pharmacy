@@ -11,7 +11,9 @@ import { Product } from 'src/models/product.model';
 export class ProductService {
   product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
   SelectedCategoryName=""
+
   UserLoggedIn=0;
+
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){
@@ -36,6 +38,12 @@ public getTopRated(): Observable<Product[]> {
 
 public changeRate(id: number, rate: number): Observable<number> {
   return this.http.post<number>(`http://localhost:${this.port}/changeRate`, {id, rate});
+
+}
+
+public getByCategory(category: string): Observable<Product[]> {
+  return this.http.get<Product[]>(`http://localhost:${this.port}/getByType?type=${category}`);
+
 }
 
 public getByCategory(category: string): Observable<Product[]> {

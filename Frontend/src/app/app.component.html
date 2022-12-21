@@ -6,7 +6,10 @@
     <nav>
     <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit()">Categories</a> 
 
-    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit()"> Consultation</a>
+    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit()"> Consultation <i class="fa fa-user-md"></i>
+    </a>
+    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit()"> Prescription &#8478; </a>
+
 
 
     </nav>
@@ -18,11 +21,18 @@
     <input class="search" type="text" placeholder="Search..">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
-  <form class="profile">
+  
+
+
+  <form class="profile"[ngSwitch]=this.userlogged>
+    
+      <button type="submit" *ngSwitchCase="false" routerLink="/registration" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
+      <button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
+     
     <button type="submit"routerLink="/bestseller" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
 
     <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
-    <button type="submit" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
+
   </form>
   <button #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</button>
 

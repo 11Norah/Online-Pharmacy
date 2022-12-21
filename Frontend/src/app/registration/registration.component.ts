@@ -1,5 +1,6 @@
+
 import { Component } from '@angular/core';
-import { ProductService } from 'src/services/product.service';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,9 +13,8 @@ import { Router } from '@angular/router';
 export class RegistrationComponent {
 
   UserSignUp: any;
-  UserLoggedin=0;
 
-  constructor(private router: Router,private Server:ProductService ) {}
+  constructor(private router: Router ) {}
   
  
   ValidateRequest(){
@@ -34,7 +34,6 @@ export class RegistrationComponent {
       //show logout button
       //direct to main page
       this.router.navigate(['/bestseller']);
-      this.Server.UserLoggedIn=1;
       
     }
       else{
@@ -121,4 +120,5 @@ export class RegistrationComponent {
                  </form>
   
   */
+
 
