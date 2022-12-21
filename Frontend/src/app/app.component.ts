@@ -1,7 +1,7 @@
 
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { user } from 'src/models/user.model';
+import { Profile } from 'src/models/profile.model';
 
 import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
 
@@ -14,10 +14,10 @@ import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewConta
 export class AppComponent {
 
   title = 'OnlinePharmacy';
-  @ViewChild('container', { read: ViewContainerRef })  
+  @ViewChild('container', { read: ViewContainerRef })
   UserloggedIn=localStorage.getItem("UserLoggedin");
   UserName=localStorage.getItem("Username");
-  
+
   container!: ViewContainerRef;
   constructor(private router:Router){}
   logout(e:Event){
@@ -25,7 +25,7 @@ export class AppComponent {
     localStorage.clear;
   }
   openNav() {
- 
+
     document.getElementById("mySidenav")!.style.width="250px";
   }
   closeNav() {
@@ -34,7 +34,7 @@ export class AppComponent {
   submit(){
     document.getElementById("mySidenav")!.style.width="0";
 
-  } 
+  }
 
 
 }

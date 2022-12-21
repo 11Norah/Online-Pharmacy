@@ -21,9 +21,6 @@
     <input class="search" type="text" placeholder="Search..">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
-
-
-
   <form class="profile" [ngSwitch]="this.UserloggedIn">
     <button type="submit"routerLink="/bestseller" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
 
@@ -41,6 +38,7 @@
 
   </div>
   </form>
+
   <button #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</button>
 
 </div>

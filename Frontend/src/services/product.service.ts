@@ -46,10 +46,6 @@ public getByCategory(category: string): Observable<Product[]> {
 
 }
 
-public getByCategory(category: string): Observable<Product[]> {
-  return this.http.get<Product[]>(`http://localhost:${this.port}/getByType?type=${category}`);
-}
-
 SendSelectedProduct(){
 }
 }
