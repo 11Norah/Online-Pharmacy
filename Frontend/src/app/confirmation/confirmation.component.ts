@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/services/product.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent {
-  constructor(private router:Router, private userService: UserService){}
+  constructor(private router:Router, private userService: UserService,private productservice:ProductService){}
   ngOnInit(){
     var u=document.getElementById("demo") as HTMLElement;
     u.innerHTML="Time Left: 10 minutes ";
@@ -48,6 +49,8 @@ var x = setInterval(function() {
       alert("The enetered token is Expired! Click Resend Button.")
     }
     else if(response == 3) {
+      this.productservice.UserLoggedIn=1;
+    
       this.router.navigate(['/bestseller']);
     }
   })
