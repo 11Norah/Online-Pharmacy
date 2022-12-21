@@ -14,9 +14,15 @@ export class AppComponent {
 
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })  
+  UserloggedIn=localStorage.getItem("UserLoggedin");
+  UserName=localStorage.getItem("Username");
+  
   container!: ViewContainerRef;
   constructor(private router:Router){}
-
+  logout(e:Event){
+    e.preventDefault();
+    localStorage.clear;
+  }
   openNav() {
  
     document.getElementById("mySidenav")!.style.width="250px";
