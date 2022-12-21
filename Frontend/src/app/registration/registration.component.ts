@@ -16,23 +16,23 @@ export class RegistrationComponent {
   UserSignUp: any;
 
   constructor(private router: Router, private userService: UserService) {}
-  
- 
+
+
   ValidateRequest(){
-    
-    
+
+
     var usermail=document.getElementById("userSignIn") as HTMLInputElement;
     var password=document.getElementById("passSignIn") as HTMLInputElement;
     if(usermail.value=="" ||password.value==""){
       alert("All fields should be filled out");
-      
+
     }
     else{
       this.userService.login(usermail.value, password.value).subscribe(response => {
         if(response == 0) { //Sign up required
           alert("Email not found!");
         }
-        else if(response == 1) { 
+        else if(response == 1) {
           alert("You entered an incorrect password!");
         }
         else if(response == 2) {
@@ -64,7 +64,7 @@ export class RegistrationComponent {
     var date=document.getElementById("birthdate") as HTMLInputElement;
     var address=document.getElementById("address") as HTMLInputElement;
     console.log("Registeration info :"+ First.value ,Last.value,pass1.value ,pass2.value ,mail.value,userphone.value,date.value,address.value)
-    
+
      if(First.value=="" || Last.value==""||pass1.value=="" || pass2.value=="" ||mail.value==""||userphone.value==""||date.value==""||address.value==""){
 
       alert("All fields should be filled out");
@@ -89,13 +89,13 @@ export class RegistrationComponent {
       })
 
 
-      
+
     }
-  
-  
+
+
   }
   toggle(){
-    
+
     var x=document.getElementById("pass") as HTMLInputElement;
     var y=document.getElementById("tooglePassword") as HTMLButtonElement;
     console.log("Password now "+ x.type );console.log("Password now in ngggg"+ x.type );
@@ -107,7 +107,7 @@ export class RegistrationComponent {
       // toggle the eye slash icon
       //this.classList.toggle('fa-eye-slash');
   });}
-   
+
   }
 }
 
@@ -132,11 +132,11 @@ export class RegistrationComponent {
       return;
     }
   }
-  
-  
+
+
   <input  type="text" formControlName="email" placeholder="email"><br>
   <span class="validation-error" *ngIf="(formSubmitted || registrationFormGroup.controls.email.touched)  && registrationFormGroup.controls.email.hasError">Email is required</span>
                  </form>
-  
+
   */
 
