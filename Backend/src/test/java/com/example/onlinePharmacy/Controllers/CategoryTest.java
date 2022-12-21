@@ -58,10 +58,17 @@ public class CategoryTest {
         List<ProductDto> productDtoList = (List<ProductDto>) productController.getProductsByCategory("Headache");
         assertEquals(5,productDtoList.size());
     }
+
     @Test
     public void getWeightLossProducts(){
         List<ProductDto> productDtoList = (List<ProductDto>) productController.getProductsByCategory("Weight loss");
         assertEquals(5,productDtoList.size());
+    }
+
+    @Test
+    public void getWrongProducts(){
+        List<ProductDto> productDtoList = (List<ProductDto>) productController.getProductsByCategory("Weight");
+        assertEquals(0,productDtoList.size());
     }
 
 }
