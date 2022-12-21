@@ -11,9 +11,9 @@ export class ConfirmationComponent {
   constructor(private router:Router, private userService: UserService){}
   ngOnInit(){
     var u=document.getElementById("demo") as HTMLElement;
-    u.innerHTML="Time Left: ";
+    u.innerHTML="Time Left: 10 minutes ";
 
-
+/*
 var x = setInterval(function() {
 
   var d = new Date(); //get current time
@@ -31,7 +31,7 @@ var x = setInterval(function() {
     (document.getElementById("demo") as HTMLElement).style.color="red";
     (document.getElementById("demo") as HTMLElement).innerHTML = "EXPIRED";
   }
-});
+});*/
   }
  confirmation(e: Event){
   e.preventDefault();
