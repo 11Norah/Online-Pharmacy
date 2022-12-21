@@ -15,7 +15,7 @@ export class BestsellerComponent implements OnInit {
   public static yeslogged=RegistrationComponent.loggedIn;
   ngOnInit(): void {
       this.Server.getTopRated().subscribe(response => this.bestsellerproducts = response);
-      console.log("in bestseller"+ RegistrationComponent.loggedIn);
+      console.log("in bestseller"+ RegistrationComponent.loggedIn +localStorage.getItem("UseLoggedin"));
       
   }
 

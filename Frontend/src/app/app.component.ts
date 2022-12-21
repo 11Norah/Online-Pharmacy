@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Profile } from 'src/models/profile.model';
 
-import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef} from '@angular/core';
+import { Component ,ComponentFactoryResolver,  ViewChild,  ElementRef, ViewContainerRef, OnInit} from '@angular/core';
 import { RegistrationComponent } from './registration/registration.component';
 import { BestsellerComponent } from './bestseller/bestseller.component';
 
@@ -13,7 +13,7 @@ import { BestsellerComponent } from './bestseller/bestseller.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   public static WelcomeUser=document.getElementById("WelcomeUser") as HTMLElement;
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })

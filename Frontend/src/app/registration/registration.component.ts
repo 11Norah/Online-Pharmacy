@@ -20,9 +20,8 @@ export class RegistrationComponent {
   constructor(private router: Router, private userService: UserService ) {}
 
 
-  ValidateRequest(){
-
-
+  ValidateRequest(e:Event){
+    e.preventDefault();
     var usermail=document.getElementById("userSignIn") as HTMLInputElement;
     var password=document.getElementById("passSignIn") as HTMLInputElement;
     if(usermail.value=="" ||password.value==""){
@@ -57,8 +56,8 @@ export class RegistrationComponent {
       console.log("Entered info : "+ usermail.value ,password.value);
     }
   }
-  register(){
-
+  register(e:Event){
+    e.preventDefault();
     var First=document.getElementById("FirstName") as HTMLInputElement;
     var Last=document.getElementById("LastName") as HTMLInputElement;
 
