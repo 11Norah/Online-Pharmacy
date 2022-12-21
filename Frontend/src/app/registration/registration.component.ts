@@ -1,9 +1,11 @@
-
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-registration',
@@ -12,37 +14,50 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent {
 
-  UserSignUp: any;
+  public static loggedIn=localStorage.getItem("UserLoggedin");
+  public static UserName=localStorage.getItem("Username");
 
-  constructor(private router: Router ) {}
-  
- 
-  ValidateRequest(){
-    
-    
+  constructor(private router: Router, private userService: UserService ) {}
+
+
+  ValidateRequest(e:Event){
+    e.preventDefault();
     var usermail=document.getElementById("userSignIn") as HTMLInputElement;
     var password=document.getElementById("passSignIn") as HTMLInputElement;
     if(usermail.value=="" ||password.value==""){
       alert("All fields should be filled out");
-      
+
     }
     else{
-      //back request
+      this.userService.login(usermail.value, password.value).subscribe(response => {
+        if(response == 0) { //Sign up required
+          alert("Email not found!");
+        }
+        else if(response == 1) {
+          alert("You entered an incorrect password!");
+        }
+        else if(response == 2) {
+          localStorage.setItem('Email', usermail.value);
+          localStorage.setItem('UserLoggedin',"true");
+          confirm("You haven't activated your account!");
+          this.router.navigate(['/confirm']);
+        }
+        else if(response == 3) {
+          usermail.value=""; password.value="";
+          localStorage.setItem('Email', usermail.value);
+          localStorage.setItem('UserLoggedin',"true");
+        //show logout button
+        //direct to main page
+        this.router.navigate(['/app']);
+        console.log("username is"+localStorage.getItem("UserLoggedin"));
+        this.router.navigate(['/bestseller']);
+        }
+      })
       console.log("Entered info : "+ usermail.value ,password.value);
-      if(true){
-      usermail.value=""; password.value="";
-      //show logout button
-      //direct to main page
-      this.router.navigate(['/bestseller']);
-      
-    }
-      else{
-            alert("Invalid Email !Try again.")
-      }
     }
   }
-  register(){
-
+  register(e:Event){
+    e.preventDefault();
     var First=document.getElementById("FirstName") as HTMLInputElement;
     var Last=document.getElementById("LastName") as HTMLInputElement;
 
@@ -54,7 +69,7 @@ export class RegistrationComponent {
     var date=document.getElementById("birthdate") as HTMLInputElement;
     var address=document.getElementById("address") as HTMLInputElement;
     console.log("Registeration info :"+ First.value ,Last.value,pass1.value ,pass2.value ,mail.value,userphone.value,date.value,address.value)
-    
+
      if(First.value=="" || Last.value==""||pass1.value=="" || pass2.value=="" ||mail.value==""||userphone.value==""||date.value==""||address.value==""){
 
       alert("All fields should be filled out");
@@ -63,20 +78,31 @@ export class RegistrationComponent {
       alert("Passwords aren't identical ,Try Again!");
     }
     else{
-
-      //back request
-
-        this.router.navigate(['/confirm']);
-      First.value=""; Last.value="";
-      pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
-
       
+      let status;
+      const user: User = new User(First.value, Last.value, mail.value, pass1.value, date.value, userphone.value, false, address.value);
+      this.userService.register(user).subscribe(response => {
+        status = response;
+        if(status) {
+          localStorage.setItem("Email", mail.value);
+          localStorage.setItem("Username",First.value+" "+Last.value);
+          this.router.navigate(['/confirm']);
+          First.value=""; Last.value="";
+          pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
+        }
+        else {
+          alert("You have signed up before!");
+        }
+      })
+
+
+
     }
-  
-  
+
+
   }
   toggle(){
-    
+
     var x=document.getElementById("pass") as HTMLInputElement;
     var y=document.getElementById("tooglePassword") as HTMLButtonElement;
     console.log("Password now "+ x.type );console.log("Password now in ngggg"+ x.type );
@@ -88,7 +114,7 @@ export class RegistrationComponent {
       // toggle the eye slash icon
       //this.classList.toggle('fa-eye-slash');
   });}
-   
+
   }
 }
 
@@ -113,12 +139,11 @@ export class RegistrationComponent {
       return;
     }
   }
-  
-  
+
+
   <input  type="text" formControlName="email" placeholder="email"><br>
   <span class="validation-error" *ngIf="(formSubmitted || registrationFormGroup.controls.email.touched)  && registrationFormGroup.controls.email.hasError">Email is required</span>
                  </form>
-  
-  */
 
+  */
 
