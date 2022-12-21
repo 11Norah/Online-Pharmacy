@@ -16,7 +16,7 @@ export class AppComponent {
   public static WelcomeUser=document.getElementById("WelcomeUser") as HTMLElement;
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })
-  UserloggedIn:string|null="";
+  UserloggedIn=RegistrationComponent.loggedIn;;
   
   UserName=localStorage.getItem("Username");
   
@@ -34,6 +34,13 @@ export class AppComponent {
     
   }
     
+  }
+  Route(){
+    if(this.UserloggedIn=="true"){
+    this.router.navigate(['/profile']);}
+    else{
+      this.router.navigate(['/registration']);
+    }
   }
   logout(e:Event){
     e.preventDefault();
