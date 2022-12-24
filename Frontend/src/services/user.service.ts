@@ -8,6 +8,7 @@ import { User } from 'src/models/user.model';
   providedIn: 'root'
 })
 export class UserService {
+  userLoggedIn = false;
 
   constructor(private http: HttpClient) { }
 

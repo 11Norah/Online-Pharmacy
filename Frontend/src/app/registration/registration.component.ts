@@ -46,8 +46,8 @@ export class RegistrationComponent {
         else if(response == 3) {
           this.Productservice.UserMail=usermail.value;
           console.log("this.Productservice.UserMail in registration:    "+ this.Productservice.UserMail);
-        
-         
+
+
           localStorage.setItem('Email', usermail.value);
           localStorage.setItem('UserLoggedin',"true");
           this.Productservice.UserLoggedIn=1;
@@ -63,7 +63,7 @@ export class RegistrationComponent {
     }
   }
   register(e:Event){
-   
+
     var First=document.getElementById("FirstName") as HTMLInputElement;
     var Last=document.getElementById("LastName") as HTMLInputElement;
 
@@ -84,7 +84,7 @@ export class RegistrationComponent {
       alert("Passwords aren't identical ,Try Again!");
     }
     else{
-      
+
       let status;
       const user: User = new User(First.value, Last.value, mail.value, pass1.value, date.value, userphone.value, false, address.value);
       this.userService.register(user).subscribe(response => {

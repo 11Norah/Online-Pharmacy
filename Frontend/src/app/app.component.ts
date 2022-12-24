@@ -18,14 +18,14 @@ export class AppComponent {
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })
   UserloggedIn=RegistrationComponent.loggedIn;;
-  
+
   UserName=localStorage.getItem("Username");
-  
+
   container!: ViewContainerRef;
   constructor(private router:Router,private userService:ProductService){
-   
+
     this.router.routeReuseStrategy.shouldReuseRoute=function(){
-      
+
       console.log("in apppp :::::"+userService.UserLoggedIn );
     if(userService.UserLoggedIn==1){
       (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello "+userService.UserName;
@@ -34,11 +34,11 @@ export class AppComponent {
   }
   else{
     (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
-    
+
   }return false;
   }
-} 
- 
+}
+
   Route(e:Event){
     e.preventDefault();
     console.log("in routin of appcomponent :"+this.userService.UserLoggedIn);
@@ -59,7 +59,7 @@ export class AppComponent {
   this.userService.UserName="";
   }
   openNav() {
-    
+
     document.getElementById("mySidenav")!.style.width="250px";
   }
   closeNav() {
@@ -71,7 +71,7 @@ export class AppComponent {
 
   }
 
-  
+
 }
 let userService:ProductService;
 window.addEventListener("load",(event)=>{
