@@ -18,8 +18,20 @@
   <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png" />
   <span class="Pharmacyname">AHMENA<br>PHARMACY</span>
   <form class="search_button">
-    <input class="search" type="text" placeholder="Search..">
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <input id="searchingFor" class="search" type="text" placeholder="Search..">
+    <button (click)="search($event)" id="searchBTN"><i class="fa fa-search"></i></button>
+    <script>
+      var input=document.getElementById("searchingFor");
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        (document.getElementById("searchBTN") ).click();
+      }
+    });
+    </script>
   </form>
   <form class="profile" [ngSwitch]="this.UserloggedIn">
     <button type="submit"routerLink="/bestseller" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
