@@ -21,4 +21,14 @@ public class ProfileService {
         }
         return profileDto ;
     }
+
+    public boolean editUserProfile(ProfileDto profile) {
+        String email = profile.getEmail();
+        User user = userRepo.findUserByEmail(email);
+        if(user == null) return false;
+        user.setAddress(profile.getAddress());
+        user.setPhoneNumber(profile.getPhoneNumber());
+        userRepo.save(user);
+        return true;
+    }
 }

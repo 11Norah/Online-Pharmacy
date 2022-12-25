@@ -16,4 +16,9 @@ public class ProfileController {
     public @ResponseBody ProfileDto GetUserData(@RequestParam String email){
         return profileService.getUserData(email) ;
     }
+
+    @PostMapping(path = "/editProfileData")
+    public boolean editProfile(@RequestBody ProfileDto profileDto) {
+        return profileService.editUserProfile(profileDto);
+    }
 }
