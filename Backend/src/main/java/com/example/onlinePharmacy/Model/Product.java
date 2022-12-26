@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -38,6 +39,9 @@ public class Product {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Consultation> diagnosis;
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductRating> ratings;
 
 
 }

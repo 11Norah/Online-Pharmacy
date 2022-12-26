@@ -1,6 +1,7 @@
 package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.ProductDto;
+import com.example.onlinePharmacy.DTOs.ProductRatingDTO;
 import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
@@ -26,6 +27,7 @@ public class ProductController {
         List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto((List<Product>) productRepo.findAll());
         return productDtos;
     }
+
     @GetMapping(path = "/getTopProducts")
     public @ResponseBody List<ProductDto> getTop10Products() {
         List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto(productRepo.findTop10ByOrderByRateDesc());
@@ -56,10 +58,10 @@ public class ProductController {
     }
 
     @PostMapping(path = "/changeRate")
-    public @ResponseBody double changeProductRate(@RequestBody ChangeRateReqBody body) {
+    public @ResponseBody double changeProductRate(@RequestBody ProductRatingDTO productRatingDTO) {
         double newRate = -1;
         try {
-            newRate = productService.changeProductRate(body.id, body.rate);
+            newRate = productService.rate(productRatingDTO);
             return newRate;
         } catch (Exception e) {
             return newRate;

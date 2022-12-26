@@ -6,6 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "Userr")
@@ -17,7 +19,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class User implements Serializable{
+public class User implements Serializable {
     @Id
     @SequenceGenerator(
             name = "user_sequence",
@@ -43,11 +45,13 @@ public class User implements Serializable{
     private String phoneNumber;
     @Column(name = "address", nullable = false)
     private String address;
-    @Column(name = "periodicDrug", nullable = false)
-    private boolean pDrug;
     @Transient
     private Integer age;
     @Column(name = "enabled", nullable = false, columnDefinition = "boolean default false")
     private boolean enabled = false;
+
+    @OneToMany(mappedBy = "user")
+    Set<ProductRating> ratings;
+
 
 }
