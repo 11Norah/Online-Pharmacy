@@ -47,4 +47,15 @@ public class ProductService {
         return newRate;
     }
 
+    public List<ProductDto> getMatchedProducts(String searchTerm) {
+        //query database
+        List<Product> matchedProducts = productRepo.findByNameContaining(searchTerm);
+        //convert to POJO for request handling.
+        List<ProductDto> matchedProductsPOJO = new ArrayList<>();
+        for(Product matchedProduct : matchedProducts) {
+            matchedProductsPOJO.add(ProductMapper.mapProductToDto(matchedProduct));
+        }
+        return matchedProductsPOJO;
+    }
+
 }

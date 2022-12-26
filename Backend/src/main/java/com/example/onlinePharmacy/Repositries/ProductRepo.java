@@ -13,4 +13,5 @@ import java.util.List;
 public interface ProductRepo extends CrudRepository<Product, Long> {
     List<Product> findAllByType(String type);
     List<Product> findTop10ByOrderByRateDesc();
+    List<Product> findByNameContaining(String searchTerm);
 }
