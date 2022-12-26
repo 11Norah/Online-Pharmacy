@@ -19,7 +19,7 @@ public class ProfileController {
     }
 
     @PostMapping(path = "/edit-profile")
-    public boolean editProfile(@RequestBody ProfileDto profileDto) {
+    public int editProfile(@RequestBody ProfileDto profileDto) {
         return profileService.editUserProfile(profileDto);
     }
 

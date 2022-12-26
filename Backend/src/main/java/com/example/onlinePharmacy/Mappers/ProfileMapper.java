@@ -14,8 +14,9 @@ public class ProfileMapper {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .address(user.getAddress())
-                .birthDate(user.getBirth_date().toString())
+                .age(Period.between(user.getBirth_date(), curDate).getYears())
                 .phoneNumber(user.getPhoneNumber())
+                .birthDate(user.getBirth_date().toString())
                 .build();
     }
 }

@@ -30,23 +30,25 @@ public class ProfileService {
         return profileDto ;
     }
 
-    public boolean editUserProfile(ProfileDto profile) {
+    public int editUserProfile(ProfileDto profile) {
         String email = profile.getEmail();
         User user = userRepo.findUserByEmail(email);
-        if(user == null) return false;
+        if(user == null) return -1;
         user.setFirstName(profile.getFirstName());
         user.setLastName(profile.getLastName());
         user.setAddress(profile.getAddress());
         user.setPhoneNumber(profile.getPhoneNumber());
         user.setBirth_date(LocalDate.parse(profile.getBirthDate()));
         userRepo.save(user);
-        return true;
+        ProfileDto newProfile = ProfileMapper.UserToProfileDto(user);
+        return newProfile.getAge();
     }
 
     public boolean updatePassword(SignInDto signInDto) {
         User user = userRepo.findUserByEmail(signInDto.getEmail());
         if(user == null) return false;
         user.setPassword(encoder.encode(signInDto.getPassword()));
+        userRepo.save(user);
         return true;
     }
 }

@@ -19,5 +19,6 @@ public class ProfileDto {
     private String phoneNumber;
     private String address;
     private String birthDate;
+    private int age;
 
 }
