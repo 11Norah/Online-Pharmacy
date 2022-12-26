@@ -44,6 +44,10 @@ export class AppComponent implements OnInit{
     console.log("written in search"+ Searchingvalue);
     //sent to bach SearchingValue
     (document.getElementById("searchingFor") as HTMLInputElement).value="";
+    localStorage.setItem("Category","Search");
+    this.router.navigate(['/SelectedCategory']);
+    console.log("search function in app is done");
+
   }
   else{
     alert("Search bar is empty");
