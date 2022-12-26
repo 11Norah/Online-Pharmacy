@@ -18,13 +18,15 @@ public class ProfileController {
         return profileService.getUserData(email) ;
     }
 
+    //edit all user personal info data.
     @PostMapping(path = "/edit-profile")
     public int editProfile(@RequestBody ProfileDto profileDto) {
         return profileService.editUserProfile(profileDto);
     }
 
+    //edit user password.
     @PostMapping(path = "/update-password")
-    public boolean editPassword(@RequestBody SignInDto signInDto) {
-        return profileService.updatePassword(signInDto);
+    public boolean editPassword(@RequestBody SignInDto editedLoginInfo) {
+        return profileService.updatePassword(editedLoginInfo);
     }
 }

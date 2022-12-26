@@ -15,11 +15,13 @@ import java.time.LocalDate;
 
 @Service
 public class ProfileService {
+
+    private static final int USER_NOT_FOUND = -1;
     @Autowired
-    private UserRepo userRepo ;
+    private UserRepo userRepo ; //repository to handle queries of User relation.
 
     @Autowired
-    private PasswordEncoder encoder;
+    private PasswordEncoder encoder; //password encoder to encrypt and decrypt user passwords.
 
     public ProfileDto getUserData(String email){
         User user = userRepo.findUserByEmail(email) ;
@@ -33,22 +35,26 @@ public class ProfileService {
     public int editUserProfile(ProfileDto profile) {
         String email = profile.getEmail();
         User user = userRepo.findUserByEmail(email);
-        if(user == null) return -1;
+        if(user == null) return USER_NOT_FOUND;
+        //set personal info
         user.setFirstName(profile.getFirstName());
         user.setLastName(profile.getLastName());
         user.setAddress(profile.getAddress());
         user.setPhoneNumber(profile.getPhoneNumber());
         user.setBirth_date(LocalDate.parse(profile.getBirthDate()));
+        //save new record in database
         userRepo.save(user);
         ProfileDto newProfile = ProfileMapper.UserToProfileDto(user);
+        //calculate and return user age.
+        //relevant if user changed his/her birthdate.
         return newProfile.getAge();
     }
 
-    public boolean updatePassword(SignInDto signInDto) {
-        User user = userRepo.findUserByEmail(signInDto.getEmail());
-        if(user == null) return false;
-        user.setPassword(encoder.encode(signInDto.getPassword()));
+    public boolean updatePassword(SignInDto editedLoginInfo) {
+        User user = userRepo.findUserByEmail(editedLoginInfo.getEmail());
+        if(user == null) return false; //user not found
+        user.setPassword(encoder.encode(editedLoginInfo.getPassword()));
         userRepo.save(user);
-        return true;
+        return true; //password set successfully.
     }
 }
