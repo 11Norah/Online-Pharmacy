@@ -62,7 +62,7 @@ class ProductControllerTest {
             assertEquals(productDtoList.get(i).getProduct_id(), iDs.get(i));
         }
     }
-
+/*
     @Test
     @Transactional
     @Rollback(value = true)
@@ -72,5 +72,5 @@ class ProductControllerTest {
         ChangeRateReqBody body = new ChangeRateReqBody(0L, 5);
         productController.changeProductRate(body);
         assertNotEquals(productController.getProductById(0L).getRate(), prevRate);
-    }
+    }*/
 }
