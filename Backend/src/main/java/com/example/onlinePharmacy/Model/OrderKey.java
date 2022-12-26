@@ -3,6 +3,7 @@ package com.example.onlinePharmacy.Model;
 import lombok.*;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import javax.persistence.*;
 
 @Embeddable
@@ -14,11 +15,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class orderKey implements Serializable{
+public class OrderKey implements Serializable {
 
     @Column(name = "userId", nullable = false)
-    private Long userId ;
-    @Column(name = "productId", nullable = false)
-    private Long productId ;
+    private Long userId;
+    @Column(name = "product_id", nullable = false)
+    private Long product_id;
 
 }

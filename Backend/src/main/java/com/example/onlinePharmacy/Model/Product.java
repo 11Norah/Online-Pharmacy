@@ -4,7 +4,6 @@ import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -42,6 +41,10 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private Set<ProductRating> ratings;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Order> orders;
+
 
 
 }

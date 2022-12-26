@@ -6,7 +6,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -52,6 +51,10 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     Set<ProductRating> ratings;
+
+
+    @OneToMany(mappedBy = "user")
+    Set<Order> orders;
 
 
 }

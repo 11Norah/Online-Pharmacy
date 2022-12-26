@@ -4,11 +4,10 @@ import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Collection;
+import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Orderss")
+@Table(name = "Ordering")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -17,9 +16,13 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Orders {
+public class Order {
     @EmbeddedId
-    private orderKey id ;
+    private OrderKey id ;
+
+    @Column(name = "timeStamp", nullable = false, unique = true)
+    private Timestamp timestamp;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("userId")
@@ -27,18 +30,16 @@ public class Orders {
     private User user ;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId("productId")
-    @JoinColumn(name = "productId")
+    @MapsId("product_id")
+    @JoinColumn(name = "product_id")
     private Product product ;
 
-    @Column(name = "orderNumbers", nullable = false)
-    private Integer orderNumbers ;
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity ;
 
     @Column(name = "cost", nullable = false)
     private double cost ;
 
-    @Column(name = "oDate", nullable = false)
-    private LocalDate orderDate;
 
 
 }
