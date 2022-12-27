@@ -88,7 +88,13 @@ removeItemFromCart(id:any){
 
 }
 proceedToCheckOut(){
-  let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
+  document.getElementById("myModal2")!.style.display="block";
+}
+ 
+yes(){
+  document.getElementById("myModal2")!.style.display="none";
+  document.getElementById("myModal3")!.style.display="block";
+ /*let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
   let dateTime = new Date();
   let temp:{UserID:Number,productId:Number,quantity:Number,time:Date}={UserID:0,productId:0,quantity:0,time:dateTime}
   let productInCart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
@@ -100,8 +106,14 @@ proceedToCheckOut(){
     temp.quantity=productInCart[i].duplication
     listDto.push(temp);
   }
-  //call back
+  //call back*/
+}
+clossing(){
+  document.getElementById("myModal2")!.style.display="none";
+  document.getElementById("myModal3")!.style.display="none";
+}
+close(){
 
-
+  document.getElementById("myModal3")!.style.display="none";
 }
 }
