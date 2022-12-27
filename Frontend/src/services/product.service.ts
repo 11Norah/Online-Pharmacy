@@ -50,6 +50,10 @@ public getByCategory(category: string): Observable<Product[]> {
 
 }
 
+public search(term: string): Observable<Product[]> {
+  return this.http.get<Product[]>(`http://localhost:${this.port}/search?searchTerm=${term}`);
+}
+
 SendSelectedProduct(){
 }
 }
