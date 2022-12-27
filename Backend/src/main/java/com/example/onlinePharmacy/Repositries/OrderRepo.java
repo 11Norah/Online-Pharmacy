@@ -1,6 +1,6 @@
 package com.example.onlinePharmacy.Repositries;
 
-import com.example.onlinePharmacy.Model.Orders;
+import com.example.onlinePharmacy.Model.Order;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,13 +13,9 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 @Component
-@Qualifier("orders")
-public interface OrderRepo extends JpaRepository<Orders,Long> {
+@Qualifier("Order")
+public interface OrderRepo extends JpaRepository<Order,Long> {
 
-    @Query("SELECT o FROM Orders o WHERE o.id.userId = ?1")
-    Optional<List<Orders>> findOrdersByUserId(Long userId) ;
-
-    @Query("SELECT o FROM Orders o WHERE o.id.userId = ?1 AND o.id.productId = ?2")
-    Optional<Orders> findOrdersByUserIdAndProductId(Long userId,Long productId) ;
+    List<Order> findByIdUserId(Long userId) ;
 
 }
