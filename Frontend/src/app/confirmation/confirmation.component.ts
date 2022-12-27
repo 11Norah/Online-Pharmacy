@@ -37,7 +37,7 @@ var x = setInterval(function() {
   e.preventDefault();
   var x=document.getElementById("pin") as HTMLInputElement;
   console.log(x);
-  let email = localStorage.getItem('Email');
+  let email = localStorage.getItem('UserMail');
   console.log(email);
   if(email == null) email = "";
   this.userService.activate(email, x.value).subscribe(response => {
@@ -55,7 +55,7 @@ var x = setInterval(function() {
  }
  resend(e: Event){
   e.preventDefault();
-  let email = localStorage.getItem('Email');
+  let email = localStorage.getItem('UserMail');
   console.log("EMAIL: " + email);
   if(email == null) email = "";
     this.userService.resendCode(email).subscribe(response => alert("Code is successfully sent!"));
