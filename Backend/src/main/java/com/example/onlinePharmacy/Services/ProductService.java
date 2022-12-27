@@ -4,6 +4,7 @@ import com.example.onlinePharmacy.DTOs.ProductDto;
 import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
@@ -47,7 +48,8 @@ public class ProductService {
         return newRate;
     }
 
-    public List<ProductDto> getMatchedProducts(String searchTerm) {
+    public List<ProductDto> getMatchedProducts(@NotNull String searchTerm) {
+        if(searchTerm.isEmpty()) return null;
         //query database
         List<Product> matchedProducts = productRepo.findByNameContaining(searchTerm);
         //convert to POJO for request handling.
