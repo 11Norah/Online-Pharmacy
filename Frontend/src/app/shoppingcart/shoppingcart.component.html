@@ -4,26 +4,45 @@
 </head>
 
 <body>
-    
-    <table id="table">
+    <div class="checkout">
+        <div class="cartTotal">Cart Totals</div>
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Subtotal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{subtotal}} LE</div>
+        
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Shipping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20.0 LE</div>
+            <p class="seprator2">_______________________________________________________________________</p>
+            <div class="cartsubtotal">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Total}} LE</div>
+                <p class="seprator2">_______________________________________________________________________</p>
+    <button class="proceed">Proceed To Checkout</button>
+    <div class="vl"></div>
+    </div>
+    <table class="table" >
         <tr>
             <td >
                 <p class="header">Product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubTotal</p>
-                <p class="line">________________________________________</p>
+                <p class="line">__________________________________________</p>
             </td>
         </tr>
         <div *ngFor="let product of bestsellerproducts">
         <tr class="table">
-            <td>
-                <img class="productimg" width="80" height="70" src={{product.img}}>
+            <td  class="table">
+    
+                <button class="removeitem" (click)="removeItemFromCart(product.product_id)">x</button>
+                <img class="productimg" width="80" height="70" src={{product.image}}>
                 <p class="productname">{{product.name}} </p>
-                <p class="productprice">{{product.price}}.0&nbsp;LE</p>
-                <div  class="value-button" id="decrease" (click)="decreaseValue(product.id)" value="Decrease Value">-</div>
-                <input class="input"   id={{product.id}} value="1" readonly />
-                <div  class="value-button" id="increase" (click)="increaseValue(product.id)" value="Increase Value">+</div>
-                <div id="sub{{product.id}}" class="subtotal"  >{{product.price}}</div>
-                  
+                <p class="productprice">{{product.price}}&nbsp;LE</p>
+                <input class="input"   id={{product.product_id}} value="{{product.duplication}}" readonly />
+                <div  class="Decrease-button" id="decrease" (click)="decreaseValue(product.product_id)" value="Decrease Value">-</div>
+                <div  class="Increase-button" id="increase" (click)="increaseValue(product.product_id)" value="Increase Value">+</div>
+                <div id="sub{{product.product_id}}" class="subtotal"  >{{product.price*product.duplication}}</div>
                 <p class="seprator">______________________________________________________________________________</p>
             </td>
         </tr>
@@ -31,10 +50,8 @@
        
         
     </table>
-    <div>
-    <div class="vl"></div>
-    <div class="cartTotal">Cart Total</div>
-    </div>
+ 
+
 </body>
 
 </html>

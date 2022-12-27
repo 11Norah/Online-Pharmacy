@@ -188,11 +188,14 @@ form.search_button::after {
     
 }
 .numofitemsinshoppingcart{
+  text-align:center;
 position:relative;
-left: 610px; 
-bottom: 46px; 
-border-radius: 10px;
+left: -50px; 
+bottom: 49px; 
+border-radius: 50px;
 background-color: rgb(236, 5, 5);
+font-size: large;
+width: 25px;
 border: none;
 color: #f1f1f1;
 }
