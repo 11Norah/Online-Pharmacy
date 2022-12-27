@@ -14,9 +14,13 @@ export class ProductService {
   //ProductsCart: Product[] =JSON.parse(localStorage.getItem("CartProducts")!); 
   
   SelectedCategoryName=""
-
-  UserLoggedIn=0;
-
+ 
+  UserLoggedIn = localStorage.getItem('UserLoggedIn') ? Number(localStorage.getItem('UserLoggedIn')) : 0;
+  //UserLoggedIn=0;
+ // UserMail = localStorage.getItem('UserMail') ? localStorage.getItem('UserMail') : "";
+  //UserMail:string="";
+  //UserName = localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "";
+  //UserName:string="";
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
  
@@ -52,6 +56,10 @@ public changeRate(id: number, rate: number): Observable<number> {
 public getByCategory(category: string): Observable<Product[]> {
   return this.http.get<Product[]>(`http://localhost:${this.port}/getByType?type=${category}`);
 
+}
+
+public search(term: string): Observable<Product[]> {
+  return this.http.get<Product[]>(`http://localhost:${this.port}/search?searchTerm=${term}`);
 }
 
 SendSelectedProduct(){

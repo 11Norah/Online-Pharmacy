@@ -39,5 +39,4 @@ public class Product {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Consultation> diagnosis;
 
-
 }

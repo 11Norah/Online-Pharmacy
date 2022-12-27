@@ -63,14 +63,15 @@ button{
 }
 .search {
   border-radius: 20px;
+  font-size: x-large;
   border: none;
   background-color: white;
   outline: none;
   position: relative;
-  left: 280px;
+  left: 350px;
   padding: 0 20px;
-  width: 400px;
-    height: 34px;
+  width: 500px;
+    height: 43px;
     bottom:  10px;
   
 }
@@ -88,8 +89,8 @@ form.search_button button {
   border-left: none; /* Prevent double borders */
   cursor: pointer;
   position: relative;
-  left: 650px;
-  bottom: 43px;
+  left: 800px;
+  bottom: 50px;
 }
 form.profile button{
     float: left;
