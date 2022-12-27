@@ -38,6 +38,10 @@ export class AppComponent implements OnInit{
   
   search(e:Event){
   e.preventDefault();
+  this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    return false;
+    }
+  
   if((document.getElementById("searchingFor") as HTMLInputElement).value){
     
     let Searchingvalue=(document.getElementById("searchingFor") as HTMLInputElement).value;
@@ -47,6 +51,8 @@ export class AppComponent implements OnInit{
     localStorage.setItem("Category","Search");
     localStorage.setItem("searchTerm", Searchingvalue);
     this.router.navigate(['/SelectedCategory']);
+    this.router.onSameUrlNavigation = 'reload';
+  
     console.log("search function in app is done");
 
   }

@@ -8,11 +8,7 @@ import { Product } from 'src/models/product.model';
   styleUrls: ['./selected-category.component.css']
 })
 export class SelectedCategoryComponent implements OnInit {
-  constructor(private Server:ProductService){}
-  bestsellerproducts: Product[] = [];
-  name: string=this.Server.SelectedCategoryName;
-  ngOnInit(): void {
-  
+  constructor(private Server:ProductService){
     if(localStorage.getItem('Category')!="Search"){
       const item = localStorage.getItem('Category');
       if(this.name == "") this.name = item == null? "" : item;
@@ -27,10 +23,18 @@ export class SelectedCategoryComponent implements OnInit {
       localStorage.setItem('Category',"");
       let searchTerm = localStorage.getItem("searchTerm");
       if(searchTerm == null) searchTerm = "";
+      console.log(searchTerm + " is search term in selected-category");
       //back request 
       //put resulted products in best seller products
       this.Server.search(searchTerm).subscribe(response => this.bestsellerproducts = response);
-    } }
+      
+    } 
+  }
+  bestsellerproducts: Product[] = [];
+  name: string=this.Server.SelectedCategoryName;
+  ngOnInit(): void {
+  
+    }
       
 
 
