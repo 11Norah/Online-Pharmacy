@@ -1,7 +1,5 @@
 package com.example.onlinePharmacy.Model;
 
-import com.example.onlinePharmacy.DTOs.UserDto;
-import com.example.onlinePharmacy.Mappers.UserMapper;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
