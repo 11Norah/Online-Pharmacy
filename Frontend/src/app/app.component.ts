@@ -24,17 +24,6 @@ export class AppComponent implements OnInit{
   container!: ViewContainerRef;
   constructor(private router:Router){}
   ngOnInit():void{
-    this.UserloggedIn=RegistrationComponent.loggedIn;
-    console.log("in apppp"+this.UserloggedIn);
-    if(this.UserloggedIn=="true"){
-      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello";
-      (document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
-      this.UserloggedIn="true";
-  }
-  else{
-    (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
-    
-  }
     
   }
   Route(e:Event){
@@ -45,6 +34,24 @@ export class AppComponent implements OnInit{
     else{
       this.router.navigate(['/registration']);
     }
+  }
+  
+  search(e:Event){
+  e.preventDefault();
+  if((document.getElementById("searchingFor") as HTMLInputElement).value){
+    
+    let Searchingvalue=(document.getElementById("searchingFor") as HTMLInputElement).value;
+    console.log("written in search"+ Searchingvalue);
+    //sent to bach SearchingValue
+    (document.getElementById("searchingFor") as HTMLInputElement).value="";
+    localStorage.setItem("Category","Search");
+    this.router.navigate(['/SelectedCategory']);
+    console.log("search function in app is done");
+
+  }
+  else{
+    alert("Search bar is empty");
+  }
   }
   logout(e:Event){
     e.preventDefault();
@@ -67,3 +74,4 @@ export class AppComponent implements OnInit{
 
 
 }
+

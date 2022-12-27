@@ -13,12 +13,21 @@ export class SelectedCategoryComponent implements OnInit {
   name: string=this.Server.SelectedCategoryName;
   ngOnInit(): void {
   
-    const item = localStorage.getItem('Category');
-    if(this.name == "") this.name = item == null? "" : item;
-    localStorage.setItem('Category', this.name);
-    const category = this.name;
-    this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);
-  }
+    if(localStorage.getItem('Category')!="Search"){
+      const item = localStorage.getItem('Category');
+      if(this.name == "") this.name = item == null? "" : item;
+       localStorage.setItem('Category', this.name);
+      const category = this.name;
+       this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);}
+    else{
+
+      //search request
+      console.log("searcccccccch");
+      this.name="Search results";
+      localStorage.setItem('Category',"");
+      //back request 
+      //put resulted products in best seller products
+    } }
       
 
 
