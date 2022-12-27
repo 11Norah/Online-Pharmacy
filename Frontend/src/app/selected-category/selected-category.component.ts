@@ -25,8 +25,11 @@ export class SelectedCategoryComponent implements OnInit {
       console.log("searcccccccch");
       this.name="Search results";
       localStorage.setItem('Category',"");
+      let searchTerm = localStorage.getItem("searchTerm");
+      if(searchTerm == null) searchTerm = "";
       //back request 
       //put resulted products in best seller products
+      this.Server.search(searchTerm).subscribe(response => this.bestsellerproducts = response);
     } }
       
 
