@@ -63,7 +63,7 @@ class ProductControllerTest {
         }
     }
 
-    @Test
+    /*@Test
     @Transactional
     @Rollback(value = true)
     void changeRate() {
@@ -72,5 +72,5 @@ class ProductControllerTest {
         ChangeRateReqBody body = new ChangeRateReqBody(0L, 5);
         productController.changeProductRate(body);
         assertNotEquals(productController.getProductById(0L).getRate(), prevRate);
-    }
+    }*/
 }
