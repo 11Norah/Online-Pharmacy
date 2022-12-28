@@ -1,5 +1,4 @@
 
-
   .toolbar {
     position: absolute;
     top: 0;
@@ -12,7 +11,11 @@
     color: white;
     font-weight: 600;
   }
-
+.profile{
+  position: relative;
+  top: 30px;
+  left: -10px;
+}
   .toolbar img {
     margin: 0 16px;
   }
@@ -60,14 +63,15 @@ button{
 }
 .search {
   border-radius: 20px;
+  font-size: x-large;
   border: none;
   background-color: white;
   outline: none;
   position: relative;
-  left: 280px;
+  left: 350px;
   padding: 0 20px;
-  width: 400px;
-    height: 34px;
+  width: 500px;
+    height: 43px;
     bottom:  10px;
   
 }
@@ -85,8 +89,8 @@ form.search_button button {
   border-left: none; /* Prevent double borders */
   cursor: pointer;
   position: relative;
-  left: 650px;
-  bottom: 43px;
+  left: 800px;
+  bottom: 50px;
 }
 form.profile button{
     float: left;
@@ -185,11 +189,14 @@ form.search_button::after {
     
 }
 .numofitemsinshoppingcart{
+  text-align:center;
 position:relative;
-left: 610px; 
-bottom: 46px; 
-border-radius: 10px;
+left: -50px; 
+bottom: 49px; 
+border-radius: 50px;
 background-color: rgb(236, 5, 5);
+font-size: large;
+width: 25px;
 border: none;
 color: #f1f1f1;
 }
@@ -202,5 +209,6 @@ color: #f1f1f1;
  top: 50px;
  font-size: larger;
 }
+
  
   

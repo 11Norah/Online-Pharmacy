@@ -10,14 +10,10 @@ import com.example.onlinePharmacy.Model.ProductRatingKey;
 import com.example.onlinePharmacy.Repositries.ProductRatingRepo;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
 import com.example.onlinePharmacy.Repositries.UserRepo;
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +77,18 @@ public class ProductService {
         productRatingRepo.save(productRating);
         return newRate;
 
+    }
+
+    public List<ProductDto> getMatchedProducts(@NotNull String searchTerm) {
+        if(searchTerm.isEmpty()) return null;
+        //query database
+        List<Product> matchedProducts = productRepo.findByNameContaining(searchTerm);
+        //convert to POJO for request handling.
+        List<ProductDto> matchedProductsPOJO = new ArrayList<>();
+        for(Product matchedProduct : matchedProducts) {
+            matchedProductsPOJO.add(ProductMapper.mapProductToDto(matchedProduct));
+        }
+        return matchedProductsPOJO;
     }
 
 }

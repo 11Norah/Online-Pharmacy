@@ -4,11 +4,11 @@
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <nav>
-    <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit()">Categories</a>
+    <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
 
-    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit()"> Consultation <i class="fa fa-user-md"></i>
+    <a href="#" #consultation id="consultation" routerLink="/consultation" routerLinkActive="activebutton"(click)="submit($event)"> Consultation <i class="fa fa-user-md"></i>
     </a>
-    <a href="#" #consultation id="consultation" routerLink="/profile" routerLinkActive="activebutton"(click)="submit()"> Profile &#8478; </a>
+    <a href="#" #consultation id="consultation" routerLink="/profile" routerLinkActive="activebutton"(click)="submit($event)"> Profile &#8478; </a>
 
 
 
@@ -18,27 +18,41 @@
   <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png" />
   <span class="Pharmacyname">AHMENA<br>PHARMACY</span>
   <form class="search_button">
-    <input class="search" type="text" placeholder="Search..">
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <input id="searchingFor" class="search" type="text" placeholder="Search..">
+    <button (click)="search($event)" id="searchBTN"><i class="fa fa-search"></i></button>
+    <script>
+      var input=document.getElementById("searchingFor");
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        (document.getElementById("searchBTN") ).click();
+      }
+    });
+    </script>
   </form>
-  <form class="profile" [ngSwitch]="this.UserloggedIn">
+  <form class="profile" >
     <button type="submit"routerLink="/bestseller" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
 
     <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
     <button type="submit" (click)="Route($event)"><i class="fa fa-user" style="font-size:35px ;"></i></button>
+   
 
     <!--<button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
     -->
+
     <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
 
-        
     </p>
     <button id="logoutButton" class="button" (click)="logout($event)" hidden="false"> Logout</button>
   </form>
 
-  <button #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</button>
-
+  <p #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</p>
 </div>
 
 
+
 <router-outlet></router-outlet>
+

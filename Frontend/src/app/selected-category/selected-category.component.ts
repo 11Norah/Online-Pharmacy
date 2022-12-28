@@ -8,17 +8,33 @@ import { Product } from 'src/models/product.model';
   styleUrls: ['./selected-category.component.css']
 })
 export class SelectedCategoryComponent implements OnInit {
-  constructor(private Server:ProductService){}
+  constructor(private Server:ProductService){
+    if(localStorage.getItem('Category')!="Search"){
+      const item = localStorage.getItem('Category');
+      if(this.name == "") this.name = item == null? "" : item;
+       localStorage.setItem('Category', this.name);
+      const category = this.name;
+       this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);}
+    else{
+
+      //search request
+      console.log("searcccccccch");
+      this.name="Search results";
+      localStorage.setItem('Category',"");
+      let searchTerm = localStorage.getItem("searchTerm");
+      if(searchTerm == null) searchTerm = "";
+      console.log(searchTerm + " is search term in selected-category");
+      //back request 
+      //put resulted products in best seller products
+      this.Server.search(searchTerm).subscribe(response => this.bestsellerproducts = response);
+      
+    } 
+  }
   bestsellerproducts: Product[] = [];
   name: string=this.Server.SelectedCategoryName;
   ngOnInit(): void {
   
-    const item = localStorage.getItem('Category');
-    if(this.name == "") this.name = item == null? "" : item;
-    localStorage.setItem('Category', this.name);
-    const category = this.name;
-    this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);
-  }
+    }
       
 
 
@@ -63,6 +79,70 @@ show(id:any){
   ids=String(this.bestsellerproducts[i].product_id)
 console.log(count)
   document.getElementById(ids)!.innerHTML=this.getStars(this.bestsellerproducts[i].rate)
+}
+AddProduct(id:any){
+  let pos=0;
+  for(var i=0;i<this.bestsellerproducts.length;i++){
+    if(this.bestsellerproducts[i].product_id==id){
+           pos=i;
+           break;
+    }
+  }
+ /* localStorage.removeItem("CartProducts");
+  localStorage.removeItem("subtotal");
+  localStorage.removeItem('itemsincart')*/
+   let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
+  let duplicate:{id:number,num:number}[]=[]
+  let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
+  let subtotal=0;
+  aux.product_id=this.bestsellerproducts[pos].product_id;
+  aux.image=this.bestsellerproducts[pos].image;
+  aux.name=this.bestsellerproducts[pos].name;
+  aux.price=this.bestsellerproducts[pos].price;
+  aux.duplication=1;
+  let flag=0;
+
+  if(localStorage.getItem("CartProducts")==null){
+  
+    cart.push(aux);
+    subtotal=this.bestsellerproducts[pos].price;
+   localStorage.setItem("subtotal",JSON.stringify (subtotal));
+   localStorage.setItem("CartProducts",JSON.stringify(cart));
+  }
+  else{
+  cart=JSON.parse (localStorage.getItem("CartProducts")!)
+  for(var i=0;i<cart.length;i++){
+    if(cart[i].product_id==this.bestsellerproducts[pos].product_id){
+       flag=1;
+       cart[i].duplication+=1;
+       subtotal=JSON.parse (localStorage.getItem("subtotal")!);
+  subtotal+=this.bestsellerproducts[pos].price;
+  localStorage.setItem("subtotal",JSON.stringify (subtotal));
+  localStorage.setItem("CartProducts",JSON.stringify(cart));
+  break;
+    }
+  }
+  if(flag==0){
+  cart.push(aux);
+  subtotal=JSON.parse (localStorage.getItem("subtotal")!);
+  subtotal+=this.bestsellerproducts[pos].price;
+ localStorage.setItem("subtotal",JSON.stringify (subtotal));
+  localStorage.setItem("CartProducts",JSON.stringify(cart));
+  }
+}
+  let val=0;
+  val=JSON.parse(localStorage.getItem("itemsincart")!);
+  if(val==null){
+    val=1;
+  }
+  else{
+    val+=1;
+  }
+localStorage.setItem("itemsincart",JSON.stringify(val));
+(<HTMLInputElement>document.getElementById("itemsnum")).textContent=val.toString();
+  console.log("in cart -->"+(<HTMLInputElement>document.getElementById("itemsnum")).textContent)
+  document.getElementById("itemsnum")!.style.display="block"
+
 }
 
 }

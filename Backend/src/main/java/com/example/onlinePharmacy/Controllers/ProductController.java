@@ -68,4 +68,10 @@ public class ProductController {
         }
     }
 
+    //get products with names containing "searchTerm'.
+    @GetMapping(path = "/search")
+    public List<ProductDto> getMatchedProducts(@RequestParam String searchTerm) {
+        return productService.getMatchedProducts(searchTerm);
+    }
+
 }

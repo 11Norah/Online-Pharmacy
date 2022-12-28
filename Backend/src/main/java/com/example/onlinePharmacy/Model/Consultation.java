@@ -5,7 +5,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -19,9 +18,9 @@ import java.util.List;
 public class Consultation {
     @Id
     @Column(name = "diagnosisName", nullable = false)
-    private String diagnosis;
+    private String diagnosis ;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "diagnosis")
-    private List<Product> products;
+    private List<Product> products ;
 
 }

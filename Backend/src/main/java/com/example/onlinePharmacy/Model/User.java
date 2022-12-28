@@ -3,6 +3,7 @@ package com.example.onlinePharmacy.Model;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import java.util.List;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.time.LocalDate;

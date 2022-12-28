@@ -9,13 +9,24 @@ import { Product } from 'src/models/product.model';
   providedIn: 'root'
 })
 export class ProductService {
-  product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
+  product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""};
+
+  //ProductsCart: Product[] =JSON.parse(localStorage.getItem("CartProducts")!); 
+  
   SelectedCategoryName=""
-
-  UserLoggedIn=0;
-
+ 
+  UserLoggedIn = localStorage.getItem('UserLoggedIn') ? Number(localStorage.getItem('UserLoggedIn')) : 0;
+  //UserLoggedIn=0;
+ // UserMail = localStorage.getItem('UserMail') ? localStorage.getItem('UserMail') : "";
+  //UserMail:string="";
+  //UserName = localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "";
+  //UserName:string="";
   constructor(private http: HttpClient) { }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+ 
+  // localStorage.setItem("CartProducts",JSON.stringify (this.ProductsCart));
+  }
+
 GetbestSellerProducts(){
 }
 RecieveSelectedProduct(id:number,img:string,name:string,price:number,rate:number,category:string,description:string){
@@ -26,6 +37,7 @@ RecieveSelectedProduct(id:number,img:string,name:string,price:number,rate:number
   this.product.rate=rate;
   this.product.category=category;
   this.product.description=description;
+  
 }
 RecieveSelectedCategoryName(CategoryName:string){
   this.SelectedCategoryName=CategoryName;
@@ -44,6 +56,10 @@ public changeRate(id: number, rate: number): Observable<number> {
 public getByCategory(category: string): Observable<Product[]> {
   return this.http.get<Product[]>(`http://localhost:${this.port}/getByType?type=${category}`);
 
+}
+
+public search(term: string): Observable<Product[]> {
+  return this.http.get<Product[]>(`http://localhost:${this.port}/search?searchTerm=${term}`);
 }
 
 SendSelectedProduct(){
