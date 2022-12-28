@@ -42,13 +42,20 @@ export class RegistrationComponent {
           this.router.navigate(['/confirm']);
         }
         else if(response == 3) {
-          //this.Productservice.UserMail=usermail.value;
-          //console.log("this.Productservice.UserMail in registration:    "+ this.Productservice.UserMail);
-
+          
           this.userService.getProfile(usermail.value).subscribe(response => {
             console.log(response);
             this.userProfile = response
+            console.log(this.userProfile);
+            localStorage.setItem("UserInfo",JSON.stringify(this.userProfile));
+            
             });
+            var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
+            if(userinfo!=null){
+            localStorage.setItem('UserName',(JSON.parse(userinfo)).firstName);
+            localStorage.setItem('UserId',(JSON.parse(userinfo)).id);
+            
+            console.log(JSON.parse(userinfo).firstName);}
           localStorage.setItem('UserMail', usermail.value);
           localStorage.setItem('UserLoggedIn',"1");
           //this.Productservice.UserLoggedIn=1;
@@ -91,16 +98,9 @@ export class RegistrationComponent {
       this.userService.register(user).subscribe(response => {
         status = response;
         if(status) {
-          this.userService.getProfile(mail.value).subscribe(response => {
-            console.log(response);
-            this.userProfile = response;
-          });
+         
           localStorage.setItem("UserMail", mail.value);
           localStorage.setItem("UserName",First.value+" "+Last.value);
-          
-          //this.Productservice.UserMail=mail.value;
-          //this.Productservice.UserName=First.value;
-          //console.log("user"+ this.Productservice.UserName);
           this.router.navigate(['/confirm']);
           First.value=""; Last.value="";
           pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
