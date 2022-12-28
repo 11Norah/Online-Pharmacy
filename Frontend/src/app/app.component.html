@@ -1,3 +1,4 @@
+
 <div class="toolbar" role="banner">
   <button class="open" id="option"(click)="openNav()">&#9776;</button>
   <div id="mySidenav" class="sidenav">
@@ -37,19 +38,21 @@
 
     <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
     <button type="submit" (click)="Route($event)"><i class="fa fa-user" style="font-size:35px ;"></i></button>
+   
 
     <!--<button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
     -->
-    <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
 
+    <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
 
     </p>
     <button id="logoutButton" class="button" (click)="logout($event)" hidden="false"> Logout</button>
   </form>
 
-  <button #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</button>
-
+  <p #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</p>
 </div>
 
 
+
 <router-outlet></router-outlet>
+
