@@ -51,7 +51,11 @@ export class AboutProductComponent implements OnInit{
 
   }
   AddProduct(){
-    
+    if(this.SelectedProduct.permission==true){
+      document.getElementById("myModal3")!.style.display="block";
+
+    }
+    else{
    /* localStorage.removeItem("CartProducts");
     localStorage.removeItem("subtotal");
     localStorage.removeItem('itemsincart')*/
@@ -109,5 +113,9 @@ export class AboutProductComponent implements OnInit{
     document.getElementById("itemsnum")!.style.display="block"
   
   }
-
+  }
+  clossing(){
+ 
+    document.getElementById("myModal3")!.style.display="none";
+  }
 }

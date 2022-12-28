@@ -27,8 +27,8 @@ export class BestsellerComponent implements OnInit {
   }
 
 
-aboutproduct(id:number,img:string,name:string,price:number,rate:number,category:string,description:string){
- let  product={id:id,img:img,name:name,price:price,rate:rate,category:category,description:description};
+  aboutproduct(id:number,img:string,name:string,price:number,rate:number,category:string,description:string,permission:boolean){
+    let  product={id:id,img:img,name:name,price:price,rate:rate,category:category,description:description,permission:permission};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
   this.Server.RecieveSelectedProduct(id,img,name,price,rate,category,description);
 

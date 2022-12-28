@@ -12,8 +12,8 @@
         <a *ngFor="let product of bestsellerproducts">
             <a #rate id="{{product.product_id}}" class="rate">{{show(rate.id)}}</a>
 
-<button #w id={{product.product_id}} class="products"><div class="decor"  routerLink="/aboutproduct" routerLinkActive="activebutton" (click)="aboutproduct(product.product_id,product.image,product.name,product.price,product.rate,product.type,product.description)" ><img height="200" width="200" class=" img" src={{product.image}}><p class="info" >{{product.name}}<br>{{product.price}} LE</p>
-        </div><button  class="cart" (click)="AddProduct(product.product_id)">Add to Cart</button>
+            <button #w id={{product.product_id}} class="products"><div class="decor"  routerLink="/aboutproduct" routerLinkActive="activebutton" (click)="aboutproduct(product.product_id,product.image,product.name,product.price,product.rate,product.type,product.description,product.permission)" ><img height="200" width="200" class=" img" src={{product.image}}><p class="info" >{{product.name}}<br>{{product.price}} LE</p>
+            </div><button  class="cart" (click)="AddProduct(product.product_id)">Add to Cart</button>
 
     </button>
         </a>
