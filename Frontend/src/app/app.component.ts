@@ -32,7 +32,7 @@ export class AppComponent {
       
   }
   else{
-    (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
+    (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
 
   }return false;
 
@@ -80,7 +80,7 @@ export class AppComponent {
     e.preventDefault();
     localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
-    (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user"
+    (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
     localStorage.removeItem("UseeLoggedIn");
     localStorage.removeItem("UserMail");
     localStorage.removeItem("UserName");
@@ -103,4 +103,3 @@ export class AppComponent {
 
 
 }
-
