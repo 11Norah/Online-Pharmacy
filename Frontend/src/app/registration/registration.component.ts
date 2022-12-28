@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { Profile } from 'src/models/profile.model';
 import { User } from 'src/models/user.model';
 import { ProductService } from 'src/services/product.service';
 import { UserService } from 'src/services/user.service';
@@ -18,6 +19,7 @@ export class RegistrationComponent {
   
   constructor(private router: Router, private userService: UserService, private Productservice:ProductService ) {}
 
+  userProfile: Profile = new Profile(0, "", "", "", "", "", "", 0);
 
   ValidateRequest(e:Event){
     e.preventDefault();
@@ -43,7 +45,10 @@ export class RegistrationComponent {
           //this.Productservice.UserMail=usermail.value;
           //console.log("this.Productservice.UserMail in registration:    "+ this.Productservice.UserMail);
 
-
+          this.userService.getProfile(usermail.value).subscribe(response => {
+            console.log(response);
+            this.userProfile = response
+            });
           localStorage.setItem('UserMail', usermail.value);
           localStorage.setItem('UserLoggedIn',"1");
           //this.Productservice.UserLoggedIn=1;
@@ -86,6 +91,10 @@ export class RegistrationComponent {
       this.userService.register(user).subscribe(response => {
         status = response;
         if(status) {
+          this.userService.getProfile(mail.value).subscribe(response => {
+            console.log(response);
+            this.userProfile = response;
+          });
           localStorage.setItem("UserMail", mail.value);
           localStorage.setItem("UserName",First.value+" "+Last.value);
           

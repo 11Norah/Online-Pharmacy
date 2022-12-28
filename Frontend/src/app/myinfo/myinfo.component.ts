@@ -17,7 +17,7 @@ export class MyinfoComponent implements OnInit {
    
   }
 
-  userdata: Profile = new Profile("", "", "", "", 0);
+  userdata: Profile = new Profile(0, "", "", "", "", "", "", 0);
 
   ngOnInit(): void {
     let email = localStorage.getItem('UserMail') ? localStorage.getItem('UserMail') : "";
