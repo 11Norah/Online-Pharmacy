@@ -5,11 +5,8 @@ import com.example.onlinePharmacy.DTOs.ProductRatingDTO;
 import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
-import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
