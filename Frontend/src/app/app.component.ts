@@ -38,6 +38,7 @@ export class AppComponent {
 
   
 }
+  }
 
   Route(e:Event){
     e.preventDefault();

@@ -88,6 +88,12 @@ AddProduct(id:any){
            break;
     }
   }
+  if(this.bestsellerproducts[pos].permission==true){
+    document.getElementById("myModal3")!.style.display="block";
+
+
+  }
+  else{
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
@@ -144,6 +150,10 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   document.getElementById("itemsnum")!.style.display="block"
 
 }
-
+}
+clossing(){
+ 
+  document.getElementById("myModal3")!.style.display="none";
+}
 }
 
