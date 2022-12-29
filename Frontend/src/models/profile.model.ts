@@ -1,12 +1,16 @@
 export class Profile{
+
     public id: number;
     public firstName:string ;
     public lastName: string;
+
     public email:string;
     public phoneNumber:string; 
     public address:string;
     public birthDate: string;
     public age:number;
+    public birthdate:string;
+
 
 
 
@@ -14,10 +18,12 @@ export class Profile{
         this.id = id;
         this.firstName=firstName;
         this.lastName=lastName;
+
         this.email=useremail;
         this.phoneNumber=phonenum;
         this.address=addressuser;
         this.birthDate = birthDate;
         this.age=user_age;
+        this.birthdate=birth;
     }
 }

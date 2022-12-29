@@ -17,12 +17,14 @@ export class MyinfoComponent implements OnInit {
    
   }
 
+
   userdata: Profile = new Profile(0, "", "", "", "", "", "", 0);
 
   ngOnInit(): void {
     var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
     if(userinfo!=null)
     this.userdata=JSON.parse(userinfo);
+
     
 
   }
