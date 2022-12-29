@@ -13,7 +13,7 @@ export class MyordersComponent  {
     //get myorders list from the back 
 
     
-   /* this.myorders=[
+    this.myorders=[
       {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
     {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
     {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
@@ -29,7 +29,7 @@ export class MyordersComponent  {
     {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
     {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
     {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")}] */
+    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")}] 
    
     let myordersize :number=this.myorders.length;
     
@@ -42,7 +42,7 @@ export class MyordersComponent  {
       for(var j=0;j<getOccurrence(this.myorders,ProductsInOrder);j++){ 
         if(j==0){
           (document.getElementById('orderscontent')as HTMLBodyElement)
-      .innerHTML +='<div style=" ">'+'<strong  style="color:rgb(1, 1, 1) ;   text-shadow: 0 0 3px rgb(249, 208, 24), 0 0 5px rgb(249, 208, 24); font-size: x-large; display:flex;">'+"Order #"+counter+"</strong>"+"<br>"+'<p style=" font-size: large; font-weight:bold;"> Date : '+this.myorders[i].orderTime;
+      .innerHTML +='<div style=" ">'+'<strong  style="color:rgb(1, 1, 1) ;   text-shadow: 0 0 3px rgb(249, 208, 24), 0 0 5px rgb(249, 208, 24); font-size: x-large; display:flex;">'+"Order #"+counter+"</strong>"+"<br>"+'<p style=" font-size: x-large; font-weight:bold;">   Date : '+this.myorders[i].orderTime;
 
         }
         (document.getElementById('orderscontent')as HTMLBodyElement).innerHTML +='<br>'+'<br>'+'<div style="width:300px;height:400px;background-color: white; padding:0px;border-radius: 15px;box-shadow: 0px 0px 15px 2px rgb(249, 208, 24);transition: 0.5s;margin-bottom: 70px;">'
