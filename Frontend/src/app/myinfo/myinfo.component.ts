@@ -22,16 +22,28 @@ export class MyinfoComponent implements OnInit {
 
   }
 
-  userdata: Profile = new Profile("", "", "", "", 0);
+  userdata: Profile = new Profile("","" ,"", "", "", 0,"");
+  fullname:string ="";
   
   ngOnInit(): void {
     let email = localStorage.getItem("Email");
     if(email == null) email = "";
-    this.userService.getProfile(email).subscribe(response => {
+    this.fullname=localStorage.getItem("UserName")!;
+    var splitted = this.fullname.split(" ", 3); 
+    this.userdata.fname=splitted[0];
+    this.userdata.lname=splitted[1]
+    //alert(this.userdata.name)
+
+    this.userdata.age=+localStorage.getItem("UserAge")!;
+    this.userdata.address=localStorage.getItem("UserAddress")!;
+    this.userdata.phoneNumber=localStorage.getItem("UserPhone")!;
+    this.userdata.email=localStorage.getItem("UserMail")!;
+    
+    /*this.userService.getProfile(email).subscribe(response => {
       console.log(response);
       
       this.userdata = response
-    });
+    });*/
     
   }
 

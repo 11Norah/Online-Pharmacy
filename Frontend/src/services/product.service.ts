@@ -13,7 +13,8 @@ export class ProductService {
   SelectedCategoryName=""
 
   UserLoggedIn=0;
-
+  UserMail:string="";
+  UserName:string="";
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){
