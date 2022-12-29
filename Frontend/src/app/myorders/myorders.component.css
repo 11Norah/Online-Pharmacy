@@ -10,13 +10,85 @@ body{
   
  
 }
-.container{
+.maincontainer{
+   display: flex;
     height: 500px;
     width: 1000px;
     position: relative;
     border-radius: 5px; 
-    background-color: rgb(178, 178, 178);
+    background-color: rgb(193, 14, 14);
     padding: 50px; 
     margin-bottom: 30px;
     
 }
+.product{
+  height: 50px;
+  width: 50px;
+  position: relative;
+  border-radius: 5px; 
+  background-color: red;
+  padding: 50px; 
+  margin-bottom: 30px;
+  margin-right: 15px;
+
+
+}
+
+
+button {
+  text-align: center;
+  font-size: 100%;
+  border-radius: 1em;
+  border: .1em solid #333;
+  padding: 1em;
+}
+
+button strong {
+  display: block;
+  box-sizing: border-box;
+  line-height: 1.35;
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  font-size: 200%;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: .1em solid #fff;
+}
+
+button:hover,
+button:focus {
+  background-color: #060;
+  box-shadow: 0 0 1em rgba(0, 0, 0, .5);
+  color: #fff;
+  outline: none;
+}
+
+
+.img {
+  object-fit: cover;
+  border-radius: 15px;
+  position: relative;
+
+  width:300px;
+  height:200px;
+}
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px; 
+  background-color: rgb(113, 113, 113);
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border: 2px solid red;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 100px;
+  gap: 10px 15px;
+
+}  
