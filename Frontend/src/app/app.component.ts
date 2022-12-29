@@ -77,13 +77,15 @@ export class AppComponent {
   }
   }
   logout(e:Event){
-    e.preventDefault();
-    localStorage.clear();
+    //e.preventDefault();
+   // localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
     (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
-    localStorage.removeItem("UseeLoggedIn");
+    localStorage.removeItem("UserLoggedIn");
     localStorage.removeItem("UserMail");
     localStorage.removeItem("UserName");
+    localStorage.removeItem("UserId");
+    localStorage.removeItem("UserInfo");
   //this.userService.UserLoggedIn=0;
   //this.userService.UserMail="";
   //this.userService.UserName="";

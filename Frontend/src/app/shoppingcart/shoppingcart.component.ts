@@ -12,7 +12,8 @@ export class ShoppingcartComponent {
   subtotal=JSON.parse(localStorage.getItem("subtotal")!);
   Total=JSON.parse(localStorage.getItem("subtotal")!)+20;
 bestsellerproducts= JSON.parse(localStorage.getItem("CartProducts")!) ;
-
+loggedin=JSON.parse(localStorage.getItem("UserLoggedIn")!);
+EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
 
  increaseValue(id:any) {
   let pos=0;
@@ -80,11 +81,12 @@ removeItemFromCart(id:any){
       this.Total=this.subtotal+20;
       localStorage.setItem("subtotal",JSON.stringify(this.subtotal))
       productInCart.splice(i,1);
+      localStorage.setItem("CartProducts",JSON.stringify(productInCart));
+      this.bestsellerproducts=productInCart;
     }
   }
   
-  localStorage.setItem("CartProducts",JSON.stringify(productInCart));
-  this.bestsellerproducts=productInCart;
+ 
 
 }
 proceedToCheckOut(){

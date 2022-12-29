@@ -26,7 +26,7 @@
         <input #ratinghalf type="radio" id="starhalf" name="rating" value=".5"(click)=submit_rate(ratinghalf.value) /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
     </fieldset>
 </div>
-<div *ngIf="loggedin==0">
+<div *ngIf="loggedin==null">
     <div class="rates">
         <span class="tooltiptext">SignIn/SignUp Before Ratting please</span>
     <fieldset class="notrating">

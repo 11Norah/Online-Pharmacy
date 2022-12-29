@@ -10,7 +10,7 @@ export class AboutProductComponent implements OnInit{
   ngOnInit(): void {
 
   }
-  loggedin=this.Server.UserLoggedIn;
+  loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   //rating of product
   getStars(rating:any) {
