@@ -29,7 +29,7 @@ export class EditdatapageComponent implements OnInit{
     //var age=response
     //then put it in userinfo
     localStorage.setItem("UserInfo",'{"id":'+this.userdata.id+',"firstName":'+
-    '"'+fname+'"'+',"lastName":'+'"'+lname+'"'+',"email":"mariamtarek51@gmail.com","phoneNumber":'+'"'+phone+'"'+
+    '"'+fname+'"'+',"lastName":'+'"'+lname+'"'+',"email":'+'"'+this.userdata.email+'","phoneNumber":'+'"'+phone+'"'+
     ',"address":'+'"'+address+'"'+',"birthDate":'+'"'+date+'"'+',"age":21}'); 
     console.log(this.userdata.birthDate);
 

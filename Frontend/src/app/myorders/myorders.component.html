@@ -1,11 +1,13 @@
 <app-profile> </app-profile>
-<body >
-    <div id =orderscontent>
+<body > 
+    <form class="container" *ngFor="let order of myordersmap | keyvalue">
+        
+        <br>
+        {{order.key}} {{order.value}}
+        <br>
 
-
-    </div>
-
-    
+    </form>
+    <br>
 
 
     
