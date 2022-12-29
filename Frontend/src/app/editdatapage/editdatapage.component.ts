@@ -9,59 +9,32 @@ import { Profile } from 'src/models/profile.model';
 export class EditdatapageComponent implements OnInit{  
 
 
-  userdata: Profile = new Profile("","", "", "", "", 0,"");
+  userdata: Profile = new Profile(0, "", "", "", "", "", "", 0);
   fullname:string="";
   
   ngOnInit(): void {
+    var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
+    console.log(userinfo);
+    if(userinfo!=null)
+    this.userdata=JSON.parse(userinfo);
     
-    let email = localStorage.getItem("Email");
-    if(email == null) email = "";
-    this.fullname =localStorage.getItem("UserName")!;
     
-    var splitted = this.fullname.split(" ", 3); 
-    this.userdata.fname=splitted[0];
-    
-    this.userdata.lname=splitted[1];
-    this.userdata.birthdate=localStorage.getItem("UserBirth")!;
-    
-
-    this.userdata.age=+localStorage.getItem("UserAge")!;
-    this.userdata.address=localStorage.getItem("UserAddress")!;
-    this.userdata.phoneNumber=localStorage.getItem("UserPhone")!;
   
     
   }
    updatedata(fname:string,lname:string,phone:string,date:string,address:string){ 
     
     //set items in local storage to the entered values 
-    localStorage.setItem("UserName",fname+""+lname);
-    localStorage.setItem("UserPhone",phone);
-    localStorage.setItem("UserBirth",date);
-    localStorage.setItem("UserAddress",address);
+    //got age from backend // 
+    //var age=response
+    //then put it in userinfo
+    localStorage.setItem("UserInfo",'{"id":'+this.userdata.id+',"firstName":'+
+    '"'+fname+'"'+',"lastName":'+'"'+lname+'"'+',"email":"mariamtarek51@gmail.com","phoneNumber":'+'"'+phone+'"'+
+    ',"address":'+'"'+address+'"'+',"birthDate":'+'"'+date+'"'+',"age":21}'); 
+    console.log(this.userdata.birthDate);
 
- 
-    
-    
+   //send userdataobject to the backend
 
-
-    //request to get age from back 
-
-
-
-    //val age=response;
-   // localStorage.setItem("UserAge",age);
-
-
-
-      //update userdata info to send it to the back
-      this.userdata.fname=fname;
-    
-      this.userdata.lname=lname;
-      this.userdata.birthdate=date;
-  
-      this.userdata.address=address;
-      this.userdata.phoneNumber=phone;
-      //send user data to back 
     
     
 

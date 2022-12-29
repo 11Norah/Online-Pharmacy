@@ -9,7 +9,7 @@ export class Profile{
     public address:string;
     public birthDate: string;
     public age:number;
-    public birthdate:string;
+  
 
 
 
@@ -24,6 +24,6 @@ export class Profile{
         this.address=addressuser;
         this.birthDate = birthDate;
         this.age=user_age;
-        this.birthdate=birth;
+       
     }
 }
