@@ -1,5 +1,4 @@
 
-
   .toolbar {
     position: absolute;
     top: 0;
@@ -12,7 +11,11 @@
     color: white;
     font-weight: 600;
   }
-
+.profile{
+  position: relative;
+  top: 30px;
+  left: -10px;
+}
   .toolbar img {
     margin: 0 16px;
   }
@@ -186,11 +189,14 @@ form.search_button::after {
     
 }
 .numofitemsinshoppingcart{
+  text-align:center;
 position:relative;
-left: 610px; 
-bottom: 46px; 
-border-radius: 10px;
+left: -50px; 
+bottom: 49px; 
+border-radius: 50px;
 background-color: rgb(236, 5, 5);
+font-size: large;
+width: 25px;
 border: none;
 color: #f1f1f1;
 }
@@ -203,5 +209,6 @@ color: #f1f1f1;
  top: 50px;
  font-size: larger;
 }
+
  
   

@@ -71,7 +71,8 @@ border: none;
   }
   .productname{
     font-size: 50px;
-    line-height: .6cm;
+    line-height: 1.5cm;
+    max-width: 40%;
 
   }
   .info{
@@ -90,6 +91,7 @@ border: none;
   .productdescription{
     font-weight: 1000px;
     font-size: larger;
+    max-width: 30%;
   }
  .Availability{
     line-height: .7cm;

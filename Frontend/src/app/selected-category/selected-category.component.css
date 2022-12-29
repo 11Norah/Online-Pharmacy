@@ -29,7 +29,7 @@ form.shape button {
     left: 10px;
     top: 60px;
     padding: 0 20px;
-    width: 350px;
+    width: 415px;
       height: 50px;
       bottom:  10px;
     
@@ -37,7 +37,7 @@ form.shape button {
   .decoration{
     position: relative;
     color: rgb(205, 205, 205);
-    left: 405px;
+    left: 470px;
     font-size: 50px;
     bottom: 75px;
     font-weight: 300;
@@ -48,8 +48,11 @@ form.shape button {
     left: 0px;
     font-size: 17px;
     color: rgb(99, 101, 102);
+    width: 200px;
+    height: 80px;
   }
   .products{
+    padding: 0;
 border: none;
     background: none;
   }
