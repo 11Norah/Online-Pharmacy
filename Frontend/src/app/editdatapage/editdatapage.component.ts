@@ -28,9 +28,9 @@ export class EditdatapageComponent implements OnInit{
     //got age from backend // 
     //var age=response
     //then put it in userinfo
-    localStorage.setItem("UserInfo",'{"id":'+this.userdata.id+',"firstName":'+
-    '"'+fname+'"'+',"lastName":'+'"'+lname+'"'+',"email":"mariamtarek51@gmail.com","phoneNumber":'+'"'+phone+'"'+
-    ',"address":'+'"'+address+'"'+',"birthDate":'+'"'+date+'"'+',"age":21}'); 
+     localStorage.setItem("UserInfo",'{"id":'+this.userdata.id+',"firstName":'+
+    '"'+fname+'"'+',"lastName":'+'"'+lname+'"'+',"email":'+'"'+this.userdata.email+'","phoneNumber":'+'"'+phone+'"'+
+    ',"address":'+'"'+address+'"'+',"birthDate":'+'"'+date+'"'+',"age":21}');  
     console.log(this.userdata.birthDate);
 
    //send userdataobject to the backend
