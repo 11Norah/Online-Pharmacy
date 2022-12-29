@@ -12,9 +12,14 @@ export class ProductService {
   product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
   SelectedCategoryName=""
 
-  UserLoggedIn=0;
-  UserMail:string="";
-  UserName:string="";
+ 
+  UserLoggedIn = localStorage.getItem('UserLoggedIn') ? Number(localStorage.getItem('UserLoggedIn')) : 0;
+  //UserLoggedIn=0;
+ // UserMail = localStorage.getItem('UserMail') ? localStorage.getItem('UserMail') : "";
+  //UserMail:string="";
+  //UserName = localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "";
+  //UserName:string="";
+
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){

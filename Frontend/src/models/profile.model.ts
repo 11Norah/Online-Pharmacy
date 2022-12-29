@@ -1,21 +1,28 @@
 export class Profile{
-    public fname:string ;
-    public lname:string ;
+
+    public id: number;
+    public firstName:string ;
+    public lastName: string;
+
     public email:string;
     public phoneNumber:string; 
     public address:string;
+    public birthDate: string;
     public age:number;
     public birthdate:string;
 
 
 
-    constructor(firstname:string,lasttname:string,useremail:string,phonenum:string,addressuser:string,user_age:number,birth:string){ 
 
-        this.fname=firstname;
-        this.lname=lasttname;
+    constructor(id: number, firstName: string, lastName: string,useremail:string,phonenum:string,addressuser:string, birthDate: string, user_age:number){ 
+        this.id = id;
+        this.firstName=firstName;
+        this.lastName=lastName;
+
         this.email=useremail;
         this.phoneNumber=phonenum;
         this.address=addressuser;
+        this.birthDate = birthDate;
         this.age=user_age;
         this.birthdate=birth;
     }

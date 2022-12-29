@@ -13,10 +13,13 @@ import lombok.*;
 
 public class ProfileDto {
 
-    private String name;
+    private long id;
+    private String firstName;
+    private String lastName;
     private String email;
     private String phoneNumber;
     private String address;
-    private Integer age;
+    private String birthDate;
+    private int age;
 
 }

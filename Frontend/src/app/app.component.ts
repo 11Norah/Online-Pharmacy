@@ -1,4 +1,3 @@
-
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Profile } from 'src/models/profile.model';
@@ -17,46 +16,74 @@ export class AppComponent {
   public static WelcomeUser=document.getElementById("WelcomeUser") as HTMLElement;
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })
-  UserloggedIn=RegistrationComponent.loggedIn;;
 
-  UserName=localStorage.getItem("Username");
+  
+  
 
   container!: ViewContainerRef;
-  constructor(private router:Router,private userService:ProductService){
+
+  constructor(private router:Router){
 
     this.router.routeReuseStrategy.shouldReuseRoute=function(){
 
-      console.log("in apppp :::::"+userService.UserLoggedIn );
-    if(userService.UserLoggedIn==1){
-      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello "+userService.UserName;
+      console.log("in apppp :::::" +localStorage.getItem("UserLoggedIn") );
+    if(Number(localStorage.getItem("UserLoggedIn"))==1){
+      (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello "+(localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "");
       (document.getElementById("logoutButton")as HTMLButtonElement).hidden=false;
-      RegistrationComponent.loggedIn="true";
+      
   }
   else{
-    (document.getElementById("Welcome") as HTMLElement).innerHTML="Hello user";
+    (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
 
   }return false;
-  }
+
+  
 }
+  }
 
   Route(e:Event){
     e.preventDefault();
-    console.log("in routin of appcomponent :"+this.userService.UserLoggedIn);
-    console.log("on route"+ BestsellerComponent.yeslogged);
-    console.log("in app usermail::"+this.userService.UserMail);
-    if(this.userService.UserLoggedIn==1){
+    console.log("in routin of appcomponent :" +localStorage.getItem("UserLoggedIn"));
+    
+    console.log("in app usermail::" +localStorage.getItem("UserMail"));
+    if(Number(localStorage.getItem("UserLoggedIn"))==1){
+
         this.router.navigate(['/profile']);}
     else{
       this.router.navigate(['/registration']);
     }
   }
+  
+  search(e:Event){
+  e.preventDefault();
+  if((document.getElementById("searchingFor") as HTMLInputElement).value){
+    
+    let Searchingvalue=(document.getElementById("searchingFor") as HTMLInputElement).value;
+    console.log("written in search"+ Searchingvalue);
+    //sent to bach SearchingValue
+    (document.getElementById("searchingFor") as HTMLInputElement).value="";
+    localStorage.setItem("Category","Search");
+    this.router.navigate(['/SelectedCategory']);
+    console.log("search function in app is done");
+
+  }
+  else{
+    alert("Search bar is empty");
+  }
+  }
   logout(e:Event){
     e.preventDefault();
     localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
-  this.userService.UserLoggedIn=0;
-  this.userService.UserMail="";
-  this.userService.UserName="";
+
+    (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
+    localStorage.removeItem("UseeLoggedIn");
+    localStorage.removeItem("UserMail");
+    localStorage.removeItem("UserName");
+  //this.userService.UserLoggedIn=0;
+  //this.userService.UserMail="";
+  //this.userService.UserName="";
+
   }
   openNav() {
 

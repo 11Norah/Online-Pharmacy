@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { Profile } from 'src/models/profile.model';
 import { User } from 'src/models/user.model';
 import { ProductService } from 'src/services/product.service';
 import { UserService } from 'src/services/user.service';
@@ -15,11 +16,10 @@ import { AppComponent } from '../app.component';
 })
 export class RegistrationComponent {
 
-  public static loggedIn=localStorage.getItem("UserLoggedin");
-  public static UserName=localStorage.getItem("Username");
-  public static UserMail=localStorage.getItem("Email");
+
   constructor(private router: Router, private userService: UserService, private Productservice:ProductService ) {}
 
+  userProfile: Profile = new Profile(0, "", "", "", "", "", "", 0);
 
   ValidateRequest(e:Event){
     e.preventDefault();
@@ -38,23 +38,33 @@ export class RegistrationComponent {
           alert("You entered an incorrect password!");
         }
         else if(response == 2) {
-          localStorage.setItem('Email', usermail.value);
-          localStorage.setItem('UserLoggedin',"true");
           confirm("You haven't activated your account!");
           this.router.navigate(['/confirm']);
         }
         else if(response == 3) {
-          this.Productservice.UserMail=usermail.value;
-          console.log("this.Productservice.UserMail in registration:    "+ this.Productservice.UserMail);
 
+          
+          this.userService.getProfile(usermail.value).subscribe(response => {
+            console.log(response);
+            this.userProfile = response
+            console.log(this.userProfile);
+            localStorage.setItem("UserInfo",JSON.stringify(this.userProfile));
+            
+            });
+            var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
+            if(userinfo!=null){
+            localStorage.setItem('UserName',(JSON.parse(userinfo)).firstName);
+            localStorage.setItem('UserId',(JSON.parse(userinfo)).id);
+            
+            console.log(JSON.parse(userinfo).firstName);}
+          localStorage.setItem('UserMail', usermail.value);
+          localStorage.setItem('UserLoggedIn',"1");
+          //this.Productservice.UserLoggedIn=1;
 
-          localStorage.setItem('Email', usermail.value);
-          localStorage.setItem('UserLoggedin',"true");
-          this.Productservice.UserLoggedIn=1;
           //show logout button
         //direct to main page
         this.router.navigate(['/app']);
-        console.log("username is"+localStorage.getItem("UserLoggedin"));
+        console.log("username is"+localStorage.getItem("UserLoggedIn"));
         this.router.navigate(['/bestseller']);
         usermail.value=""; password.value="";
         }
@@ -90,11 +100,11 @@ export class RegistrationComponent {
       this.userService.register(user).subscribe(response => {
         status = response;
         if(status) {
-          localStorage.setItem("Email", mail.value);
-          localStorage.setItem("Username",First.value+" "+Last.value);
-          this.Productservice.UserMail=mail.value;
-          this.Productservice.UserName=First.value;
-          console.log("user"+ this.Productservice.UserName);
+
+         
+          localStorage.setItem("UserMail", mail.value);
+          localStorage.setItem("UserName",First.value+" "+Last.value);
+
           this.router.navigate(['/confirm']);
           First.value=""; Last.value="";
           pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
@@ -127,27 +137,3 @@ export class RegistrationComponent {
   }
 }
 
-
-
-
-
-
-
-/**formSubmitted = false;
-  registrationFormGroup = new FormGroup({
-    name: new  FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.pattern('((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15})')])
-  });
-  onSubmit(): void{
-    this.formSubmitted = true;
-    console.log(this.formSubmitted)
-    if (this.registrationFormGroup.valid){
-      console.log("yes");
-      return;
-    }
-  }
-  <input  type="text" formControlName="email" placeholder="email"><br>
-  <span class="validation-error" *ngIf="(formSubmitted || registrationFormGroup.controls.email.touched)  && registrationFormGroup.controls.email.hasError">Email is required</span>
-                 </form>
-  */

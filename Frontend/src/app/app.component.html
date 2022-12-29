@@ -1,4 +1,3 @@
-
 <div class="toolbar" role="banner">
   <button class="open" id="option"(click)="openNav()">&#9776;</button>
   <div id="mySidenav" class="sidenav">
@@ -18,10 +17,22 @@
   <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png" />
   <span class="Pharmacyname">AHMENA<br>PHARMACY</span>
   <form class="search_button">
-    <input class="search" type="text" placeholder="Search..">
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <input id="searchingFor" class="search" type="text" placeholder="Search..">
+    <button (click)="search($event)" id="searchBTN"><i class="fa fa-search"></i></button>
+    <script>
+      var input=document.getElementById("searchingFor");
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        (document.getElementById("searchBTN") ).click();
+      }
+    });
+    </script>
   </form>
-  <form class="profile" [ngSwitch]="this.UserloggedIn">
+  <form class="profile" >
     <button type="submit"routerLink="/bestseller" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
 
     <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
@@ -29,10 +40,11 @@
 
     <!--<button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
     -->
-    <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
 
+    
+    <label id="Welcome" style="margin-left: 220px; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
+    <br></label>
 
-    </p>
     <button id="logoutButton" class="button" (click)="logout($event)" hidden="false"> Logout</button>
   </form>
 
