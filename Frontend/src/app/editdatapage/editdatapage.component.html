@@ -1,0 +1,51 @@
+<app-updatedata></app-updatedata>
+<body>
+
+<div>
+    <form  class="container">
+      <label for="fname" style="font-weight: bold;">First Name</label>
+      <input type="text" #fname name="firstname" placeholder={{userdata.fname}} value={{userdata.fname}}>
+  
+      <label for="lname" style="font-weight: bold;">Last Name</label>
+      <input type="text" #lname  name="lastname" placeholder={{userdata.lname}} value={{userdata.lname}}> 
+      <br>
+      <label for="phone" class="label" style="font-weight: bold;"><span ><i for="phone" class="fa fa-phone"></i>
+      </span> Mobile Number :</label> 
+      <br>
+      
+      <input #phone style="width: 990px;" type="tel" minlength="9" placeholder={{userdata.phoneNumber}} value={{userdata.phoneNumber}} class="input">
+
+      <br>
+      <br>
+
+      <label for="date" class="fa fa-id-card-o " style="font-weight: bold;"> Birth date :</label>
+      <br>
+      
+      
+
+      <input style="font-weight: bold;" placeholder={{userdata.birthdate}}  value={{userdata.birthdate}} class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" #date/>
+      <br>
+      <br>
+  
+      
+
+      <label style="font-weight: bold;" for="address" class="label"><span ><i for="address" class="fa fa-address-book-o"></i>
+      </span> Address</label>
+      <input #address type="text" placeholder={{userdata.address}} value={{userdata.address}}  class="input">
+
+     
+
+      
+
+      
+  
+      
+    <br>
+    <br>
+    <br> 
+    <button   (click)="updatedata(fname.value,lname.value,phone.value,date.value,address.value)">save</button>
+    
+    </form>
+    
+  </div>
+</body>

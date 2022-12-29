@@ -16,6 +16,7 @@ export class AppComponent {
   public static WelcomeUser=document.getElementById("WelcomeUser") as HTMLElement;
   title = 'OnlinePharmacy';
   @ViewChild('container', { read: ViewContainerRef })
+
   
   
 
@@ -46,6 +47,7 @@ export class AppComponent {
     
     console.log("in app usermail::" +localStorage.getItem("UserMail"));
     if(Number(localStorage.getItem("UserLoggedIn"))==1){
+
         this.router.navigate(['/profile']);}
     else{
       this.router.navigate(['/registration']);
@@ -73,6 +75,7 @@ export class AppComponent {
     //e.preventDefault();
     //localStorage.clear();
     (document.getElementById("logoutButton") as HTMLButtonElement).hidden=true;
+
     (document.getElementById("Welcome") as HTMLElement).innerHTML="<span>"+"Welcome to our store"+"</span>";
     localStorage.removeItem("UseeLoggedIn");
     localStorage.removeItem("UserMail");
@@ -82,6 +85,7 @@ export class AppComponent {
   //this.userService.UserLoggedIn=0;
   //this.userService.UserMail="";
   //this.userService.UserName="";
+
   }
   openNav() {
 
@@ -98,3 +102,7 @@ export class AppComponent {
 
 
 }
+let userService:ProductService;
+window.addEventListener("load",(event)=>{
+  userService.UserLoggedIn=1;
+})

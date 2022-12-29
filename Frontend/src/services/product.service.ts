@@ -11,6 +11,7 @@ import { Product } from 'src/models/product.model';
 export class ProductService {
   product={id:0,img:"",name:"",price:0,rate:0,category:"",description:""}
   SelectedCategoryName=""
+
  
   UserLoggedIn = localStorage.getItem('UserLoggedIn') ? Number(localStorage.getItem('UserLoggedIn')) : 0;
   //UserLoggedIn=0;
@@ -18,6 +19,7 @@ export class ProductService {
   //UserMail:string="";
   //UserName = localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "";
   //UserName:string="";
+
   constructor(private http: HttpClient) { }
   ngOnInit(): void {}
 GetbestSellerProducts(){
