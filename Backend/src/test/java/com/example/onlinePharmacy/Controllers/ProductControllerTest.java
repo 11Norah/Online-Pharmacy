@@ -1,7 +1,7 @@
 package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.ProductDto;
-import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
+import com.example.onlinePharmacy.DTOs.ProductRatingDTO;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +23,7 @@ class ProductControllerTest {
     ProductController productController;
     @Autowired
     ProductService productService;
+
 
     @Test
     void getAllProducts() {
@@ -63,14 +64,28 @@ class ProductControllerTest {
         }
     }
 
-    /*@Test
+    @Test
     @Transactional
     @Rollback(value = true)
-    void changeRate() {
-        ProductDto productDto = productController.getProductById(0L);
-        double prevRate = productDto.getRate();
-        ChangeRateReqBody body = new ChangeRateReqBody(0L, 5);
-        productController.changeProductRate(body);
-        assertNotEquals(productController.getProductById(0L).getRate(), prevRate);
-    }*/
+    void changeRateWithInvalidValue() {
+        ProductRatingDTO productRatingDTO = new ProductRatingDTO();
+        productRatingDTO.setProductId(1L);
+        productRatingDTO.setRating(6);
+        productRatingDTO.setUserId(21L);
+        double newRate = productController.changeProductRate(productRatingDTO);
+        assertEquals(newRate, -1);
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = true)
+    void changeRateWithValidValue() {
+        ProductRatingDTO productRatingDTO = new ProductRatingDTO();
+        productRatingDTO.setProductId(1L);
+        productRatingDTO.setRating(4);
+        productRatingDTO.setUserId(21L);
+        double newRate = productController.changeProductRate(productRatingDTO);
+        assertNotEquals(newRate, -1);
+    }
+
 }
