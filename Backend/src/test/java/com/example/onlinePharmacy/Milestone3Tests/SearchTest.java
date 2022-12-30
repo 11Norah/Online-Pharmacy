@@ -29,6 +29,7 @@ public class SearchTest {
         assertEquals(productDTOS.size(), 0);
     }
 
+
     @Test
     void searchWithUsedSubWord(){
         String searchTerm = "a";
