@@ -13,6 +13,7 @@ import lombok.*;
 
 public class ProfileDto {
 
+    private long id;
     private String firstName;
     private String lastName;
     private String email;

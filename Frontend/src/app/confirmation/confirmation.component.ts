@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Profile } from 'src/models/profile.model';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent {
+  userProfile: Profile = new Profile(0, "", "", "", "", "", "", 0);
   constructor(private router:Router, private userService: UserService){}
   ngOnInit(){
     var u=document.getElementById("demo") as HTMLElement;
@@ -48,6 +50,17 @@ var x = setInterval(function() {
       alert("The enetered token is Expired! Click Resend Button.")
     }
     else if(response == 3) {
+      if(email!=null)
+       this.userService.getProfile(email).subscribe(response => {
+        console.log(response);
+        this.userProfile = response;
+        localStorage.setItem("UserInfo",JSON.stringify(this.userProfile));
+        var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
+        if(userinfo!=null){
+        localStorage.setItem('UserId',(JSON.parse(userinfo)).id);
+        
+        console.log(JSON.parse(userinfo).id);}
+      });
       this.router.navigate(['/bestseller']);
     }
   })

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 
 import{BrowserModule} from '@angular/platform-browser'
 
@@ -25,6 +25,10 @@ import { SelectedCategoryComponent } from './selected-category/selected-category
 
 
 import { RegistrationComponent } from './registration/registration.component';
+import { UpdatedataComponent } from './updatedata/updatedata.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditdatapageComponent } from './editdatapage/editdatapage.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 
 
@@ -48,7 +52,10 @@ import { RegistrationComponent } from './registration/registration.component';
 
 
     ConfirmationComponent,
-          RegistrationComponent
+          RegistrationComponent,
+          UpdatedataComponent,
+          EditdatapageComponent,
+          ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +66,10 @@ import { RegistrationComponent } from './registration/registration.component';
 
     ,{path:"shoppingcart",component:ShoppingcartComponent},{path:"aboutproduct",component:AboutProductComponent}
     ,{path:"registration",component:RegistrationComponent} , {path:"SelectedCategory",component:SelectedCategoryComponent},{path:"confirm",component:ConfirmationComponent}
-   , {path:"profile",redirectTo:'profile/myinfo',pathMatch:'full'},{path:"profile/myinfo",component:MyinfoComponent}])
+   , {path:"profile",redirectTo:'myinfo',pathMatch:'full'},{path:"myinfo",component:MyinfoComponent},{path:"myorders",component:MyordersComponent},{path:"updatedata",redirectTo:'editdata',pathMatch:'full'},{path:"editdata",component:EditdatapageComponent},{path:"changepassword",component:ChangepasswordComponent}]),
+      BrowserAnimationsModule
   ],
+  schemas:[NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

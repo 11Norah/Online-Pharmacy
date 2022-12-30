@@ -10,6 +10,7 @@ public class ProfileMapper {
     public static ProfileDto UserToProfileDto(User user){
         LocalDate curDate = LocalDate.now();
         return ProfileDto.builder()
+                .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())

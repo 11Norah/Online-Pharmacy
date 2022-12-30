@@ -1,18 +1,6 @@
-<html>
-    
+
+<app-profile></app-profile>  
 <body>
-
-  <ul class="topnav" >
-    <li><a class="text"  routerLink="myinfo" routerLinkActive="activebutton">My Info</a></li>
-    <li><a class="text"  routerLink="myorders"routerLinkActive="activebutton">My orders</a></li>
-    <li><a class="text"  routerLink="editdata"routerLinkActive="activebutton">Update data</a></li>
-    
-  </ul>
-  
-
- 
-
-<router-outlet></router-outlet> 
 
 <div class="main">
     <h2 class="text">My Info</h2>
@@ -26,7 +14,9 @@
                     <td>:</td> 
                     
                     
-                    <td class="rcorners2">{{userdata.name}}</td>
+
+                    <td class="rcorners2">{{userdata.firstName}} {{userdata.lastName}}</td>
+
                 </tr>
                 <tr>
                     <td class="parameters">Email</td>
@@ -56,4 +46,4 @@
   
   
   </div>
-  
+</body>
