@@ -64,6 +64,7 @@ public class ProductService {
     }
 
     public double rate(ProductRatingDTO productRatingDTO) throws Exception {
+        if (productRatingDTO.getRating() > 5 || productRatingDTO.getRating() < 0) return -1;
         Optional<ProductRating> optionalProductRating = productRatingRepo.findById(new ProductRatingKey(productRatingDTO.getUserId(), productRatingDTO.getProductId()));
         double newRate;
         if (optionalProductRating.isEmpty()) {
@@ -80,12 +81,12 @@ public class ProductService {
     }
 
     public List<ProductDto> getMatchedProducts(@NotNull String searchTerm) {
-        if(searchTerm.isEmpty()) return null;
+        if (searchTerm.isEmpty()) return null;
         //query database
         List<Product> matchedProducts = productRepo.findByNameContaining(searchTerm);
         //convert to POJO for request handling.
         List<ProductDto> matchedProductsPOJO = new ArrayList<>();
-        for(Product matchedProduct : matchedProducts) {
+        for (Product matchedProduct : matchedProducts) {
             matchedProductsPOJO.add(ProductMapper.mapProductToDto(matchedProduct));
         }
         return matchedProductsPOJO;
