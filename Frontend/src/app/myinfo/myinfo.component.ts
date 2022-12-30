@@ -22,10 +22,10 @@ export class MyinfoComponent implements OnInit {
 
   ngOnInit(): void {
     var userinfo=localStorage.getItem('UserInfo')?localStorage.getItem('UserInfo'):"";
+
     console.log(userinfo)
     if(userinfo!=null)
     this.userdata=JSON.parse(userinfo);
-
 
 
 

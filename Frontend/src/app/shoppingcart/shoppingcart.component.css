@@ -264,6 +264,26 @@ max-height: 10%;
     font-size: larger;
     color:rgb(99, 101, 102) ;
   }
+ 
+  .checker .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(99, 101, 102);
+    color: #FFD700;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: relative;
+   top: 40px;
+   right:  170px;
+    z-index: 1;
+  }
+  
+  .checker:hover .tooltiptext {
+    visibility: visible;
+  }
   
  
 

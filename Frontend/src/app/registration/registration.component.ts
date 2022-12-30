@@ -42,7 +42,6 @@ export class RegistrationComponent {
           this.router.navigate(['/confirm']);
         }
         else if(response == 3) {
-
           
           this.userService.getProfile(usermail.value).subscribe(response => {
             console.log(response);
@@ -101,9 +100,11 @@ export class RegistrationComponent {
         status = response;
         if(status) {
 
+
          
           localStorage.setItem("UserMail", mail.value);
           localStorage.setItem("UserName",First.value+" "+Last.value);
+
 
           this.router.navigate(['/confirm']);
           First.value=""; Last.value="";

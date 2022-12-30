@@ -12,7 +12,8 @@ export class ShoppingcartComponent {
   subtotal=JSON.parse(localStorage.getItem("subtotal")!);
   Total=JSON.parse(localStorage.getItem("subtotal")!)+20;
 bestsellerproducts= JSON.parse(localStorage.getItem("CartProducts")!) ;
-
+loggedin=JSON.parse(localStorage.getItem("UserLoggedIn")!);
+EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
 
  increaseValue(id:any) {
   let pos=0;
@@ -80,11 +81,12 @@ removeItemFromCart(id:any){
       this.Total=this.subtotal+20;
       localStorage.setItem("subtotal",JSON.stringify(this.subtotal))
       productInCart.splice(i,1);
+      localStorage.setItem("CartProducts",JSON.stringify(productInCart));
+      this.bestsellerproducts=productInCart;
     }
   }
   
-  localStorage.setItem("CartProducts",JSON.stringify(productInCart));
-  this.bestsellerproducts=productInCart;
+ 
 
 }
 proceedToCheckOut(){
@@ -94,11 +96,11 @@ proceedToCheckOut(){
 yes(){
   document.getElementById("myModal2")!.style.display="none";
   document.getElementById("myModal3")!.style.display="block";
- /*let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
+ let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
   let dateTime = new Date();
   let temp:{UserID:Number,productId:Number,quantity:Number,time:Date}={UserID:0,productId:0,quantity:0,time:dateTime}
   let productInCart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
-  temp.UserID;
+  temp.UserID=JSON.parse(localStorage.getItem("UserId")!);
   temp.time=dateTime;
   productInCart=JSON.parse(localStorage.getItem("CartProducts")!);
   for(var i=0;i<productInCart.length;i++){
