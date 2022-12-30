@@ -31,4 +31,12 @@ export class UserService {
   public getProfile(email: string): Observable<Profile> {
     return this.http.get<Profile>(`http://localhost:${this.port}/getProfileData?email=${email}`);
   }
+
+  public editProfile(profile: Profile): Observable<number> {
+    return this.http.post<number>(`http://localhost:${this.port}/edit-profile`, profile);
+  }
+
+  public updatePassword(email: string, password: string): Observable<boolean> {
+    return this.http.post<boolean>(`http://localhost:${this.port}/update-password`, {email, password});
+  }
 }
