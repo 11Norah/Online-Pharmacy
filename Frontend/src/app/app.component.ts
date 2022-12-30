@@ -87,6 +87,7 @@ export class AppComponent {
     localStorage.removeItem("UseeLoggedIn");
     localStorage.removeItem("UserMail");
     localStorage.removeItem("UserName");
+    this.router.navigate(['/bestseller']);
   //this.userService.UserLoggedIn=0;
   //this.userService.UserMail="";
   //this.userService.UserName="";

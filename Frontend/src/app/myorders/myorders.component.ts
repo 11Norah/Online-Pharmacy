@@ -1,3 +1,4 @@
+import { getLocaleExtraDayPeriods } from '@angular/common';
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { orders } from 'src/models/orders.model';
@@ -8,35 +9,33 @@ import { UserService } from 'src/services/user.service';
   templateUrl: './myorders.component.html',
   styleUrls: ['./myorders.component.css']
 })
-export class MyordersComponent  { 
-  constructor(private userService: UserService) {}
+export class MyordersComponent implements OnInit { 
   myorders:orders[]=[];
-  ngOnInit(){ 
-    //get myorders list from the back 
+  constructor(private userService: UserService) {
+
+  }
+ 
+  ngOnInit(): void{ 
     const id = localStorage.getItem("UserId")!;
-    this.userService.getUserOrders(Number(id)).subscribe(response => {
+    this.userService.getUserOrders(Number(id)).subscribe(response   =>  { 
+      console.log("helllllllllo")
       console.log(response);
-      this.myorders = response
-      console.log(this.myorders);
-    });
+      this.myorders = response 
+      this.getorders()
+      
+     // console.log(this.myorders);
+    }); 
+    //get myorders list from the back 
+  
+ 
+  } 
+  getorders(){
+    console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+    console.log("this.myorders");
+
+    console.log(this.myorders);
     
-    // this.myorders=[
-    //   {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:5,productName:"BOBAI SUN BLOCK SPF80 5 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CRAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CRAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CRAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    // {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREA",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")}] 
+   
    
     let myordersize :number=this.myorders.length;
     
@@ -49,7 +48,7 @@ export class MyordersComponent  {
       for(var j=0;j<getOccurrence(this.myorders,ProductsInOrder);j++){ 
         if(j==0){
           (document.getElementById('orderscontent')as HTMLBodyElement)
-      .innerHTML +='<div style=" ">'+'<strong  style="color:rgb(1, 1, 1) ;   text-shadow: 0 0 3px rgb(249, 208, 24), 0 0 5px rgb(249, 208, 24); font-size: x-large; display:flex;">'+"Order #"+counter+"</strong>"+"<br>"+'<p style=" font-size: x-large; font-weight:bold;">   Date : '+this.myorders[i].orderTime;
+      .innerHTML +='<div style=" ">'+'<strong  style="color:rgb(1, 1, 1) ;   text-shadow: 0 0 3px rgb(249, 208, 24), 0 0 5px rgb(249, 208, 24); font-size: x-large; display:flex;">'+"Order #"+counter+"</strong>"+"<br>"+'<p style=" font-size: xx-large; font-weight:bold;">   Date : '+this.myorders[i].orderTime +'  (Eastern West Egypt)';
 
         }
         (document.getElementById('orderscontent')as HTMLBodyElement).innerHTML +='<br>'+'<br>'+'<div style="width:300px;height:400px;background-color: white; padding:0px;border-radius: 15px;box-shadow: 0px 0px 15px 2px rgb(249, 208, 24);transition: 0.5s;margin-bottom: 70px;">'
@@ -86,6 +85,11 @@ function getOccurrence(array:orders[], value:Number) {
 
 console.log(getOccurrence(this.myorders, 5));  // 2
 console.log(getOccurrence(this.myorders, 9));  // 3
+
+
+
+
+
   }
  
 
@@ -111,99 +115,3 @@ console.log(getOccurrence(this.myorders, 9));  // 3
 
 
 
-
-
-/*import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { orders } from 'src/models/orders.model';
-
-
-//petContainer=document.getElementById('petContainer') as HTMLDivElement;
-// addPetBtn =document.getElementById('addPetBtn') as HTMLButtonElement;
-//const   firstRemoveBtn=document.querySelector<HTMLButtonElement>('button.removeBtn');
-@Component({
-  selector: 'app-myorders',
-  templateUrl: './myorders.component.html',
-  styleUrls: ['./myorders.component.css']
-})
-export class MyordersComponent implements OnInit {
-  myorders:orders[]=[]
-  myordersmap = new Map<number, number>(); //it has orders indicator and the number of items for each order 
-
-  ngOnInit(): void { 
-    this.myorders=[
-      {indicator:5,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:5,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:5,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:5,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:5,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:7,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:9,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:12,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:13,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:13,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")},
-    {indicator:14,productName:"BOBAI SUN BLOCK SPF80 50 GM CREAM",type:"skincare",imageUrl:"https://lomixa.net/wp-content/uploads/2021/03/1-12-1.jpg",cost:90,quantity:2,orderTime:new Date("2019-01-16")}]
-    
-    let myordersize :number=this.myorders.length;
-    
-    let orderindicator:number=0;
-    let numofitemsforeachorder=0;
-   
-
-    while(myordersize>0){
-      let currentorder=this.myorders[orderindicator].indicator; //first order //5 
-      let nextorder=currentorder;
-      numofitemsforeachorder=1;
-      this.myordersmap.set(this.myorders[orderindicator].indicator, numofitemsforeachorder);
-      myordersize=myordersize-1;
-
-
-      console.log(myordersize)
-      while(true && myordersize>0   ){   
-        
-        orderindicator=orderindicator+1;
-        nextorder=this.myorders[orderindicator].indicator; 
-        
-        if(nextorder!=currentorder ){
-          break;
-
-        }
-        myordersize=myordersize-1;
-
-        numofitemsforeachorder=numofitemsforeachorder+1
-        console.log(this.myorders[orderindicator].indicator + "::::"+numofitemsforeachorder) 
-        this.myordersmap.set(this.myorders[orderindicator].indicator, numofitemsforeachorder);
-
-        
-
-         } 
-        
-   
-
-
-    } 
-    console.log(this.myordersmap)
-
-
-   
-
-
-
-  
-
-
-}
-numSequence(n: number): Array<number> {
-  return Array(n);
-}
-}
-
-*/
