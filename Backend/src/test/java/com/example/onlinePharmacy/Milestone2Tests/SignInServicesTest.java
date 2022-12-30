@@ -1,9 +1,6 @@
 package com.example.onlinePharmacy.Milestone2Tests;
-
-import com.example.onlinePharmacy.DTOs.ProductDto;
 import com.example.onlinePharmacy.DTOs.SignInDto;
 import com.example.onlinePharmacy.DTOs.UserDto;
-import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
 import com.example.onlinePharmacy.Services.SignInService;
 import com.example.onlinePharmacy.Services.SignUpService;
 import org.junit.jupiter.api.Test;
