@@ -5,6 +5,7 @@ import { AppComponent } from "../app/app.component"
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/models/product.model';
+import { CartOrder } from 'src/models/cartOrder.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -62,6 +63,12 @@ public getByCategory(category: string): Observable<Product[]> {
 
 public search(term: string): Observable<Product[]> {
   return this.http.get<Product[]>(`http://localhost:${this.port}/search?searchTerm=${term}`);
+}
+
+public saveOrder(order: CartOrder[]): Observable<boolean> {
+  console.log(order);
+  
+  return this.http.post<boolean>(`http://localhost:${this.port}/saveUserOrders`, order);
 }
 
 SendSelectedProduct(){

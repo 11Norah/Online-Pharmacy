@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartOrder } from 'src/models/cartOrder.model';
 import { Product } from 'src/models/product.model';
 import { ProductService } from 'src/services/product.service';
 @Component({
@@ -96,19 +97,20 @@ proceedToCheckOut(){
 yes(){
   document.getElementById("myModal2")!.style.display="none";
   document.getElementById("myModal3")!.style.display="block";
- let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
+ let listDto: CartOrder[] = []
   let dateTime = new Date();
-  let temp:{UserID:Number,productId:Number,quantity:Number,time:Date}={UserID:0,productId:0,quantity:0,time:dateTime}
   let productInCart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
-  temp.UserID=JSON.parse(localStorage.getItem("UserId")!);
-  temp.time=dateTime;
   productInCart=JSON.parse(localStorage.getItem("CartProducts")!);
   for(var i=0;i<productInCart.length;i++){
+    let temp: CartOrder = new CartOrder(0, 0, 0, dateTime);
+    temp.userId=JSON.parse(localStorage.getItem("UserId")!);
+    temp.orderTime=dateTime;
     temp.productId=productInCart[i].product_id
     temp.quantity=productInCart[i].duplication
-    listDto.push(temp);
+    listDto.push(temp);    
   }
   //call back*/
+  this.Server.saveOrder(listDto).subscribe();
 }
 clossing(){
   document.getElementById("myModal2")!.style.display="none";

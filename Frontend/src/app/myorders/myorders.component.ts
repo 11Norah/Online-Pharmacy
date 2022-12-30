@@ -18,8 +18,6 @@ export class MyordersComponent implements OnInit {
   ngOnInit(): void{ 
     const id = localStorage.getItem("UserId")!;
     this.userService.getUserOrders(Number(id)).subscribe(response   =>  { 
-      console.log("helllllllllo")
-      console.log(response);
       this.myorders = response 
       this.getorders()
       
@@ -30,10 +28,6 @@ export class MyordersComponent implements OnInit {
  
   } 
   getorders(){
-    console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-    console.log("this.myorders");
-
-    console.log(this.myorders);
     
    
    
@@ -71,7 +65,6 @@ export class MyordersComponent implements OnInit {
       console.log(i);
       // '<div class="item"><div class="portfolio-item"><a href="img/portfolio-item-' + i + '.jpg" data-lightbox="image-' + i + '"><img src="img/portfolio-item-' + i + '.jpg"></a></div></div>'
    }
-   console.log((document.getElementById('orderscontent')as HTMLBodyElement).innerHTML)
    
 
 

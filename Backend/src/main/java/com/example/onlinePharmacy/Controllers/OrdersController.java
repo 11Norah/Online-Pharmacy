@@ -19,9 +19,10 @@ public class OrdersController {
         return orderServices.getUserOrdersList(userId) ;
     }
 
-    @GetMapping(path = "/saveUserOrders")
-    public void saveUserOrders(@RequestParam List<OrderDto> orderDto){
+    @PostMapping(path = "/saveUserOrders")
+    public boolean saveUserOrders(@RequestBody List<OrderDto> orderDto){
         orderServices.saveListOfOrders(orderDto) ;
+        return true;
     }
 
 }

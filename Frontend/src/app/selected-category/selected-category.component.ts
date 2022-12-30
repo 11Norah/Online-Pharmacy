@@ -14,7 +14,10 @@ export class SelectedCategoryComponent implements OnInit {
       if(this.name == "") this.name = item == null? "" : item;
        localStorage.setItem('Category', this.name);
       const category = this.name;
-       this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);}
+       this.Server.getByCategory(category).subscribe(response => {
+        console.log(response);
+        this.bestsellerproducts = response
+      });}
     else{
 
       //search request
