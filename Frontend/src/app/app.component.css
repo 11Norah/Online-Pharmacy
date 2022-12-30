@@ -5,6 +5,7 @@
     left: 0;
     right: 0;
     height: 130px;
+    
     display: flex;
     align-items: center;
     background-color: rgb(99, 101, 102);

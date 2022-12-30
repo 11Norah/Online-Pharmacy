@@ -88,6 +88,8 @@ export class AppComponent {
     localStorage.removeItem("UserName");
     localStorage.removeItem("UserId");
     localStorage.removeItem("UserInfo");
+    this.router.navigate(['/bestseller']);
+
   //this.userService.UserLoggedIn=0;
   //this.userService.UserMail="";
   //this.userService.UserName="";
