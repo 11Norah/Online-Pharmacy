@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { orders } from 'src/models/orders.model';
 import { Profile } from 'src/models/profile.model';
 import { User } from 'src/models/user.model';
 
@@ -38,5 +39,9 @@ export class UserService {
 
   public updatePassword(email: string, password: string): Observable<boolean> {
     return this.http.post<boolean>(`http://localhost:${this.port}/update-password`, {email, password});
+  }
+
+  public getUserOrders(id: number): Observable<orders[]> {
+    return this.http.get<orders[]>(`http://localhost:${this.port}/getUserOrders?userId=${id}`);
   }
 }
