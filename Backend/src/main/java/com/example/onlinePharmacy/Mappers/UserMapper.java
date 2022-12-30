@@ -20,7 +20,6 @@ public class UserMapper {
                 .phoneNumber(u.getPhoneNumber())
                 .address(u.getAddress())
                 .birth_date(u.getBirth_date().toString())
-                .pDrug(u.isPDrug())
                 .age(u.getAge())
                 .build();
     }
@@ -35,7 +34,6 @@ public class UserMapper {
                 .phoneNumber(u.getPhoneNumber())
                 .address(u.getAddress())
                 .birth_date(bd)
-                .pDrug(u.isPDrug())
                 .age(u.getAge())
                 .build();
     }
