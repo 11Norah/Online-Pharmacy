@@ -43,7 +43,8 @@ export class AboutProductComponent implements OnInit{
     let rate:number=+value
     //call backend
     console.log(rate)
-    this.Server.changeRate(this.SelectedProduct.id, rate).subscribe(response => {
+    let id = localStorage.getItem("UserId");
+    this.Server.changeRate(Number(id), this.SelectedProduct.id, rate).subscribe(response => {
       console.log("response = " + response);
       this.SelectedProduct.rate = response;
       document.getElementById("stars")!.innerHTML = this.getStars(this.SelectedProduct.rate);

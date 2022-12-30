@@ -51,8 +51,8 @@ public getTopRated(): Observable<Product[]> {
   return this.http.get<Product[]>(`http://localhost:${this.port}/getTopProducts`);
 }
 
-public changeRate(id: number, rate: number): Observable<number> {
-  return this.http.post<number>(`http://localhost:${this.port}/changeRate`, {id, rate});
+public changeRate(userId: number, productId: number, rating: number): Observable<number> {
+  return this.http.post<number>(`http://localhost:${this.port}/changeRate`, {userId, productId, rating});
 
 }
 
