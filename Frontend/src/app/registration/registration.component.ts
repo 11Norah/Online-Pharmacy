@@ -16,7 +16,7 @@ import { AppComponent } from '../app.component';
 })
 export class RegistrationComponent {
 
-  
+
   constructor(private router: Router, private userService: UserService, private Productservice:ProductService ) {}
 
   userProfile: Profile = new Profile(0, "", "", "", "", "", "", 0);
@@ -59,6 +59,7 @@ export class RegistrationComponent {
           localStorage.setItem('UserMail', usermail.value);
           localStorage.setItem('UserLoggedIn',"1");
           //this.Productservice.UserLoggedIn=1;
+
           //show logout button
         //direct to main page
         this.router.navigate(['/app']);
@@ -98,9 +99,13 @@ export class RegistrationComponent {
       this.userService.register(user).subscribe(response => {
         status = response;
         if(status) {
+
+
          
           localStorage.setItem("UserMail", mail.value);
           localStorage.setItem("UserName",First.value+" "+Last.value);
+
+
           this.router.navigate(['/confirm']);
           First.value=""; Last.value="";
           pass1.value=""; pass2.value=""; mail.value="";userphone.value="";date.value="";address.value="";
@@ -132,3 +137,4 @@ export class RegistrationComponent {
 
   }
 }
+

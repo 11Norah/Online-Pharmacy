@@ -14,6 +14,7 @@ export class ProductService {
   //ProductsCart: Product[] =JSON.parse(localStorage.getItem("CartProducts")!); 
   
   SelectedCategoryName=""
+
  
   UserLoggedIn = localStorage.getItem('UserLoggedIn') ? Number(localStorage.getItem('UserLoggedIn')) : 0;
   //UserLoggedIn=0;
@@ -21,6 +22,7 @@ export class ProductService {
   //UserMail:string="";
   //UserName = localStorage.getItem('UserName') ? localStorage.getItem('UserName') : "";
   //UserName:string="";
+
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
  

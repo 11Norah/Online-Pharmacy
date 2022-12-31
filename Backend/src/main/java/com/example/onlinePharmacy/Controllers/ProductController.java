@@ -1,14 +1,12 @@
 package com.example.onlinePharmacy.Controllers;
 
 import com.example.onlinePharmacy.DTOs.ProductDto;
+import com.example.onlinePharmacy.DTOs.ProductRatingDTO;
 import com.example.onlinePharmacy.Mappers.ProductMapper;
 import com.example.onlinePharmacy.Model.Product;
 import com.example.onlinePharmacy.Repositries.ProductRepo;
-import com.example.onlinePharmacy.RequestBodies.ChangeRateReqBody;
 import com.example.onlinePharmacy.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +24,7 @@ public class ProductController {
         List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto((List<Product>) productRepo.findAll());
         return productDtos;
     }
+
     @GetMapping(path = "/getTopProducts")
     public @ResponseBody List<ProductDto> getTop10Products() {
         List<ProductDto> productDtos = ProductMapper.bulkMappingFromProductToDto(productRepo.findTop10ByOrderByRateDesc());
@@ -56,10 +55,10 @@ public class ProductController {
     }
 
     @PostMapping(path = "/changeRate")
-    public @ResponseBody double changeProductRate(@RequestBody ChangeRateReqBody body) {
+    public @ResponseBody double changeProductRate(@RequestBody ProductRatingDTO productRatingDTO) {
         double newRate = -1;
         try {
-            newRate = productService.changeProductRate(body.id, body.rate);
+            newRate = productService.rate(productRatingDTO);
             return newRate;
         } catch (Exception e) {
             return newRate;
