@@ -13,7 +13,7 @@
   }
 .profile{
   position: relative;
-  top: 30px;
+  top: 50px;
   left: -90px;
 }
   .toolbar img {
@@ -30,8 +30,8 @@
      bottom:  30px;
 
 }
-button{
- 
+.button{
+ position: relative;
   
   background-color:rgb(249, 208, 24);
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,10 +39,15 @@ button{
     font-weight: bold;
     color: rgb(99, 101, 102);
 	
-  
-	padding:15px 10px;
+  top: -70px;
+  right: 500px;
+	padding:15px 5px;
 	border-radius:25px;
 	
+}
+.logged{
+  position: relative;
+  left: -20px;
 }
 .logo{
     position: relative;
@@ -178,12 +183,12 @@ form.search_button::after {
 .numofitemsinshoppingcart{
   text-align:center;
 position:relative;
-right: 120px; 
+right: 210px; 
 bottom: 49px; 
 border-radius: 50px;
 background-color: rgb(236, 5, 5);
 font-size: large;
-width: 40px;
+width: 30px;
 border: none;
 color: #f1f1f1;
 }

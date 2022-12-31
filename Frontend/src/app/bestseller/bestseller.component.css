@@ -53,11 +53,14 @@ form.shape button {
   color: rgb(99, 101, 102);
 }
 .products{
-  padding: 0 ;
+  padding: -50 ;
 margin-top: 20px;
 padding-top: 1000;
   background: none;
-  border: none;
+ border-color:transparent ;
+  
+
+  
 }
 
 .img:hover{
