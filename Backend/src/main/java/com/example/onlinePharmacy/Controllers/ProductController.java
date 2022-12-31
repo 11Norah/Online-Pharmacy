@@ -65,6 +65,11 @@ public class ProductController {
         }
     }
 
+    @GetMapping(path = "/userRate")
+    public double getUserRate(@RequestParam Long userId, @RequestParam Long productId) {
+        return productService.getUserRate(userId, productId);
+    }
+
     //get products with names containing "searchTerm'.
     @GetMapping(path = "/search")
     public List<ProductDto> getMatchedProducts(@RequestParam String searchTerm) {

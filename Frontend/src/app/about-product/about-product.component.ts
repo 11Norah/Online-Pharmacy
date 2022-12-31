@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
+import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-about-product',
   templateUrl: './about-product.component.html',
   styleUrls: ['./about-product.component.css']
 })
 export class AboutProductComponent implements OnInit{
-  constructor(private Server:ProductService){}
+  constructor(private Server:ProductService, private userService: UserService){}
+  SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   ngOnInit(): void {
-
+    let uid = localStorage.getItem("UserId")!;
+    
+    this.userService.getUserProdRate(Number(uid), this.SelectedProduct.id).subscribe(response => {
+      localStorage.setItem("rates", response.toString());
+      this.getrate();
+    })
     
   }
   loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
-  SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   //rating of product
   getStars(rating:any) {
 
@@ -43,7 +49,7 @@ export class AboutProductComponent implements OnInit{
   getrate(){
     let rate =JSON.parse(localStorage.getItem("rates")!);
     console.log(rate)
-    if(rate<1){
+    if(rate == 0.5){
       console.log("ratesssssssssssssssssssssssssssssssssssssssssssssss");
       (<HTMLInputElement>document.getElementById("starhalf")).checked=true;
     }

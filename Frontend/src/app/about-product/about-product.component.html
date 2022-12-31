@@ -26,7 +26,6 @@
         <input #rating1 type="radio" id="star1" name="rating" value="1" (click)=submit_rate(rating1.value)  /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
         <input #ratinghalf type="radio" id="starhalf" name="rating" value="0.5"(click)=submit_rate(ratinghalf.value) /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
     </fieldset>
-<div>{{getrate()}}</div>
 </div>
 <div *ngIf="loggedin==null">
     <div class="rates">

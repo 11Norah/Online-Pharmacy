@@ -44,4 +44,8 @@ export class UserService {
   public getUserOrders(id: number): Observable<orders[]> {
     return this.http.get<orders[]>(`http://localhost:${this.port}/getUserOrders?userId=${id}`);
   }
+
+  public getUserProdRate(userId: number, productId: number): Observable<number> {
+    return this.http.get<number>(`http://localhost:${this.port}/userRate?userId=${userId}&productId=${productId}`);
+  }
 }

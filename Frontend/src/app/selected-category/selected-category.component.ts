@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
 import { Product } from 'src/models/product.model';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-selected-category',
@@ -8,7 +9,7 @@ import { Product } from 'src/models/product.model';
   styleUrls: ['./selected-category.component.css']
 })
 export class SelectedCategoryComponent implements OnInit {
-  constructor(private Server:ProductService){
+  constructor(private Server:ProductService, private userService: UserService){
     if(localStorage.getItem('Category')!="Search"){
       const item = localStorage.getItem('Category');
       if(this.name == "") this.name = item == null? "" : item;
@@ -44,7 +45,6 @@ export class SelectedCategoryComponent implements OnInit {
   aboutproduct(product_id:any,image:string,name:string,price:number,rate:number,type:string,description:string,permission:boolean){
       let  product={id:product_id,img:image,name:name,price:price,rate:rate,category:type,description:description,permission:permission};
       localStorage.setItem("aboutProduct",JSON.stringify(product));
-
 
 }
 getStars(rating:any) {
