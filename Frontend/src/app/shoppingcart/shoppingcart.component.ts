@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { CartOrder } from 'src/models/cartOrder.model';
 import { Product } from 'src/models/product.model';
 import { ProductService } from 'src/services/product.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent {
-  constructor(private Server:ProductService){}
+  constructor(private Server:ProductService,private router:Router){}
   
   subtotal=JSON.parse(localStorage.getItem("subtotal")!);
   Total=JSON.parse(localStorage.getItem("subtotal")!)+20;
@@ -83,7 +85,13 @@ removeItemFromCart(id:any){
       localStorage.setItem("subtotal",JSON.stringify(this.subtotal))
       productInCart.splice(i,1);
       localStorage.setItem("CartProducts",JSON.stringify(productInCart));
+      console.log("productsssss"+productInCart.length);
       this.bestsellerproducts=productInCart;
+      if(productInCart.length==0){
+        this.router.navigate(['/bestseller'])
+
+      }
+      
     }
   }
   
@@ -109,6 +117,15 @@ yes(){
     temp.quantity=productInCart[i].duplication
     listDto.push(temp);    
   }
+  let p:Product[]=[];
+  localStorage.setItem("CartProducts",JSON.stringify(p));
+  console.log(localStorage.getItem("CartProducts"))
+  localStorage.setItem('itemsincart',"0");
+  localStorage.setItem("subtotal","0")
+  this.router.navigate(['/bestseller'])
+ 
+  
+
   //call back*/
   this.Server.saveOrder(listDto).subscribe();
 }

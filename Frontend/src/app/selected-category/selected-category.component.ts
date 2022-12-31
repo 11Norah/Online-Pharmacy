@@ -13,12 +13,15 @@ export class SelectedCategoryComponent implements OnInit {
     if(localStorage.getItem('Category')!="Search"){
       const item = localStorage.getItem('Category');
       if(this.name == "") this.name = item == null? "" : item;
+      else if(this.name == "Medication") this.name = "med";
        localStorage.setItem('Category', this.name);
       const category = this.name;
        this.Server.getByCategory(category).subscribe(response => {
         console.log(response);
-        this.bestsellerproducts = response
-      });}
+        this.bestsellerproducts = response;
+      });
+      if(this.name == "med") this.name = "Medication";
+    }
     else{
 
       //search request
