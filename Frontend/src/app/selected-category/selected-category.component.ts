@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
 import { Product } from 'src/models/product.model';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-selected-category',
@@ -8,13 +9,19 @@ import { Product } from 'src/models/product.model';
   styleUrls: ['./selected-category.component.css']
 })
 export class SelectedCategoryComponent implements OnInit {
-  constructor(private Server:ProductService){
+  constructor(private Server:ProductService, private userService: UserService){
     if(localStorage.getItem('Category')!="Search"){
       const item = localStorage.getItem('Category');
       if(this.name == "") this.name = item == null? "" : item;
+      else if(this.name == "Medication") this.name = "med";
        localStorage.setItem('Category', this.name);
       const category = this.name;
-       this.Server.getByCategory(category).subscribe(response => this.bestsellerproducts = response);}
+       this.Server.getByCategory(category).subscribe(response => {
+        console.log(response);
+        this.bestsellerproducts = response;
+      });
+      if(this.name == "med") this.name = "Medication";
+    }
     else{
 
       //search request
@@ -41,7 +48,6 @@ export class SelectedCategoryComponent implements OnInit {
   aboutproduct(product_id:any,image:string,name:string,price:number,rate:number,type:string,description:string,permission:boolean){
       let  product={id:product_id,img:image,name:name,price:price,rate:rate,category:type,description:description,permission:permission};
       localStorage.setItem("aboutProduct",JSON.stringify(product));
-
 
 }
 getStars(rating:any) {
@@ -79,6 +85,7 @@ console.log(count)
   document.getElementById(ids)!.innerHTML=this.getStars(this.bestsellerproducts[i].rate)
 }
 AddProduct(id:any){
+  ///call back to get rate
   let pos=0;
   for(var i=0;i<this.bestsellerproducts.length;i++){
     if(this.bestsellerproducts[i].product_id==id){

@@ -31,7 +31,6 @@ export class BestsellerComponent implements OnInit {
     let  product={id:id,img:img,name:name,price:price,rate:rate,category:category,description:description,permission:permission};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
   this.Server.RecieveSelectedProduct(id,img,name,price,rate,category,description);
-
 }
 
  getStars(rating:any) {
@@ -69,6 +68,8 @@ console.log(count)
   document.getElementById(ids)!.innerHTML=this.getStars(this.bestsellerproducts[i].rate)
 }
 AddProduct(id:any){
+
+  ///call back to get rate
   let pos=0;
   for(var i=0;i<this.bestsellerproducts.length;i++){
     if(this.bestsellerproducts[i].product_id==id){

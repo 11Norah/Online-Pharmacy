@@ -11,6 +11,7 @@
 <p>________________________________________________________________</p>
 <div>
 <p class="price"><a class="bold">Price: </a>{{SelectedProduct.price}} LE</p>
+
 <h1 class="rateproduct">Rate Product</h1>
 <div *ngIf="loggedin==1">
     <fieldset class="rating">
@@ -23,7 +24,7 @@
         <input #rating2 type="radio" id="star2" name="rating" value="2" (click)=submit_rate(rating2.value)  /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
         <input #rating1half type="radio" id="star1half" name="rating" value="1.5" (click)=submit_rate(rating1half.value) /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
         <input #rating1 type="radio" id="star1" name="rating" value="1" (click)=submit_rate(rating1.value)  /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-        <input #ratinghalf type="radio" id="starhalf" name="rating" value=".5"(click)=submit_rate(ratinghalf.value) /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+        <input #ratinghalf type="radio" id="starhalf" name="rating" value="0.5"(click)=submit_rate(ratinghalf.value) /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
     </fieldset>
 </div>
 <div *ngIf="loggedin==null">
@@ -48,8 +49,10 @@
 <div id="myModal3" class="modal">
     <div class="modalcontent3">
       <span class="close" (click)="clossing()">&times;</span>
+      <div class="logo">
       <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png">
       <span class="Pharmacyname"style=" position :relative, top:-20px">AHMENA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHARMACY</span>
+    </div>
       <p  style="font-size: xx-large;">⚠️❗<br>This medicine is scheduled and you cannot get it online.<br> You must go to the nearest branch and bring the prescription to get this medicine </p>
       <p  style="font-size: xx-large;"></p>
       <pre style="font-size: xx-large;"></pre>

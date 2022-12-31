@@ -80,6 +80,12 @@ public class ProductService {
 
     }
 
+    public double getUserRate(Long userId, long productId) {
+        Optional<ProductRating> optionalProductRating = productRatingRepo.findById(new ProductRatingKey(userId, productId));
+        if(optionalProductRating.isEmpty()) return -1;
+        return optionalProductRating.get().getRating();
+    }
+
     public List<ProductDto> getMatchedProducts(@NotNull String searchTerm) {
         if (searchTerm.isEmpty()) return null;
         //query database

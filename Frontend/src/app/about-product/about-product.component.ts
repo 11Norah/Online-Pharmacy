@@ -1,22 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/services/product.service';
+import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-about-product',
   templateUrl: './about-product.component.html',
   styleUrls: ['./about-product.component.css']
 })
 export class AboutProductComponent implements OnInit{
-  constructor(private Server:ProductService){}
+  constructor(private Server:ProductService, private userService: UserService){}
+  SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   ngOnInit(): void {
-
+    let uid = localStorage.getItem("UserId")!;
+    
+    this.userService.getUserProdRate(Number(uid), this.SelectedProduct.id).subscribe(response => {
+      localStorage.setItem("rates", response.toString());
+      this.getrate();
+    })
+    
   }
   loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
-  SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   //rating of product
   getStars(rating:any) {
 
     // Round to nearest half
     rating = Math.round(rating * 2) / 2;
+    
     let output = [];
 
     // Append all the filled whole stars
@@ -29,21 +37,41 @@ export class AboutProductComponent implements OnInit{
     // Fill the empty stars
     for (let i = (5 - rating); i >= 1; i--)
       output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
+      localStorage.setItem("rate",JSON.stringify(output));
     return output.join('');
 
   }
   show(){
 
     document.getElementById("stars")!.innerHTML=this.getStars(this.SelectedProduct.rate)
+   
+  }
+  getrate(){
+    let rate =JSON.parse(localStorage.getItem("rates")!);
+    console.log(rate)
+    if(rate == 0.5){
+      console.log("ratesssssssssssssssssssssssssssssssssssssssssssssss");
+      (<HTMLInputElement>document.getElementById("starhalf")).checked=true;
+    }
+    let c=0;
+    for(var i=1 ;i<=rate;i++){
+    (<HTMLInputElement>document.getElementById("star"+i)).checked=true;
+    c++;
+    console.log("star"+i);
+    }
+    if(rate-c==.5){
+      (<HTMLInputElement>document.getElementById("star"+c+"half")).checked=true;
+    }
   }
   
   //to submit rating of product
   submit_rate(value:string){
     let rate:number=+value
+   
     //call backend
     console.log(rate)
-    this.Server.changeRate(this.SelectedProduct.id, rate).subscribe(response => {
+    let id = localStorage.getItem("UserId");
+    this.Server.changeRate(Number(id), this.SelectedProduct.id, rate).subscribe(response => {
       console.log("response = " + response);
       this.SelectedProduct.rate = response;
       document.getElementById("stars")!.innerHTML = this.getStars(this.SelectedProduct.rate);
@@ -119,3 +147,20 @@ export class AboutProductComponent implements OnInit{
     document.getElementById("myModal3")!.style.display="none";
   }
 }
+/*window.addEventListener("load", (event) => {
+  let rate =JSON.parse(localStorage.getItem("rates")!);
+  console.log(rate)
+  if(rate<1){
+    console.log("ratesssssssssssssssssssssssssssssssssssssssssssssss");
+    (<HTMLInputElement>document.getElementById("starhalf")).checked=true;
+  }
+  let c=0;
+  for(var i=1 ;i<=rate;i++){
+  (<HTMLInputElement>document.getElementById("star"+i)).checked=true;
+  c++;
+  console.log("star"+i);
+  }
+  if(rate-c==.5){
+    (<HTMLInputElement>document.getElementById("star"+c+"half")).checked=true;
+  }
+});*/
